@@ -1,0 +1,32 @@
+{
+    "games": [
+        {
+            "id": "0",
+            "name": "Test",
+            "description": "TestDescription0",
+            "region": "ntscu",
+            "platform": "ngc"
+        },
+        {
+            "id": "1",
+            "name": "Test1",
+            "description": "TestDescription1",
+            "region": "ntscj",
+            "platform": "wii"
+        },
+        {
+            "id": "2",
+            "name": "Test2",
+            "description": "TestDescription2",
+            "region": "pal",
+            "platform": "ngc"
+        },
+        {
+            "id": "3",
+            "name": "Test3",
+            "description": "TestDescription3",
+            "region": "ntscu",
+            "platform": "wii"
+        }
+    ]
+}
