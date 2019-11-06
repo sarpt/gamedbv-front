@@ -2,23 +2,20 @@ import React from 'react';
 
 import { ThemeProvider } from '@material-ui/styles';
 
-import './App.css';
-
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import theme from './theme.json';
 
-import GameSearch from './components/GameSearch/GameSearch';
-import ApplicationBar from './components/ApplicationBar/ApplicationBar';
+import Main from './components/Main/Main';
 
-const AppTheme = createMuiTheme(theme);
+const AppTheme = responsiveFontSizes(createMuiTheme(theme));
 
 const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={ AppTheme }>
-      <ApplicationBar></ApplicationBar>
-      <GameSearch></GameSearch>
-    </ThemeProvider>
-  );
+
+    return (
+        <ThemeProvider theme={ AppTheme }>
+            <Main></Main>
+        </ThemeProvider>
+    );
 }
 
 export default App;

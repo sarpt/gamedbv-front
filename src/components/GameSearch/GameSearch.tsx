@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { withTheme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 
 import { AppState } from '../../store/store';
 import { 
@@ -66,7 +65,7 @@ const GameSearch: React.FC<Props> = ({
     }
 
     return (
-        <Paper>
+        <React.Fragment>
             <GameQueryPanel
                 query={ searchQuery }
                 regions={ searchedRegions }
@@ -80,7 +79,7 @@ const GameSearch: React.FC<Props> = ({
                 resultsPerPage={ gameResultsPerPage }
                 onPaginationChange={ handleResultsPaginationChange }
             ></GameSearchResults>
-        </Paper>
+        </React.Fragment>
     );
 }
 
