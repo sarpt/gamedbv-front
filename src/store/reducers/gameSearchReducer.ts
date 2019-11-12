@@ -1,6 +1,6 @@
 import {
-    GameSearchTypes,
-    GameSearchActions,
+  GameSearchTypes,
+  GameSearchActions,
 } from '../actions/gameSearchActions';
 
 import { GameResult } from '../../models/GameResult';
@@ -11,44 +11,44 @@ const initialSelectedPage = 0;
 const gamesPerPage = 10;
 
 type State = {
-    searchQuery: string,
-    searchedRegions: RegionsMap,
-    searchedPlatforms: PlatformsMap,
-    gameResults: GameResult[],
-    selectedGameResultsPage: number, 
-    gameResultsPerPage: number
+  searchQuery: string,
+  searchedRegions: RegionsMap,
+  searchedPlatforms: PlatformsMap,
+  gameResults: GameResult[],
+  selectedGameResultsPage: number,
+  gameResultsPerPage: number
 }
 const initialState: State = {
-    searchQuery: '',
-    searchedRegions: {
-        [Regions.NTSCJ]: true,
-        [Regions.NTSCU]: true,
-        [Regions.PAL]: true,
-        [Regions.OTHER]: true
-    },
-    searchedPlatforms: {
-        [Platforms.NGC]: true,
-        [Platforms.WII]: true
-    },
-    gameResults: [],
-    selectedGameResultsPage: initialSelectedPage,
-    gameResultsPerPage: gamesPerPage
+  searchQuery: '',
+  searchedRegions: {
+    [Regions.NTSCJ]: true,
+    [Regions.NTSCU]: true,
+    [Regions.PAL]: true,
+    [Regions.OTHER]: true
+  },
+  searchedPlatforms: {
+    [Platforms.NGC]: true,
+    [Platforms.WII]: true
+  },
+  gameResults: [],
+  selectedGameResultsPage: initialSelectedPage,
+  gameResultsPerPage: gamesPerPage
 };
 
 export const gameSearchReducer = (state: State = initialState, action: GameSearchActions): State => {
-    switch (action.type) {
-        case GameSearchTypes.SetGames:
-            return { ...state, gameResults: action.payload }
-        case GameSearchTypes.ChangeSearchQuery:
-            return {
-                ...state,
-                searchQuery: action.payload.searchQuery,
-                searchedRegions: action.payload.searchedRegions,
-                searchedPlatforms: action.payload.searchedPlatforms,
-                selectedGameResultsPage: action.payload.selectedGameResultsPage,
-                gameResultsPerPage: action.payload.gameResultsPerPage
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case GameSearchTypes.SetGames:
+      return { ...state, gameResults: action.payload }
+    case GameSearchTypes.ChangeSearchQuery:
+      return {
+        ...state,
+        searchQuery: action.payload.searchQuery,
+        searchedRegions: action.payload.searchedRegions,
+        searchedPlatforms: action.payload.searchedPlatforms,
+        selectedGameResultsPage: action.payload.selectedGameResultsPage,
+        gameResultsPerPage: action.payload.gameResultsPerPage
+      };
+    default:
+      return state;
+  }
 };

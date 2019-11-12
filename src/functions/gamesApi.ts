@@ -11,35 +11,35 @@ const server = 'localhost:3001';
 const gamesEndpoint = `http://${server}/games`;
 
 type SearchGamesArguments = {
-    searchQuery: string,
-    page: number,
-    gamesPerPage: number,
-    regions: Regions[],
-    platforms: Platforms[]
+  searchQuery: string,
+  page: number,
+  gamesPerPage: number,
+  regions: Regions[],
+  platforms: Platforms[]
 };
 export function searchGames({ searchQuery, page, gamesPerPage, regions, platforms }: SearchGamesArguments) {
-    let url = gamesEndpoint;
-    url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
-    url = addQueriesToUrl(url, ApiParameters.currentPage, [page]);
-    url = addQueriesToUrl(url, ApiParameters.itemsPerPage, [gamesPerPage]);
-    url = addQueriesToUrl(url, ApiParameters.platform, platforms);
-    url = addQueriesToUrl(url, ApiParameters.region, regions);
+  let url = gamesEndpoint;
+  url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
+  url = addQueriesToUrl(url, ApiParameters.currentPage, [page]);
+  url = addQueriesToUrl(url, ApiParameters.itemsPerPage, [gamesPerPage]);
+  url = addQueriesToUrl(url, ApiParameters.platform, platforms);
+  url = addQueriesToUrl(url, ApiParameters.region, regions);
 
-    const options: RequestInit = {
-        method: 'GET'
-    };
+  const options: RequestInit = {
+    method: 'GET'
+  };
 
-    return ajax.getJSON<GameResult[]>(url, options);
+  return ajax.getJSON<GameResult[]>(url, options);
 }
 
 type GetGameArguments = {
-    id: string
+  id: string
 };
 export function getGame({ id }: GetGameArguments) {
-    const url = `${gamesEndpoint}/${id}`;
-    const options: RequestInit = {
-        method: 'GET'
-    };
+  const url = `${gamesEndpoint}/${id}`;
+  const options: RequestInit = {
+    method: 'GET'
+  };
 
-    return ajax.getJSON(url, options);
+  return ajax.getJSON(url, options);
 }

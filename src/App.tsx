@@ -11,11 +11,11 @@ const AppTheme = responsiveFontSizes(createMuiTheme(theme));
 
 const App: React.FC = () => {
 
-    return (
-        <ThemeProvider theme={ AppTheme }>
-            <Main></Main>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={AppTheme}>
+      <Main></Main>
+    </ThemeProvider>
+  );
 }
 
 export default App;

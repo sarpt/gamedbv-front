@@ -9,8 +9,8 @@ const epicMiddleware = createEpicMiddleware();
 
 // redux store setup
 export const store = createStore(
-    rootReducer,
-    applyMiddleware(epicMiddleware)
+  rootReducer,
+  applyMiddleware(epicMiddleware)
 );
 
 // run has to be used after createStore call

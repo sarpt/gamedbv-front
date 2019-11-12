@@ -1,52 +1,52 @@
 {
-    "palette": {
-        "common": {
-            "black": "#000",
-            "white": "#fff"
-        },
-        "background": {
-            "paper": "rgba(204, 211, 218, 1)",
-            "default": "rgba(204, 211, 218, 1)"
-        },
-        "primary": {
-            "light": "rgba(164, 170, 196, 1)",
-            "main": "rgba(58, 61, 84, 1)",
-            "dark": "rgba(57, 57, 98, 1)",
-            "contrastText": "#fff"
-        },
-        "secondary": {
-            "light": "rgba(254, 173, 200, 1)",
-            "main": "rgba(255, 119, 165, 1)",
-            "dark": "#c51162",
-            "contrastText": "#fff"
-        },
-        "error": {
-            "light": "#e57373",
-            "main": "#f44336",
-            "dark": "#d32f2f",
-            "contrastText": "#fff"
-        },
-        "text": {
-            "primary": "rgba(58, 61, 84, 1)",
-            "secondary": "rgba(72, 76, 92, 1)",
-            "disabled": "rgba(0, 0, 0, 0.38)",
-            "hint": "rgba(0, 0, 0, 0.38)"
-        }
+  "palette": {
+    "common": {
+      "black": "#000",
+      "white": "#fff"
     },
-    "overrides": {
-        "MuiFormLabel": {
-            "root": {
-                "&$focused": {
-                    "color": "rgba(255, 119, 165, 1)"
-                }
-            }
-        },
-        "MuiInput": {
-            "underline": {
-                "&:after": {
-                    "borderBottomColor": "rgba(255, 119, 165, 1)"
-                }
-            }
-        }
+    "background": {
+      "paper": "rgba(204, 211, 218, 1)",
+      "default": "rgba(204, 211, 218, 1)"
+    },
+    "primary": {
+      "light": "rgba(164, 170, 196, 1)",
+      "main": "rgba(58, 61, 84, 1)",
+      "dark": "rgba(57, 57, 98, 1)",
+      "contrastText": "#fff"
+    },
+    "secondary": {
+      "light": "rgba(254, 173, 200, 1)",
+      "main": "rgba(255, 119, 165, 1)",
+      "dark": "#c51162",
+      "contrastText": "#fff"
+    },
+    "error": {
+      "light": "#e57373",
+      "main": "#f44336",
+      "dark": "#d32f2f",
+      "contrastText": "#fff"
+    },
+    "text": {
+      "primary": "rgba(58, 61, 84, 1)",
+      "secondary": "rgba(72, 76, 92, 1)",
+      "disabled": "rgba(0, 0, 0, 0.38)",
+      "hint": "rgba(0, 0, 0, 0.38)"
     }
+  },
+  "overrides": {
+    "MuiFormLabel": {
+      "root": {
+        "&$focused": {
+          "color": "rgba(255, 119, 165, 1)"
+        }
+      }
+    },
+    "MuiInput": {
+      "underline": {
+        "&:after": {
+          "borderBottomColor": "rgba(255, 119, 165, 1)"
+        }
+      }
+    }
+  }
 }

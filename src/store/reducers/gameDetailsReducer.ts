@@ -1,18 +1,18 @@
 import {
-    GameDetailsActionsTypes,
-    GameDetailsActions
+  GameDetailsActionsTypes,
+  GameDetailsActions
 } from '../actions/gameDetailsActions';
 
 type State = {
-    gameId?: string 
+  gameId?: string
 }
 const initialState: State = {};
 
 export const gameDetailsReducer = (state: State = initialState, action: GameDetailsActions) => {
-    switch (action.type) {
-        case GameDetailsActionsTypes.SetGameId:
-            return { ...state, gameId: action.payload };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case GameDetailsActionsTypes.SetGameId:
+      return { ...state, gameId: action.payload };
+    default:
+      return state;
+  }
 };

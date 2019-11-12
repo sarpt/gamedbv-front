@@ -3,6 +3,6 @@ import { setGameIdEpic } from './gameDetailsEpic';
 import { combineEpics } from 'redux-observable';
 
 export const rootEpic = combineEpics(
-    changeSearchQueryEpic,
-    setGameIdEpic
+  changeSearchQueryEpic,
+  setGameIdEpic
 );
