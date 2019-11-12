@@ -6,10 +6,14 @@ import {
 
 export const useStyles: ReturnType<typeof makeStyles> = makeStyles((theme: Theme) => {
     return createStyles({
-        'row': {
-            'display': 'flex',
-            'flex-direction': 'row',
-            'flex-wrap': 'wrap'
+        'panelPaper': {
+            'margin-bottom': '10px',
+            'padding': '1em'
+        },
+        'label': {
+        },
+        'content': {
+            'padding-top': '0.5em'
         }
     });
 });

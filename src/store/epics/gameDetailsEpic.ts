@@ -5,7 +5,7 @@ import { GameDetailsActions, GameDetailsActionsTypes, SetGameIdAction } from '..
 
 export const setGameIdEpic = (actions$: ActionsObservable<GameDetailsActions>) => {
     return actions$.pipe(
-        ofType<GameDetailsActions, SetGameIdAction>(GameDetailsActionsTypes.SET_GAME_ID),
+        ofType<GameDetailsActions, SetGameIdAction>(GameDetailsActionsTypes.SetGameId),
         map(() => {
             of([])
         })

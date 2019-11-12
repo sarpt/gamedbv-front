@@ -10,7 +10,7 @@ const initialState: State = {};
 
 export const gameDetailsReducer = (state: State = initialState, action: GameDetailsActions) => {
     switch (action.type) {
-        case GameDetailsActionsTypes.SET_GAME_ID:
+        case GameDetailsActionsTypes.SetGameId:
             return { ...state, gameId: action.payload };
         default:
             return state;

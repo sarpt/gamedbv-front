@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Paper from '@material-ui/core/Paper';
 import { withTheme } from '@material-ui/core/styles';
 
 import GameSearch from '../GameSearch/GameSearch';
@@ -14,9 +13,9 @@ const Main: React.FC = () => {
     return (
       <div className={ styles.main }>
         <ApplicationBar></ApplicationBar>
-        <Paper>
+        <div className={ styles.content }>
           <GameSearch></GameSearch>
-        </Paper>
+        </div>
       </div>
     );
 };

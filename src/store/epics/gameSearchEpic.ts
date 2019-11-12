@@ -3,14 +3,14 @@ import { of } from 'rxjs';
 import { map, concatMap, catchError } from 'rxjs/operators';
 
 import { GameSearchTypes, ChangeSearchQueryAction, GameSearchActions, setGames } from '../actions/gameSearchActions';
-import { searchGames } from '../../services/gamesApi.service';
+import { searchGames } from '../../functions/gamesApi';
 import { booleanMapToArray } from '../../functions/booleanMapToArray';
 import { Regions } from '../../models/Regions';
 import { Platforms } from '../../models/Platforms';
 
 export const changeSearchQueryEpic = (actions$: ActionsObservable<GameSearchActions>) => {
     return actions$.pipe(
-        ofType<GameSearchActions, ChangeSearchQueryAction>(GameSearchTypes.CHANGE_SEARCH_QUERY),
+        ofType<GameSearchActions, ChangeSearchQueryAction>(GameSearchTypes.ChangeSearchQuery),
         concatMap(({ payload }) => {
             const searchGamesRequestProperties = {
                 searchQuery: payload.searchQuery,

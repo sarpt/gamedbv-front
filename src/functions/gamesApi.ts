@@ -3,8 +3,12 @@ import { ajax } from 'rxjs/ajax';
 import { GameResult } from '../models/GameResult';
 import { Platforms } from '../models/Platforms';
 import { Regions } from '../models/Regions';
+import { ApiParameters } from '../models/ApiParameters'
 
-import { addQueriesToUrl } from '../functions/urlUtils';
+import { addQueriesToUrl } from './urlUtils';
+
+const server = 'localhost:3001';
+const gamesEndpoint = `http://${server}/games`;
 
 type SearchGamesArguments = {
     searchQuery: string,
@@ -14,12 +18,12 @@ type SearchGamesArguments = {
     platforms: Platforms[]
 };
 export function searchGames({ searchQuery, page, gamesPerPage, regions, platforms }: SearchGamesArguments) {
-    let url = "http://localhost:3001/games";
-    url = addQueriesToUrl(url, 'q', [searchQuery]);
-    url = addQueriesToUrl(url, '_page', [page]);
-    url = addQueriesToUrl(url, '_limit', [gamesPerPage]);
-    url = addQueriesToUrl(url, 'platform', platforms);
-    url = addQueriesToUrl(url, 'region', regions);
+    let url = gamesEndpoint;
+    url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
+    url = addQueriesToUrl(url, ApiParameters.currentPage, [page]);
+    url = addQueriesToUrl(url, ApiParameters.itemsPerPage, [gamesPerPage]);
+    url = addQueriesToUrl(url, ApiParameters.platform, platforms);
+    url = addQueriesToUrl(url, ApiParameters.region, regions);
 
     const options: RequestInit = {
         method: 'GET'
@@ -32,7 +36,7 @@ type GetGameArguments = {
     id: string
 };
 export function getGame({ id }: GetGameArguments) {
-    const url = `http://localhost:3001/games/${id}`;
+    const url = `${gamesEndpoint}/${id}`;
     const options: RequestInit = {
         method: 'GET'
     };

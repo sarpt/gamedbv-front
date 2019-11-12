@@ -9,22 +9,23 @@ import Button from '@material-ui/core/Button';
 
 import { withTheme } from '@material-ui/core/styles';
 
+const appBarElevation = 1;
+const applicationTitle = 'Wii & NGC Database Viewer';
+const optionsLabel = 'Options';
+
 type props = {};
 
 const ApplicationBar: React.FC<props> = () => {
     return (
         <React.Fragment>
-            <AppBar elevation={ 1 }>
+            <AppBar elevation={ appBarElevation }>
                 <Toolbar>
-                <IconButton color="inherit" edge="start" aria-label="menu">
-                    <MenuIcon 
-                    open={ false }
-                    />
-                </IconButton>
                 <Typography variant="h5">
-                    Wii & NGC Database Viewer
+                    { applicationTitle }
                 </Typography>
-                <Button color="inherit">Options</Button>
+                <Button color="inherit">
+                    { optionsLabel }
+                </Button>
                 </Toolbar>
             </AppBar>
             <Toolbar></Toolbar>

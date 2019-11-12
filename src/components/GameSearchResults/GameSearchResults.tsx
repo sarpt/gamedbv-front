@@ -11,6 +11,8 @@ import { GameResult } from '../../models/GameResult';
 import { Panel } from '../Panel/Panel';
 import { GameResultRow } from '../GameResultRow/GameResultRow';
 
+const searchResultsLabel = 'Search results';
+
 export type PaginationChanges = {
     page: number,
     resultsPerPage: number
@@ -44,7 +46,7 @@ export const GameSearchResults: React.FC<props> = ({
 
     return (
         <Panel
-            label='Search results'
+            label={ searchResultsLabel }
         >
             <Table>
                 <TableBody>

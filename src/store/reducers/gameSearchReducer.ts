@@ -37,9 +37,9 @@ const initialState: State = {
 
 export const gameSearchReducer = (state: State = initialState, action: GameSearchActions): State => {
     switch (action.type) {
-        case GameSearchTypes.SET_GAMES:
+        case GameSearchTypes.SetGames:
             return { ...state, gameResults: action.payload }
-        case GameSearchTypes.CHANGE_SEARCH_QUERY:
+        case GameSearchTypes.ChangeSearchQuery:
             return {
                 ...state,
                 searchQuery: action.payload.searchQuery,

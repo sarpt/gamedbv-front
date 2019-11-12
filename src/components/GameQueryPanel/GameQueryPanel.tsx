@@ -13,8 +13,11 @@ import { Panel } from '../Panel/Panel';
 
 import { useStyles } from './GameQueryPanel.styles';
 
-const INPUT_PLACEHOLDER = 'game name, description, id, etc.';
-const INPUT_LABEL = 'Search query';
+const inputPlaceholder = 'game name, description, id, etc.';
+const inputLabel = 'Search query';
+const gameSearchLabel = 'Game search';
+const regionsLabel = 'Regions';
+const platformsLabel = 'Platforms';
 
 export type QueryPanelChanges = {
     query: string,
@@ -107,7 +110,7 @@ export const GameQueryPanel: React.FC<Props> = ({
 
     return (
         <Panel
-            label="Game search"
+            label={ gameSearchLabel }
         >
             <FormGroup row={ false }>
                 <div className={ styles.row }>
@@ -116,13 +119,13 @@ export const GameQueryPanel: React.FC<Props> = ({
                         name='query'
                         onChange={ handleInputChange }
                         value={ query }
-                        placeholder={ INPUT_PLACEHOLDER }
-                        label={ INPUT_LABEL }
+                        placeholder={ inputPlaceholder }
+                        label={ inputLabel }
                     ></TextField>
                 </div>
                 <div className={ styles.row }>
                     <Typography variant="h6">
-                        Regions:
+                        { regionsLabel }
                     </Typography>
                     {
                         regionsCheckboxes.map(regionsCheckbox => {
@@ -145,7 +148,7 @@ export const GameQueryPanel: React.FC<Props> = ({
                 </div>
                 <div className={ styles.row }>
                     <Typography variant="h6">
-                        Platforms:
+                        { platformsLabel }
                     </Typography>
                     {
                         platformsCheckboxes.map(platformCheckbox => {
