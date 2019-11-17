@@ -6,7 +6,8 @@ import { PlatformsMap } from '../../models/Platforms';
 
 export enum GameSearchTypes {
   SetGames = '[game-search] Set Games',
-  ChangeSearchQuery = '[game-search] Change search query'
+  ChangeSearchQuery = '[game-search] Change search query',
+  SetGameSearchError = '[game-search] Set game search error'
 }
 
 export interface SetGamesAction extends Action {
@@ -42,6 +43,23 @@ export const changeSearchQuery = ({ searchQuery, searchedRegions, searchedPlatfo
       gameResultsPerPage
     }
   };
-}
+};
 
-export type GameSearchActions = SetGamesAction | ChangeSearchQueryAction;
+
+type SetGameSearchErrorPayload = {
+  message: string
+};
+export interface SetGameSearchErrorAction extends Action {
+  type: GameSearchTypes.SetGameSearchError,
+  payload: SetGameSearchErrorPayload
+}
+export const setGameSearchError = ({ message }: SetGameSearchErrorPayload): SetGameSearchErrorAction => {
+  return {
+    type: GameSearchTypes.SetGameSearchError,
+    payload: {
+      message
+    }
+  }
+};
+
+export type GameSearchActions = SetGamesAction | ChangeSearchQueryAction | SetGameSearchErrorAction;

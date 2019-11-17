@@ -10,14 +10,21 @@ import { Platforms, PlatformsMap } from '../../models/Platforms';
 const initialSelectedPage = 0;
 const gamesPerPage = 10;
 
+type SearchError = {
+  hasError: boolean,
+  message?: string
+};
+
 type State = {
   searchQuery: string,
   searchedRegions: RegionsMap,
   searchedPlatforms: PlatformsMap,
   gameResults: GameResult[],
   selectedGameResultsPage: number,
-  gameResultsPerPage: number
-}
+  gameResultsPerPage: number,
+  searchError: SearchError 
+};
+
 const initialState: State = {
   searchQuery: '',
   searchedRegions: {
@@ -32,13 +39,16 @@ const initialState: State = {
   },
   gameResults: [],
   selectedGameResultsPage: initialSelectedPage,
-  gameResultsPerPage: gamesPerPage
+  gameResultsPerPage: gamesPerPage,
+  searchError: {
+    hasError: false
+  }
 };
 
 export const gameSearchReducer = (state: State = initialState, action: GameSearchActions): State => {
   switch (action.type) {
     case GameSearchTypes.SetGames:
-      return { ...state, gameResults: action.payload }
+      return { ...state, gameResults: action.payload, searchError: { hasError: false } }
     case GameSearchTypes.ChangeSearchQuery:
       return {
         ...state,
@@ -47,6 +57,11 @@ export const gameSearchReducer = (state: State = initialState, action: GameSearc
         searchedPlatforms: action.payload.searchedPlatforms,
         selectedGameResultsPage: action.payload.selectedGameResultsPage,
         gameResultsPerPage: action.payload.gameResultsPerPage
+      };
+    case GameSearchTypes.SetGameSearchError:
+      return {
+        ...state,
+        searchError: { hasError: true, message: action.payload.message }
       };
     default:
       return state;

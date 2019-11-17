@@ -50,30 +50,36 @@ export const GameSearchResultsPanel: React.FC<props> = ({
       label={ searchResultsLabel }
       icon={ <ViewListIcon /> }
     >
-      <Table>
-        <TableBody>
-          {
-            results.map((gameResult: GameResult) => {
-              return (
-                <GameResultRow key={ gameResult.id }
-                  gameResult={ gameResult }
-                ></GameResultRow>
-              );
-            })
-          }
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              count={ results.length }
-              onChangePage={ handleChangePage }
-              onChangeRowsPerPage={ handleChangeRowsPerPage }
-              page={ page }
-              rowsPerPage={ resultsPerPage }
-            ></TablePagination>
-          </TableRow>
-        </TableFooter>
-      </Table>
+      {
+        results.length !== 0 ? (
+          <Table>
+            <TableBody>
+              {
+                results.map((gameResult: GameResult) => {
+                  return (
+                    <GameResultRow key={ gameResult.id }
+                      gameResult={ gameResult }
+                    ></GameResultRow>
+                  );
+                })
+              }
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  count={ results.length }
+                  onChangePage={ handleChangePage }
+                  onChangeRowsPerPage={ handleChangeRowsPerPage }
+                  page={ page }
+                  rowsPerPage={ resultsPerPage }
+                ></TablePagination>
+              </TableRow>
+            </TableFooter>
+          </Table>
+        ) : (
+          <div>No games with provided query were found</div>
+        )
+      }
     </Panel>
   );
 };

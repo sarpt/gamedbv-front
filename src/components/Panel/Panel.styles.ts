@@ -26,7 +26,8 @@ export const useStyles: ReturnType<typeof makeStyles> = makeStyles((theme: Theme
       'flex-shrink': '1'
     },
     'content': {
-      'padding-top': '0.5rem'
+      'padding-top': '0.5rem',
+      'overflow-wrap': 'break-word'
     }
   });
 });

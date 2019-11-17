@@ -10,12 +10,16 @@ import {
   selectGames,
   selectRegions,
   selectPlatforms,
-  selectGamesPerPage
+  selectGamesPerPage,
+  selectGameSearchError
 } from '../../store/selectors/gameSearchSelectors';
 import { changeSearchQuery } from '../../store/actions/gameSearchActions';
 
 import { GameQueryPanel, QueryPanelChanges } from '../GameQueryPanel/GameQueryPanel';
 import { GameSearchResultsPanel, PaginationChanges } from '../GameSearchResultsPanel/GameSearchResultsPanel';
+import { ErrorPanel } from '../ErrorPanel/ErrorPanel';
+
+const GAME_SEARCH_ERROR = 'Search results error';
 
 const mapStateToProps = (state: AppState) => {
   return {
@@ -24,7 +28,8 @@ const mapStateToProps = (state: AppState) => {
     searchedPlatforms: selectPlatforms(state),
     games: selectGames(state),
     selectedGameResultsPage: selectSelectedPage(state),
-    gameResultsPerPage: selectGamesPerPage(state)
+    gameResultsPerPage: selectGamesPerPage(state),
+    searchError: selectGameSearchError(state)
   };
 };
 
@@ -41,7 +46,8 @@ const GameSearch: React.FC<Props> = ({
   games,
   selectedGameResultsPage,
   gameResultsPerPage,
-  changeSearchQuery
+  changeSearchQuery,
+  searchError
 }) => {
 
   const handleQueryPanelChange = ({ query, regions, platforms }: QueryPanelChanges) => {
@@ -73,12 +79,21 @@ const GameSearch: React.FC<Props> = ({
         onChange={ handleQueryPanelChange }
       >
       </GameQueryPanel>
-      <GameSearchResultsPanel
-        page={ selectedGameResultsPage }
-        results={ games }
-        resultsPerPage={ gameResultsPerPage }
-        onPaginationChange={ handleResultsPaginationChange }
-      ></GameSearchResultsPanel>
+      {
+        searchError.hasError ? (
+          <ErrorPanel
+            label={ GAME_SEARCH_ERROR }
+            message={ searchError.message! }
+          />
+        ) : (
+          <GameSearchResultsPanel
+            page={ selectedGameResultsPage }
+            results={ games }
+            resultsPerPage={ gameResultsPerPage }
+            onPaginationChange={ handleResultsPaginationChange }
+          />
+        )
+      }
     </React.Fragment>
   );
 }

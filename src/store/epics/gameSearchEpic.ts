@@ -2,8 +2,9 @@ import { ofType, ActionsObservable } from 'redux-observable';
 import { of } from 'rxjs';
 import { map, concatMap, catchError } from 'rxjs/operators';
 
-import { GameSearchTypes, ChangeSearchQueryAction, GameSearchActions, setGames } from '../actions/gameSearchActions';
+import { GameSearchTypes, ChangeSearchQueryAction, GameSearchActions, setGames, setGameSearchError } from '../actions/gameSearchActions';
 import { searchGames } from '../../functions/gamesApi';
+import { getAjaxErrorMessage } from '../../functions/errorUtils';
 import { booleanMapToArray } from '../../functions/booleanMapToArray';
 import { Regions } from '../../models/Regions';
 import { Platforms } from '../../models/Platforms';
@@ -26,13 +27,9 @@ export const changeSearchQueryEpic = (actions$: ActionsObservable<GameSearchActi
             return setGames(games);
           }),
           catchError((error) => {
-            return of({
-              type: 'AJAX_ERROR',
-              payload: error.message
-            });
+            return of(setGameSearchError({ message: getAjaxErrorMessage(error) }));
           })
         );
     }),
   );
 };
-
