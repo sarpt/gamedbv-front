@@ -1,15 +1,7 @@
-import {
-  createStyles,
-  Theme,
-  makeStyles
-} from '@material-ui/core/styles';
+import styled from 'styled-components';
 
-export const useStyles: ReturnType<typeof makeStyles> = makeStyles((theme: Theme) => {
-  return createStyles({
-    'row': {
-      'display': 'flex',
-      'flex-direction': 'row',
-      'flex-wrap': 'wrap'
-    }
-  });
-});
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;

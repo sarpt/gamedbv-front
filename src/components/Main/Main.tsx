@@ -1,23 +1,17 @@
 import React from 'react';
 
-import { withTheme } from '@material-ui/core/styles';
-
 import GameSearch from '../GameSearch/GameSearch';
 import ApplicationBar from '../ApplicationBar/ApplicationBar';
 
-import { useStyles } from './Main.styles';
+import { Main, Content } from './Main.styles';
 
-const Main: React.FC = () => {
-  const styles = useStyles();
-
+export const MainContainer: React.FC = () => {
   return (
-    <div className={ styles.main }>
+    <Main>
       <ApplicationBar></ApplicationBar>
-      <div className={ styles.content }>
+      <Content>
         <GameSearch></GameSearch>
-      </div>
-    </div>
+      </Content>
+    </Main>
   );
 };
-
-export default withTheme(Main);

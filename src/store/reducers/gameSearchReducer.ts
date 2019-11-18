@@ -48,7 +48,7 @@ const initialState: State = {
 export const gameSearchReducer = (state: State = initialState, action: GameSearchActions): State => {
   switch (action.type) {
     case GameSearchTypes.SetGames:
-      return { ...state, gameResults: action.payload, searchError: { hasError: false } }
+      return { ...state, gameResults: action.payload }
     case GameSearchTypes.ChangeSearchQuery:
       return {
         ...state,
@@ -56,7 +56,8 @@ export const gameSearchReducer = (state: State = initialState, action: GameSearc
         searchedRegions: action.payload.searchedRegions,
         searchedPlatforms: action.payload.searchedPlatforms,
         selectedGameResultsPage: action.payload.selectedGameResultsPage,
-        gameResultsPerPage: action.payload.gameResultsPerPage
+        gameResultsPerPage: action.payload.gameResultsPerPage,
+        searchError: { hasError: false } 
       };
     case GameSearchTypes.SetGameSearchError:
       return {

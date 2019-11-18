@@ -90,6 +90,7 @@ const GameSearch: React.FC<Props> = ({
             page={ selectedGameResultsPage }
             results={ games }
             resultsPerPage={ gameResultsPerPage }
+            isSearchQueryProvided={ searchQuery.length !== 0 }
             onPaginationChange={ handleResultsPaginationChange }
           />
         )

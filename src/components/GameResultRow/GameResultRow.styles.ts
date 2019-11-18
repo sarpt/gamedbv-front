@@ -1,18 +1,11 @@
-import {
-  createStyles,
-  Theme,
-  makeStyles
-} from '@material-ui/core/styles';
+import styled from 'styled-components';
 
-export const useStyles: ReturnType<typeof makeStyles> = makeStyles((theme: Theme) => {
-  return createStyles({
-    'upper-game-row': {
-      'display': 'flex',
-      'flex-direction': 'row'
-    },
-    'lower-game-row': {
-      'display': 'flex',
-      'flex-direction': 'row'
-    },
-  });
-});
+export const UpperGameRow = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const LowerGameRow = styled.div`
+  display: flex;
+  flex-direction: row;
+`;

@@ -1,36 +1,31 @@
 import React from 'react';
 
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-
-import { useStyles } from './Panel.styles';
+import { PanelPaper, Header, IconContainer, Label, Content } from './Panel.styles';
 
 type Props = {
   label: string,
   icon?: React.ReactNode
 };
 export const Panel: React.FC<Props> = ({ label, icon, children }) => {
-  const styles = useStyles();
-
   return (
-    <Paper className={ styles.panelPaper }>
-      <div className={ styles.header }>
+    <PanelPaper>
+      <Header>
         {
           icon && (
-            <div className={ styles.icon }>
+            <IconContainer>
               { icon }
-            </div>
+            </IconContainer>
           )
         }
-        <Typography variant="h5" className={ styles.label }>
+        <Label variant="h5">
           { label }
-        </Typography>
-      </div>
-      <div className={ styles.content }>
+        </Label>
+      </Header>
+      <Content>
         {
           children
         }
-      </div>
-    </Paper>
+      </Content>
+    </PanelPaper>
   );
 };

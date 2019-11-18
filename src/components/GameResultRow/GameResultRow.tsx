@@ -6,19 +6,17 @@ import TableCell from '@material-ui/core/TableCell';
 
 import { GameResult } from '../../models/GameResult';
 
-import { useStyles } from './GameResultRow.styles';
+import { UpperGameRow, LowerGameRow } from './GameResultRow.styles';
 
 type Props = {
   gameResult: GameResult;
 };
 
 export const GameResultRow: React.FC<Props> = ({ gameResult }) => {
-  const classes = useStyles();
-
   return (
     <TableRow>
       <TableCell>
-        <div className={ classes['upper-game-row'] }>
+        <UpperGameRow>
           <Typography variant="body2">
             { gameResult.name }
           </Typography>
@@ -28,12 +26,12 @@ export const GameResultRow: React.FC<Props> = ({ gameResult }) => {
           <Typography variant="body2">
             { gameResult.id }
           </Typography>
-        </div>
-        <div className={ classes['lower-game-row'] }>
+        </UpperGameRow>
+        <LowerGameRow>
           <Typography variant="body2">
             { gameResult.description }
           </Typography>
-        </div>
+        </LowerGameRow>
       </TableCell>
     </TableRow>
   );

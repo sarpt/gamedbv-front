@@ -11,8 +11,7 @@ import { RegionsMap, Regions } from '../../models/Regions';
 import { PlatformsMap, Platforms } from '../../models/Platforms';
 
 import { Panel } from '../Panel/Panel';
-
-import { useStyles } from './GameQueryPanel.styles';
+import { Row } from './GameQueryPanel.styles';
 
 const inputPlaceholder = 'game name, description, id, etc.';
 const inputLabel = 'Search query';
@@ -76,8 +75,6 @@ export const GameQueryPanel: React.FC<Props> = ({
   platforms,
   onChange
 }) => {
-  const styles = useStyles();
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const changes = {
       query,
@@ -115,17 +112,16 @@ export const GameQueryPanel: React.FC<Props> = ({
       icon={ <SearchIcon /> }
     >
       <FormGroup row={ false }>
-        <div className={ styles.row }>
+        <Row>
           <TextField
-            className={ styles.queryInput }
             name='query'
             onChange={ handleInputChange }
             value={ query }
             placeholder={ inputPlaceholder }
             label={ inputLabel }
           ></TextField>
-        </div>
-        <div className={ styles.row }>
+        </Row>
+        <Row>
           <Typography variant="h6">
             { regionsLabel }
           </Typography>
@@ -147,8 +143,8 @@ export const GameQueryPanel: React.FC<Props> = ({
               );
             })
           }
-        </div>
-        <div className={ styles.row }>
+        </Row>
+        <Row>
           <Typography variant="h6">
             { platformsLabel }
           </Typography>
@@ -170,7 +166,7 @@ export const GameQueryPanel: React.FC<Props> = ({
               );
             })
           }
-        </div>
+        </Row>
       </FormGroup>
     </Panel>
   );

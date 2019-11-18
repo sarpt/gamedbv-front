@@ -23,12 +23,14 @@ type props = {
   page: number,
   resultsPerPage: number,
   results: GameResult[],
+  isSearchQueryProvided: boolean,
   onPaginationChange: (changes: PaginationChanges) => any
 };
 export const GameSearchResultsPanel: React.FC<props> = ({
   page,
   resultsPerPage,
   results,
+  isSearchQueryProvided,
   onPaginationChange
 }) => {
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +46,9 @@ export const GameSearchResultsPanel: React.FC<props> = ({
       resultsPerPage
     });
   }
+
+  const NO_GAME_SEARCH_RESULT = 'No games with provided query were found';
+  const NO_QUERY_PROVIDED = 'No search query provided';
 
   return (
     <Panel
@@ -77,7 +82,9 @@ export const GameSearchResultsPanel: React.FC<props> = ({
             </TableFooter>
           </Table>
         ) : (
-          <div>No games with provided query were found</div>
+          <div>
+            { isSearchQueryProvided ? NO_GAME_SEARCH_RESULT : NO_QUERY_PROVIDED }
+          </div>
         )
       }
     </Panel>

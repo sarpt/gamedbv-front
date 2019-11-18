@@ -1,22 +1,17 @@
-import {
-  createStyles,
-  Theme,
-  makeStyles
-} from '@material-ui/core/styles';
+import styled from 'styled-components';
 
-export const useStyles: ReturnType<typeof makeStyles> = makeStyles((theme: Theme) => {
-  return createStyles({
-    'main': {
-      'min-height': '100vh',
-      'background-color': theme.palette.background.paper,
-      'overflow-x': 'scroll'
-    },
-    'content': {
-      'padding': '10px 24px',
-      '@media (max-width: 600px)': {
-        'padding': '0',
-        'max-width': '600px'
-      }
-    }
-  });
-});
+import { withTheme } from '@material-ui/core/styles';
+
+export const Main = withTheme(styled.div`
+  min-height: 100vh;
+  background-color: ${props => props.theme.palette.background.paper};
+  overflow-x: scroll;
+`);
+
+export const Content = styled.div`
+  padding: 10px 24px;
+  @media (max-width: 600px) {
+    padding: 0;
+    max-width: 600px;
+  };
+`;

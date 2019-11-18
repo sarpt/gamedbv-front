@@ -1,33 +1,32 @@
-import {
-  createStyles,
-  Theme,
-  makeStyles
-} from '@material-ui/core/styles';
+import styled from 'styled-components';
 
-export const useStyles: ReturnType<typeof makeStyles> = makeStyles((theme: Theme) => {
-  return createStyles({
-    'panelPaper': {
-      'margin-bottom': '10px',
-      'padding': '1rem'
-    },
-    'header': {
-      'display': 'flex',
-      'flex-direction': 'row',
-      'align-items': 'center'
-    },
-    'icon': {
-      'flex-grow': '0',
-      'flex-shrink': '0',
-      'margin-right': '0.5rem',
-      'display': 'flex'
-    },
-    'label': {
-      'flex-grow': '1',
-      'flex-shrink': '1'
-    },
-    'content': {
-      'padding-top': '0.5rem',
-      'overflow-wrap': 'break-word'
-    }
-  });
-});
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
+export const PanelPaper = styled(Paper)`
+  margin-bottom: 10px;
+  padding: 1rem;
+`;
+
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const IconContainer = styled.div`
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  display: flex;
+`;
+
+export const Label = styled(Typography)`
+  flex-grow: 1;
+  flex-shrink: 1;
+`;
+
+export const Content = styled.div`
+  padding-top: 0.5rem;
+  overflow-wrap: break-word;
+`;

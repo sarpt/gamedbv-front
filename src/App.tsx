@@ -1,19 +1,21 @@
 import React from 'react';
 
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider, StylesProvider } from '@material-ui/styles';
 
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes, withTheme } from '@material-ui/core/styles';
 import theme from './theme.json';
 
-import Main from './components/Main/Main';
+import { MainContainer } from './components/Main/Main';
 
 const AppTheme = responsiveFontSizes(createMuiTheme(theme));
+const ThemedMainContainer = withTheme(MainContainer);
 
 const App: React.FC = () => {
-
   return (
     <ThemeProvider theme={AppTheme}>
-      <Main></Main>
+      <StylesProvider injectFirst>
+        <ThemedMainContainer></ThemedMainContainer>
+      </StylesProvider>
     </ThemeProvider>
   );
 }

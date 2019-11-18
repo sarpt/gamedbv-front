@@ -1,6 +1,6 @@
-import { ofType, ActionsObservable } from 'redux-observable';
 import { of } from 'rxjs';
-import { map, concatMap, catchError } from 'rxjs/operators';
+import { map, concatMap, catchError, filter } from 'rxjs/operators';
+import { ofType, ActionsObservable } from 'redux-observable';
 
 import { GameSearchTypes, ChangeSearchQueryAction, GameSearchActions, setGames, setGameSearchError } from '../actions/gameSearchActions';
 import { searchGames } from '../../functions/gamesApi';
@@ -12,6 +12,7 @@ import { Platforms } from '../../models/Platforms';
 export const changeSearchQueryEpic = (actions$: ActionsObservable<GameSearchActions>) => {
   return actions$.pipe(
     ofType<GameSearchActions, ChangeSearchQueryAction>(GameSearchTypes.ChangeSearchQuery),
+    filter(({ payload }) => payload.searchQuery.length !== 0),
     concatMap(({ payload }) => {
       const searchGamesRequestProperties = {
         searchQuery: payload.searchQuery,
