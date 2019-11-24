@@ -12,14 +12,25 @@ const gamesEndpoint = `http://${server}/games`;
 
 type SearchGamesArguments = {
   searchQuery: string,
+  shouldGetAllGames: boolean,
   page: number,
   gamesPerPage: number,
   regions: Regions[],
   platforms: Platforms[]
 };
-export function searchGames({ searchQuery, page, gamesPerPage, regions, platforms }: SearchGamesArguments) {
+
+export function searchGames({
+  searchQuery,
+  shouldGetAllGames,
+  page,
+  gamesPerPage,
+  regions,
+  platforms
+}: SearchGamesArguments) {
   let url = gamesEndpoint;
-  url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
+  if (!shouldGetAllGames) {
+    url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
+  }
   url = addQueriesToUrl(url, ApiParameters.currentPage, [page]);
   url = addQueriesToUrl(url, ApiParameters.itemsPerPage, [gamesPerPage]);
   url = addQueriesToUrl(url, ApiParameters.platform, platforms);
@@ -35,6 +46,7 @@ export function searchGames({ searchQuery, page, gamesPerPage, regions, platform
 type GetGameArguments = {
   id: string
 };
+
 export function getGame({ id }: GetGameArguments) {
   const url = `${gamesEndpoint}/${id}`;
   const options: RequestInit = {

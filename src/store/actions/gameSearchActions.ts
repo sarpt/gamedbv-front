@@ -5,38 +5,47 @@ import { RegionsMap } from '../../models/Regions';
 import { PlatformsMap } from '../../models/Platforms';
 
 export enum GameSearchTypes {
-  SetGames = '[game-search] Set Games',
-  ChangeSearchQuery = '[game-search] Change search query',
+  SetSearchResults = '[game-search] Set games search results',
+  ChangeSearchOptions = '[game-search] Change games search options',
   SetGameSearchError = '[game-search] Set game search error'
 }
 
-export interface SetGamesAction extends Action {
-  type: GameSearchTypes.SetGames,
+export interface SetSearchResultsAction extends Action {
+  type: GameSearchTypes.SetSearchResults,
   payload: GameResult[]
 }
-export const setGames = (games: GameResult[]): SetGamesAction => {
+export const setGames = (games: GameResult[]): SetSearchResultsAction => {
   return {
-    type: GameSearchTypes.SetGames,
+    type: GameSearchTypes.SetSearchResults,
     payload: games
   };
 };
 
 type ChangeSearchQueryPayload = {
   searchQuery: string,
+  shouldGetAllGames: boolean,
   searchedRegions: RegionsMap,
   searchedPlatforms: PlatformsMap,
   selectedGameResultsPage: number,
   gameResultsPerPage: number
 };
-export interface ChangeSearchQueryAction extends Action {
-  type: GameSearchTypes.ChangeSearchQuery,
+export interface ChangeSearchOptionsAction extends Action {
+  type: GameSearchTypes.ChangeSearchOptions,
   payload: ChangeSearchQueryPayload
 }
-export const changeSearchQuery = ({ searchQuery, searchedRegions, searchedPlatforms, selectedGameResultsPage, gameResultsPerPage }: ChangeSearchQueryPayload): ChangeSearchQueryAction => {
+export const changeSearchQuery = ({
+  searchQuery,
+  shouldGetAllGames,
+  searchedRegions,
+  searchedPlatforms,
+  selectedGameResultsPage,
+  gameResultsPerPage
+}: ChangeSearchQueryPayload): ChangeSearchOptionsAction => {
   return {
-    type: GameSearchTypes.ChangeSearchQuery,
+    type: GameSearchTypes.ChangeSearchOptions,
     payload: {
       searchQuery,
+      shouldGetAllGames,
       searchedRegions,
       searchedPlatforms,
       selectedGameResultsPage,
@@ -62,4 +71,4 @@ export const setGameSearchError = ({ message }: SetGameSearchErrorPayload): SetG
   }
 };
 
-export type GameSearchActions = SetGamesAction | ChangeSearchQueryAction | SetGameSearchErrorAction;
+export type GameSearchActions = SetSearchResultsAction | ChangeSearchOptionsAction | SetGameSearchErrorAction;

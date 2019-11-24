@@ -9,3 +9,4 @@ export const selectGamesPerPage = (store: AppState) => selectGameSearchStore(sto
 export const selectRegions = (store: AppState) =>  selectGameSearchStore(store).searchedRegions;
 export const selectPlatforms = (store: AppState) =>  selectGameSearchStore(store).searchedPlatforms;
 export const selectGameSearchError = (store: AppState) => selectGameSearchStore(store).searchError;
+export const selectShouldGetAllGames = (store: AppState) => selectGameSearchStore(store).shouldGetAllGames;

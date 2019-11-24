@@ -3,5 +3,5 @@ export enum ApiParameters {
   currentPage = '_page',
   itemsPerPage = '_limit',
   platform = 'platform',
-  region = 'reqgion'
+  region = 'region'
 }

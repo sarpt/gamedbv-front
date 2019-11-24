@@ -17,6 +17,7 @@ type SearchError = {
 
 type State = {
   searchQuery: string,
+  shouldGetAllGames: boolean,
   searchedRegions: RegionsMap,
   searchedPlatforms: PlatformsMap,
   gameResults: GameResult[],
@@ -27,6 +28,7 @@ type State = {
 
 const initialState: State = {
   searchQuery: '',
+  shouldGetAllGames: true,
   searchedRegions: {
     [Regions.NTSCJ]: true,
     [Regions.NTSCU]: true,
@@ -47,12 +49,13 @@ const initialState: State = {
 
 export const gameSearchReducer = (state: State = initialState, action: GameSearchActions): State => {
   switch (action.type) {
-    case GameSearchTypes.SetGames:
+    case GameSearchTypes.SetSearchResults:
       return { ...state, gameResults: action.payload }
-    case GameSearchTypes.ChangeSearchQuery:
+    case GameSearchTypes.ChangeSearchOptions:
       return {
         ...state,
         searchQuery: action.payload.searchQuery,
+        shouldGetAllGames: action.payload.shouldGetAllGames,
         searchedRegions: action.payload.searchedRegions,
         searchedPlatforms: action.payload.searchedPlatforms,
         selectedGameResultsPage: action.payload.selectedGameResultsPage,

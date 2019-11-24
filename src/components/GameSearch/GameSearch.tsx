@@ -11,11 +11,12 @@ import {
   selectRegions,
   selectPlatforms,
   selectGamesPerPage,
-  selectGameSearchError
+  selectGameSearchError,
+  selectShouldGetAllGames
 } from '../../store/selectors/gameSearchSelectors';
 import { changeSearchQuery } from '../../store/actions/gameSearchActions';
 
-import { GameQueryPanel, QueryPanelChanges } from '../GameQueryPanel/GameQueryPanel';
+import { GameSearchOptionsPanel, GameSearchOptionsChanges } from '../GameSearchOptionsPanel/GameSearchOptionsPanel';
 import { GameSearchResultsPanel, PaginationChanges } from '../GameSearchResultsPanel/GameSearchResultsPanel';
 import { ErrorPanel } from '../ErrorPanel/ErrorPanel';
 
@@ -26,6 +27,7 @@ const mapStateToProps = (state: AppState) => {
     searchQuery: selectSearchQuery(state),
     searchedRegions: selectRegions(state),
     searchedPlatforms: selectPlatforms(state),
+    shouldGetAllGames: selectShouldGetAllGames(state),
     games: selectGames(state),
     selectedGameResultsPage: selectSelectedPage(state),
     gameResultsPerPage: selectGamesPerPage(state),
@@ -43,6 +45,7 @@ const GameSearch: React.FC<Props> = ({
   searchQuery,
   searchedRegions,
   searchedPlatforms,
+  shouldGetAllGames,
   games,
   selectedGameResultsPage,
   gameResultsPerPage,
@@ -50,9 +53,15 @@ const GameSearch: React.FC<Props> = ({
   searchError
 }) => {
 
-  const handleQueryPanelChange = ({ query, regions, platforms }: QueryPanelChanges) => {
+  const handleQueryPanelChange = ({
+    query,
+    shouldGetAllGames,
+    regions,
+    platforms
+  }: GameSearchOptionsChanges) => {
     changeSearchQuery({
       searchQuery: query,
+      shouldGetAllGames,
       searchedRegions: regions,
       searchedPlatforms: platforms,
       selectedGameResultsPage,
@@ -60,9 +69,13 @@ const GameSearch: React.FC<Props> = ({
     });
   }
 
-  const handleResultsPaginationChange = ({ page, resultsPerPage }: PaginationChanges) => {
+  const handleResultsPaginationChange = ({
+    page,
+    resultsPerPage
+  }: PaginationChanges) => {
     changeSearchQuery({
       searchQuery,
+      shouldGetAllGames,
       searchedRegions,
       searchedPlatforms,
       selectedGameResultsPage: page,
@@ -72,13 +85,13 @@ const GameSearch: React.FC<Props> = ({
 
   return (
     <React.Fragment>
-      <GameQueryPanel
+      <GameSearchOptionsPanel
         query={ searchQuery }
+        shouldGetAllGames={ shouldGetAllGames }
         regions={ searchedRegions }
         platforms={ searchedPlatforms }
         onChange={ handleQueryPanelChange }
-      >
-      </GameQueryPanel>
+      ></GameSearchOptionsPanel>
       {
         searchError.hasError ? (
           <ErrorPanel
