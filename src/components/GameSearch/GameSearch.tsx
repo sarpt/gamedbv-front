@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { withTheme } from '@material-ui/core/styles';
-
 import { AppState } from '../../store/store';
 import {
   selectSelectedPage,
@@ -115,4 +113,4 @@ const GameSearch: React.FC<Props> = ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withTheme(GameSearch));
+)(GameSearch);
