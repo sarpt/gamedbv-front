@@ -4,15 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { Regions, RegionsMap } from '../../models/Regions';
+import { Regions } from '../../models/Regions';
+import { AppState } from '../../store/store';
+import { selectRegions } from '../../store/selectors/gameSearchSelectors';
+import { changeRegions } from '../../store/actions/gameSearchActions';
+import { connect } from 'react-redux';
 
 const regionsLabel = 'Regions';
-export const regionsControlName = 'region';
-
-type Props = {
-  regions: RegionsMap,
-  onRegionsChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-};
 
 type RegionCheckbox = {
   label: string,
@@ -38,11 +36,28 @@ const regionsCheckboxes: RegionCheckbox[] = [
   }
 ];
 
-export const GameSearchRegions: React.FC<Props> = ({ 
-  regions,
-  onRegionsChange
-}) => {
+const mapStateToProps = (state: AppState) => {
+  return {
+    regions: selectRegions(state)
+  };
+};
 
+const mapDispatchToProps = {
+  changeRegions
+};
+
+type additionalProps = {};
+type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
+
+const GameSearchRegions: React.FC<Props> = ({ 
+  regions,
+  changeRegions 
+}) => {
+  const onRegionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newRegions = { ...regions, [event.target.value]: event.target.checked };
+
+    changeRegions({ regions: newRegions });
+  };
   const isRegionSet = (regionCheckbox: RegionCheckbox): boolean => {
     return regions[regionCheckbox.value];
   };
@@ -60,7 +75,6 @@ export const GameSearchRegions: React.FC<Props> = ({
               control={
                 <Checkbox
                   checked={ isRegionSet(regionsCheckbox) }
-                  name={ regionsControlName }
                   onChange={ onRegionsChange }
                   value={ regionsCheckbox.value }
                 ></Checkbox>
@@ -73,3 +87,8 @@ export const GameSearchRegions: React.FC<Props> = ({
     </React.Fragment>
   );
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GameSearchRegions);

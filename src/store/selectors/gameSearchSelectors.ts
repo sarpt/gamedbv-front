@@ -1,7 +1,6 @@
 import { AppState } from "../store";
 
-const selectGameSearchStore = (store: AppState) => store.gameSearchReducer;
-
+export const selectGameSearchStore = (store: AppState) => store.gameSearchReducer;
 export const selectSearchQuery = (store: AppState) => selectGameSearchStore(store).searchQuery;
 export const selectGames = (store: AppState) => selectGameSearchStore(store).gameResults;
 export const selectSelectedPage = (store: AppState) => selectGameSearchStore(store).selectedGameResultsPage;

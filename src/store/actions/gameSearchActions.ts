@@ -7,6 +7,9 @@ import { PlatformsMap } from '../../models/Platforms';
 export enum GameSearchTypes {
   SetSearchResults = '[game-search] Set games search results',
   ChangeSearchOptions = '[game-search] Change games search options',
+  ChangeSearchQuery = '[game-search] Change search query',
+  ChangePlatforms = '[game-search] Change platforms',
+  ChangeRegions = '[game-search] Change regions',
   SetGameSearchError = '[game-search] Set game search error'
 }
 
@@ -21,7 +24,7 @@ export const setGames = (games: GameResult[]): SetSearchResultsAction => {
   };
 };
 
-type ChangeSearchQueryPayload = {
+type ChangeSearchOptionsPayload = {
   searchQuery: string,
   shouldGetAllGames: boolean,
   searchedRegions: RegionsMap,
@@ -31,16 +34,16 @@ type ChangeSearchQueryPayload = {
 };
 export interface ChangeSearchOptionsAction extends Action {
   type: GameSearchTypes.ChangeSearchOptions,
-  payload: ChangeSearchQueryPayload
+  payload: ChangeSearchOptionsPayload
 }
-export const changeSearchQuery = ({
+export const changeSearchOptions = ({
   searchQuery,
   shouldGetAllGames,
   searchedRegions,
   searchedPlatforms,
   selectedGameResultsPage,
   gameResultsPerPage
-}: ChangeSearchQueryPayload): ChangeSearchOptionsAction => {
+}: ChangeSearchOptionsPayload): ChangeSearchOptionsAction => {
   return {
     type: GameSearchTypes.ChangeSearchOptions,
     payload: {
@@ -54,6 +57,62 @@ export const changeSearchQuery = ({
   };
 };
 
+type ChangeSearchQueryPayload = {
+  searchQuery: string,
+  shouldGetAllGames: boolean,
+}
+export interface ChangeSearchQueryAction extends Action {
+  type: GameSearchTypes.ChangeSearchQuery,
+  payload: ChangeSearchQueryPayload
+}
+export const changeSearchQuery = ({
+  searchQuery,
+  shouldGetAllGames
+}: ChangeSearchQueryPayload): ChangeSearchQueryAction => {
+  return {
+    type: GameSearchTypes.ChangeSearchQuery,
+    payload: {
+      searchQuery,
+      shouldGetAllGames
+    }
+  }
+};
+
+type ChangePlatformsPayload = {
+  platforms: PlatformsMap
+}
+export interface ChangePlatformsAction extends Action {
+  type: GameSearchTypes.ChangePlatforms,
+  payload: ChangePlatformsPayload
+}
+export const changePlatforms = ({
+  platforms
+}: ChangePlatformsPayload): ChangePlatformsAction => {
+  return {
+    type: GameSearchTypes.ChangePlatforms,
+    payload: {
+      platforms
+    }
+  }
+};
+
+type ChangeRegionsPayload = {
+  regions: RegionsMap
+}
+export interface ChangeRegionsAction extends Action {
+  type: GameSearchTypes.ChangeRegions,
+  payload: ChangeRegionsPayload
+}
+export const changeRegions = ({
+  regions 
+}: ChangeRegionsPayload): ChangeRegionsAction => {
+  return {
+    type: GameSearchTypes.ChangeRegions,
+    payload: {
+      regions
+    }
+  }
+};
 
 type SetGameSearchErrorPayload = {
   message: string
@@ -71,4 +130,9 @@ export const setGameSearchError = ({ message }: SetGameSearchErrorPayload): SetG
   }
 };
 
-export type GameSearchActions = SetSearchResultsAction | ChangeSearchOptionsAction | SetGameSearchErrorAction;
+export type GameSearchActions = SetSearchResultsAction
+  | ChangeSearchOptionsAction
+  | ChangeSearchQueryAction
+  | ChangePlatformsAction
+  | ChangeRegionsAction
+  | SetGameSearchErrorAction;

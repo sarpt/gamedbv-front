@@ -4,10 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { PlatformsMap, Platforms } from '../../models/Platforms';
+import { Platforms } from '../../models/Platforms';
+import { selectPlatforms } from '../../store/selectors/gameSearchSelectors';
+import { changePlatforms } from '../../store/actions/gameSearchActions';
+import { AppState } from '../../store/store';
+import { connect } from 'react-redux';
 
 const platformsLabel = 'Platforms';
-export const platformsControlName = 'platforms';
 
 type PlatformCheckbox = {
   label: string,
@@ -24,15 +27,29 @@ const platformsCheckboxes: PlatformCheckbox[] = [
   }
 ];
 
-type Props = {
-  platforms: PlatformsMap,
-  onPlatformsChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+const mapStateToProps = (state: AppState) => {
+  return {
+    platforms: selectPlatforms(state)
+  };
 };
 
-export const GameSearchPlatforms: React.FC<Props> = ({
+const mapDispatchToProps = {
+  changePlatforms
+};
+
+type additionalProps = {};
+type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
+
+const GameSearchPlatforms: React.FC<Props> = ({
   platforms,
-  onPlatformsChange
+  changePlatforms
 }) => {
+  const onPlatformsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newPlatforms = { ...platforms, [event.target.value]: event.target.checked };
+
+    changePlatforms({ platforms: newPlatforms });
+  };
+
   const isPlatformSet = (platformCheckbox: PlatformCheckbox): boolean => {
     return platforms[platformCheckbox.value];
   };
@@ -50,7 +67,6 @@ export const GameSearchPlatforms: React.FC<Props> = ({
               control={
                 <Checkbox
                   checked={ isPlatformSet(platformCheckbox) }
-                  name={ platformsControlName }
                   onChange={ onPlatformsChange }
                   value={ platformCheckbox.value }
                 ></Checkbox>
@@ -63,3 +79,8 @@ export const GameSearchPlatforms: React.FC<Props> = ({
     </React.Fragment>
   );
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GameSearchPlatforms);

@@ -27,6 +27,13 @@
             "description": "TestDescription3",
             "region": "ntscu",
             "platform": "wii"
+        },
+        {
+            "id": "4",
+            "name": "TestGame",
+            "description": "Test Game description",
+            "region": "ntscu",
+            "platform": "wii"
         }
     ]
 }

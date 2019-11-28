@@ -62,6 +62,22 @@ export const gameSearchReducer = (state: State = initialState, action: GameSearc
         gameResultsPerPage: action.payload.gameResultsPerPage,
         searchError: { hasError: false } 
       };
+    case GameSearchTypes.ChangeSearchQuery:
+      return {
+        ...state,
+        searchQuery: action.payload.searchQuery,
+        shouldGetAllGames: action.payload.shouldGetAllGames,
+      };
+    case GameSearchTypes.ChangePlatforms:
+      return {
+        ...state,
+        searchedPlatforms: action.payload.platforms
+      };
+    case GameSearchTypes.ChangeRegions:
+      return {
+        ...state,
+        searchedRegions: action.payload.regions
+      };
     case GameSearchTypes.SetGameSearchError:
       return {
         ...state,
