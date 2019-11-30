@@ -1,28 +1,15 @@
 import { Action } from 'redux';
 
-import { GameResult } from '../../models/GameResult';
 import { RegionsMap } from '../../models/Regions';
 import { PlatformsMap } from '../../models/Platforms';
 
 export enum GameSearchTypes {
-  SetSearchResults = '[game-search] Set games search results',
   ChangeSearchOptions = '[game-search] Change games search options',
   ChangeSearchQuery = '[game-search] Change search query',
   ChangePlatforms = '[game-search] Change platforms',
   ChangeRegions = '[game-search] Change regions',
   SetGameSearchError = '[game-search] Set game search error'
 }
-
-export interface SetSearchResultsAction extends Action {
-  type: GameSearchTypes.SetSearchResults,
-  payload: GameResult[]
-}
-export const setGames = (games: GameResult[]): SetSearchResultsAction => {
-  return {
-    type: GameSearchTypes.SetSearchResults,
-    payload: games
-  };
-};
 
 type ChangeSearchOptionsPayload = {
   searchQuery: string,
@@ -130,8 +117,7 @@ export const setGameSearchError = ({ message }: SetGameSearchErrorPayload): SetG
   }
 };
 
-export type GameSearchActions = SetSearchResultsAction
-  | ChangeSearchOptionsAction
+export type GameSearchActions = ChangeSearchOptionsAction
   | ChangeSearchQueryAction
   | ChangePlatformsAction
   | ChangeRegionsAction

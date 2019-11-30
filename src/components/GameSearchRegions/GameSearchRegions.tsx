@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -8,7 +9,6 @@ import { Regions } from '../../models/Regions';
 import { AppState } from '../../store/store';
 import { selectRegions } from '../../store/selectors/gameSearchSelectors';
 import { changeRegions } from '../../store/actions/gameSearchActions';
-import { connect } from 'react-redux';
 
 const regionsLabel = 'Regions';
 

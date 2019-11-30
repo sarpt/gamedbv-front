@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
@@ -11,44 +12,56 @@ import { GameResult } from '../../models/GameResult';
 
 import { Panel } from '../Panel/Panel';
 import { GameResultRow } from '../GameResultRow/GameResultRow';
+import { AppState } from '../../store/store';
+import { selectSearchQuery } from '../../store/selectors/gameSearchSelectors';
+import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults } from '../../store/selectors/gameSearchResultsSelectors';
+import { changePage, changeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
 
 const searchResultsLabel = 'Search results';
+const noGameSearchResultMessage = 'No games with provided query were found';
+const noQueryProvidedMessage = 'No search query provided';
 
-export type PaginationChanges = {
-  page: number,
-  resultsPerPage: number
+const mapStateToProps = (state: AppState) => {
+  return {
+    searchQuery: selectSearchQuery(state),
+    games: selectGameSearchResults(state),
+    currentPage: selectCurrentPage(state),
+    resultsPerPage: selectGameResultsPerPage(state)
+  };
 };
 
-type props = {
-  page: number,
-  resultsPerPage: number,
-  results: GameResult[],
-  isSearchQueryProvided: boolean,
-  onPaginationChange: (changes: PaginationChanges) => any
+const mapDispatchToProps = {
+  changePage,
+  changeResultsPerPage
 };
-export const GameSearchResultsPanel: React.FC<props> = ({
-  page,
+
+type AdditionalProps = {};
+type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;
+
+const GameSearchResultsPanel: React.FC<Props> = ({
+  searchQuery,
+  currentPage,
   resultsPerPage,
-  results,
-  isSearchQueryProvided,
-  onPaginationChange
+  games,
+  changePage,
+  changeResultsPerPage
 }) => {
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onPaginationChange({
-      page: 0,
+    changeResultsPerPage({
       resultsPerPage: Number.parseInt(event.target.value, 10)
+    });
+    changePage({
+      page: 0
     });
   }
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    onPaginationChange({
-      page: newPage,
-      resultsPerPage
+    changePage({
+      page: newPage
     });
   }
 
-  const NO_GAME_SEARCH_RESULT = 'No games with provided query were found';
-  const NO_QUERY_PROVIDED = 'No search query provided';
+  const isSearchQueryProvided = searchQuery.length !== 0;
 
   return (
     <Panel
@@ -56,11 +69,11 @@ export const GameSearchResultsPanel: React.FC<props> = ({
       icon={ <ViewListIcon /> }
     >
       {
-        results.length !== 0 ? (
+        games.length !== 0 ? (
           <Table>
             <TableBody>
               {
-                results.map((gameResult: GameResult) => {
+                games.map((gameResult: GameResult) => {
                   return (
                     <GameResultRow key={ gameResult.id }
                       gameResult={ gameResult }
@@ -72,10 +85,10 @@ export const GameSearchResultsPanel: React.FC<props> = ({
             <TableFooter>
               <TableRow>
                 <TablePagination
-                  count={ results.length }
+                  count={ games.length }
                   onChangePage={ handleChangePage }
                   onChangeRowsPerPage={ handleChangeRowsPerPage }
-                  page={ page }
+                  page={ currentPage }
                   rowsPerPage={ resultsPerPage }
                 ></TablePagination>
               </TableRow>
@@ -83,10 +96,15 @@ export const GameSearchResultsPanel: React.FC<props> = ({
           </Table>
         ) : (
           <div>
-            { isSearchQueryProvided ? NO_GAME_SEARCH_RESULT : NO_QUERY_PROVIDED }
+            { isSearchQueryProvided ? noGameSearchResultMessage : noQueryProvidedMessage }
           </div>
         )
       }
     </Panel>
   );
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GameSearchResultsPanel);

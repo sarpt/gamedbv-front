@@ -3,12 +3,8 @@ import {
   GameSearchActions,
 } from '../actions/gameSearchActions';
 
-import { GameResult } from '../../models/GameResult';
 import { RegionsMap, Regions } from '../../models/Regions';
 import { Platforms, PlatformsMap } from '../../models/Platforms';
-
-const initialSelectedPage = 0;
-const gamesPerPage = 10;
 
 type SearchError = {
   hasError: boolean,
@@ -20,9 +16,6 @@ type State = {
   shouldGetAllGames: boolean,
   searchedRegions: RegionsMap,
   searchedPlatforms: PlatformsMap,
-  gameResults: GameResult[],
-  selectedGameResultsPage: number,
-  gameResultsPerPage: number,
   searchError: SearchError 
 };
 
@@ -39,9 +32,6 @@ const initialState: State = {
     [Platforms.NGC]: true,
     [Platforms.WII]: true
   },
-  gameResults: [],
-  selectedGameResultsPage: initialSelectedPage,
-  gameResultsPerPage: gamesPerPage,
   searchError: {
     hasError: false
   }
@@ -49,19 +39,6 @@ const initialState: State = {
 
 export const gameSearchReducer = (state: State = initialState, action: GameSearchActions): State => {
   switch (action.type) {
-    case GameSearchTypes.SetSearchResults:
-      return { ...state, gameResults: action.payload }
-    case GameSearchTypes.ChangeSearchOptions:
-      return {
-        ...state,
-        searchQuery: action.payload.searchQuery,
-        shouldGetAllGames: action.payload.shouldGetAllGames,
-        searchedRegions: action.payload.searchedRegions,
-        searchedPlatforms: action.payload.searchedPlatforms,
-        selectedGameResultsPage: action.payload.selectedGameResultsPage,
-        gameResultsPerPage: action.payload.gameResultsPerPage,
-        searchError: { hasError: false } 
-      };
     case GameSearchTypes.ChangeSearchQuery:
       return {
         ...state,
