@@ -12,7 +12,7 @@ const gamesEndpoint = `http://${server}/games`;
 
 type SearchGamesArguments = {
   searchQuery: string,
-  shouldGetAllGames: boolean,
+  shouldFilterByText: boolean,
   page: number,
   gamesPerPage: number,
   regions: Regions[],
@@ -21,14 +21,14 @@ type SearchGamesArguments = {
 
 export function searchGames({
   searchQuery,
-  shouldGetAllGames,
+  shouldFilterByText,
   page,
   gamesPerPage,
   regions,
   platforms
 }: SearchGamesArguments) {
   let url = gamesEndpoint;
-  if (!shouldGetAllGames) {
+  if (shouldFilterByText) {
     url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
   }
   url = addQueriesToUrl(url, ApiParameters.currentPage, [page]);

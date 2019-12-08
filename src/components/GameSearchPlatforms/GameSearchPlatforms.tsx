@@ -1,8 +1,9 @@
 import React from 'react';
 
-import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+
+import { PanelSection } from '../PanelSection/PanelSection';
 
 import { Platforms } from '../../models/Platforms';
 import { selectPlatforms } from '../../store/selectors/gameSearchSelectors';
@@ -55,10 +56,7 @@ const GameSearchPlatforms: React.FC<Props> = ({
   };
 
   return (
-    <React.Fragment>
-      <Typography variant="h6">
-        { platformsLabel }
-      </Typography>
+    <PanelSection label={ platformsLabel }>
       {
         platformsCheckboxes.map(platformCheckbox => {
           return (
@@ -76,7 +74,7 @@ const GameSearchPlatforms: React.FC<Props> = ({
           );
         })
       }
-    </React.Fragment>
+    </PanelSection>
   );
 };
 

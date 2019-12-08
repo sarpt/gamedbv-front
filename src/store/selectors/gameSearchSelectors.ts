@@ -5,4 +5,4 @@ export const selectSearchQuery = (store: AppState) => selectGameSearchStore(stor
 export const selectRegions = (store: AppState) =>  selectGameSearchStore(store).searchedRegions;
 export const selectPlatforms = (store: AppState) =>  selectGameSearchStore(store).searchedPlatforms;
 export const selectGameSearchError = (store: AppState) => selectGameSearchStore(store).searchError;
-export const selectShouldGetAllGames = (store: AppState) => selectGameSearchStore(store).shouldGetAllGames;
+export const selectShouldFilterByText = (store: AppState) => selectGameSearchStore(store).shouldFilterByText;

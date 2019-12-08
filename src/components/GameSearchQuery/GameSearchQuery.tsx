@@ -1,21 +1,25 @@
 import React from 'react';
-
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { AppState } from '../../store/store';
-import { selectSearchQuery, selectShouldGetAllGames } from '../../store/selectors/gameSearchSelectors';
-import { changeSearchQuery } from '../../store/actions/gameSearchActions';
 import { connect } from 'react-redux';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
+import { PanelSection } from '../PanelSection/PanelSection';
+
+import { QueryInput, QueryInputContainer } from './GameSearchQuery.styles';
+import { AppState } from '../../store/store';
+import { selectSearchQuery, selectShouldFilterByText } from '../../store/selectors/gameSearchSelectors';
+import { changeSearchQuery } from '../../store/actions/gameSearchActions';
+
 const inputPlaceholder = 'game name, description, id, etc.';
-const inputLabel = 'Search query';
-const shouldGetAllGamesLabel = 'Get all games';
+const inputLabel = 'Text filter';
+const shouldFilterByTextLabel = 'Filter results by text query';
+const queryLabel = 'Query';
 
 const mapStateToProps = (state: AppState) => {
   return {
     searchQuery: selectSearchQuery(state),
-    shouldGetAllGames: selectShouldGetAllGames(state)
+    shouldFilterByText: selectShouldFilterByText(state)
   };
 };
 
@@ -28,12 +32,12 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 
 const GameSearchQuery: React.FC<Props> = ({
   searchQuery,
-  shouldGetAllGames,
+  shouldFilterByText,
   changeSearchQuery
 }) => {
   const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchQuery = event.target.value; 
-    changeSearchQuery({ searchQuery: newSearchQuery, shouldGetAllGames });
+    changeSearchQuery({ searchQuery: newSearchQuery, shouldGetAllGames: shouldFilterByText });
   };
 
   const onShouldGetAllGamesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,25 +46,28 @@ const GameSearchQuery: React.FC<Props> = ({
   };
 
   return (
-    <React.Fragment>
+    <PanelSection label={ queryLabel }>
+      <QueryInputContainer>
+        <QueryInput
+          variant="outlined"
+          disabled={ !shouldFilterByText }
+          onChange={ onQueryChange }
+          value={ searchQuery }
+          placeholder={ inputPlaceholder }
+          label={ inputLabel }
+        ></QueryInput>
+      </QueryInputContainer>
       <FormControlLabel
         control={
           <Checkbox
-            checked={ shouldGetAllGames }
+            checked={ shouldFilterByText }
             onChange={ onShouldGetAllGamesChange }
-            value={ shouldGetAllGames }
+            value={ shouldFilterByText }
           ></Checkbox>
         }
-        label={ shouldGetAllGamesLabel }
+        label={ shouldFilterByTextLabel }
       ></FormControlLabel>
-      <TextField
-        disabled={ shouldGetAllGames }
-        onChange={ onQueryChange }
-        value={ searchQuery }
-        placeholder={ inputPlaceholder }
-        label={ inputLabel }
-      ></TextField>
-    </React.Fragment>
+    </PanelSection>
   );
 };
 

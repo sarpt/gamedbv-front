@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+
+import { PanelSection } from '../PanelSection/PanelSection';
 
 import { Regions } from '../../models/Regions';
 import { AppState } from '../../store/store';
@@ -63,10 +64,7 @@ const GameSearchRegions: React.FC<Props> = ({
   };
 
   return (
-    <React.Fragment>
-      <Typography variant="h6">
-        { regionsLabel }
-      </Typography>
+    <PanelSection label={regionsLabel}>
       {
         regionsCheckboxes.map(regionsCheckbox => {
           return (
@@ -84,7 +82,7 @@ const GameSearchRegions: React.FC<Props> = ({
           );
         })
       }
-    </React.Fragment>
+    </PanelSection>
   );
 };
 

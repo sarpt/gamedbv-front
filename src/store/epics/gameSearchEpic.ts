@@ -24,8 +24,8 @@ import { AppState } from '../store';
 import { selectGameSearchStore } from '../selectors/gameSearchSelectors';
 import { selectGameSearchResultsStore } from '../selectors/gameSearchResultsSelectors';
 
-function shouldSearchGames(searchQuery: string, shouldGetAllGames: boolean): boolean {
-  return shouldGetAllGames || searchQuery.length !== 0;
+function shouldSearchGames(searchQuery: string, shouldFilterByText: boolean): boolean {
+  return !shouldFilterByText || searchQuery.length !== 0;
 }
 
 export const searchGamesEpic = (
@@ -48,11 +48,11 @@ export const searchGamesEpic = (
       }
       
     }),
-    filter((state) => shouldSearchGames(state.searchQuery, state.shouldGetAllGames)),
+    filter((state) => shouldSearchGames(state.searchQuery, state.shouldFilterByText)),
     concatMap((state) => {
       const searchGamesRequestProperties = {
         searchQuery: state.searchQuery,
-        shouldGetAllGames: state.shouldGetAllGames,
+        shouldFilterByText: state.shouldFilterByText,
         page: state.currentPage,
         gamesPerPage: state.gameResultsPerPage,
         regions: booleanMapToArray<Regions>(state.searchedRegions),
