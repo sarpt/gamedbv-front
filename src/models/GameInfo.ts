@@ -1,7 +1,7 @@
 import { Platforms } from './Platforms';
 import { Regions } from './Regions';
 
-export type GameResult = {
+export type GameInfo = {
   id: string,
   name: string,
   description?: string,

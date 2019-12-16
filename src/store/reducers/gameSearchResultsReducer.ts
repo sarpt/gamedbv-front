@@ -3,13 +3,13 @@ import {
   GameSearchResultsActions,
 } from '../actions/gameSearchResultsActions';
 
-import { GameResult } from '../../models/GameResult';
+import { GameInfo } from '../../models/GameInfo';
 
 const initialSelectedPage = 0;
 const initialGamesPerPage = 10;
 
 type State = {
-  gameSearchResults: GameResult[],
+  gameSearchResults: GameInfo[],
   currentPage: number,
   gameResultsPerPage: number,
 };

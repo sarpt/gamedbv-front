@@ -7,7 +7,7 @@ import {
 } from '../../store/selectors/gameSearchSelectors';
 
 import { GameSearchOptionsPanel } from '../GameSearchOptionsPanel/GameSearchOptionsPanel';
-import GameSearchResultsPanel from '../GameSearchResultsPanel/GameSearchResultsPanel';
+import { GameSearchResultsPanel } from '../GameSearchResultsPanel/GameSearchResultsPanel';
 import { ErrorPanel } from '../ErrorPanel/ErrorPanel';
 
 const gameSearchErrorMessage = 'Search results error';

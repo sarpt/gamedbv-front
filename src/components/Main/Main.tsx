@@ -1,7 +1,7 @@
 import React from 'react';
 
 import GameSearch from '../GameSearch/GameSearch';
-import ApplicationBar from '../ApplicationBar/ApplicationBar';
+import { ApplicationBar } from '../ApplicationBar/ApplicationBar';
 
 import { Main, Content } from './Main.styles';
 

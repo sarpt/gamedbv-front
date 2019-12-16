@@ -4,6 +4,7 @@ import { RegionsMap } from '../../models/Regions';
 import { PlatformsMap } from '../../models/Platforms';
 
 export enum GameSearchTypes {
+  FetchSearchResults = '[game-search] Fetch search results',
   ChangeSearchOptions = '[game-search] Change games search options',
   ChangeSearchQuery = '[game-search] Change search query',
   ChangePlatforms = '[game-search] Change platforms',
@@ -117,8 +118,18 @@ export const setGameSearchError = ({ message }: SetGameSearchErrorPayload): SetG
   }
 };
 
+export interface FetchSearchResultsAction extends Action {
+  type: GameSearchTypes.FetchSearchResults
+}
+export const fetchSearchResults = (): FetchSearchResultsAction => {
+  return {
+    type: GameSearchTypes.FetchSearchResults
+  }
+};
+
 export type GameSearchActions = ChangeSearchOptionsAction
   | ChangeSearchQueryAction
   | ChangePlatformsAction
   | ChangeRegionsAction
+  | FetchSearchResultsAction
   | SetGameSearchErrorAction;

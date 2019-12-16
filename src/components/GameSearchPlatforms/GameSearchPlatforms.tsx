@@ -41,7 +41,7 @@ const mapDispatchToProps = {
 type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
-const GameSearchPlatforms: React.FC<Props> = ({
+const Component: React.FC<Props> = ({
   platforms,
   changePlatforms
 }) => {
@@ -78,7 +78,7 @@ const GameSearchPlatforms: React.FC<Props> = ({
   );
 };
 
-export default connect(
+export const GameSearchPlatforms = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GameSearchPlatforms);
+)(Component);

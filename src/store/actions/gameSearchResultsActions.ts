@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 
-import { GameResult } from '../../models/GameResult';
+import { GameInfo } from '../../models/GameInfo';
 
 export enum GameSearchResultsTypes {
   SetSearchResults = '[game-search-results] Set games search results',
@@ -11,10 +11,10 @@ export enum GameSearchResultsTypes {
 export interface SetSearchResultsAction extends Action {
   type: GameSearchResultsTypes.SetSearchResults,
   payload: {
-    games: GameResult[]
+    games: GameInfo[]
   }
 }
-export const setGames = (games: GameResult[]): SetSearchResultsAction => {
+export const setGames = (games: GameInfo[]): SetSearchResultsAction => {
   return {
     type: GameSearchResultsTypes.SetSearchResults,
     payload: {

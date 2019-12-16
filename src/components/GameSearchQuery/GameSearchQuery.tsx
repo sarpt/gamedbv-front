@@ -30,7 +30,7 @@ const mapDispatchToProps = {
 type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
-const GameSearchQuery: React.FC<Props> = ({
+const Component: React.FC<Props> = ({
   searchQuery,
   shouldFilterByText,
   changeSearchQuery
@@ -72,7 +72,7 @@ const GameSearchQuery: React.FC<Props> = ({
 };
 
 
-export default connect(
+export const GameSearchQuery = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GameSearchQuery);
+)(Component);

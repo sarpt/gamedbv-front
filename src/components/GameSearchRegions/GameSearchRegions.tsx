@@ -50,7 +50,7 @@ const mapDispatchToProps = {
 type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
-const GameSearchRegions: React.FC<Props> = ({ 
+const Component: React.FC<Props> = ({ 
   regions,
   changeRegions 
 }) => {
@@ -86,7 +86,7 @@ const GameSearchRegions: React.FC<Props> = ({
   );
 };
 
-export default connect(
+export const GameSearchRegions = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GameSearchRegions);
+)(Component);

@@ -4,9 +4,9 @@ import FormGroup from '@material-ui/core/FormGroup';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { Panel } from '../Panel/Panel';
-import GameSearchRegions from '../GameSearchRegions/GameSearchRegions';
-import GameSearchPlatforms from '../GameSearchPlatforms/GameSearchPlatforms';
-import GameSearchQuery from '../GameSearchQuery/GameSearchQuery';
+import { GameSearchRegions } from '../GameSearchRegions/GameSearchRegions';
+import { GameSearchPlatforms } from '../GameSearchPlatforms/GameSearchPlatforms';
+import { GameSearchQuery } from '../GameSearchQuery/GameSearchQuery';
 
 
 import { Row } from './GameSearchOptionsPanel.styles';

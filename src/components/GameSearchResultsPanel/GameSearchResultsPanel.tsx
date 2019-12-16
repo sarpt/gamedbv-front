@@ -1,67 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import Table from '@material-ui/core/Table';
-import TableRow from '@material-ui/core/TableRow';
-import TableBody from '@material-ui/core/TableBody';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
 import ViewListIcon from '@material-ui/icons/ViewList';
 
-import { GameResult } from '../../models/GameResult';
-
 import { Panel } from '../Panel/Panel';
-import { GameResultRow } from '../GameResultRow/GameResultRow';
+import { GameSearchResultsTable } from '../GameSearchResultsTable/GameSearchResultsTable';
+
+import {
+  fetchSearchResults
+} from '../../store/actions/gameSearchActions';
 import { AppState } from '../../store/store';
-import { selectSearchQuery } from '../../store/selectors/gameSearchSelectors';
-import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults } from '../../store/selectors/gameSearchResultsSelectors';
-import { changePage, changeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
+import { areAnyGameSearchResultsAvailable } from '../../store/selectors/gameSearchResultsSelectors';
 
 const searchResultsLabel = 'Search results';
 const noGameSearchResultMessage = 'No games with provided query were found';
-const noQueryProvidedMessage = 'No search query provided';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    searchQuery: selectSearchQuery(state),
-    games: selectGameSearchResults(state),
-    currentPage: selectCurrentPage(state),
-    resultsPerPage: selectGameResultsPerPage(state)
+    shouldShowSearchResultsTable: areAnyGameSearchResultsAvailable(state)
   };
 };
 
 const mapDispatchToProps = {
-  changePage,
-  changeResultsPerPage
+  fetchSearchResults
 };
 
 type AdditionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;
 
-const GameSearchResultsPanel: React.FC<Props> = ({
-  searchQuery,
-  currentPage,
-  resultsPerPage,
-  games,
-  changePage,
-  changeResultsPerPage
+const Component: React.FC<Props> = ({
+  shouldShowSearchResultsTable,
+  fetchSearchResults
 }) => {
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    changeResultsPerPage({
-      resultsPerPage: Number.parseInt(event.target.value, 10)
-    });
-    changePage({
-      page: 0
-    });
-  }
-
-  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    changePage({
-      page: newPage
-    });
-  }
-
-  const isSearchQueryProvided = searchQuery.length !== 0;
+  useEffect(() => {
+    fetchSearchResults();
+  }, [fetchSearchResults]);
 
   return (
     <Panel
@@ -69,34 +42,11 @@ const GameSearchResultsPanel: React.FC<Props> = ({
       icon={ <ViewListIcon /> }
     >
       {
-        games.length !== 0 ? (
-          <Table>
-            <TableBody>
-              {
-                games.map((gameResult: GameResult) => {
-                  return (
-                    <GameResultRow key={ gameResult.id }
-                      gameResult={ gameResult }
-                    ></GameResultRow>
-                  );
-                })
-              }
-            </TableBody>
-            <TableFooter>
-              <TableRow>
-                <TablePagination
-                  count={ games.length }
-                  onChangePage={ handleChangePage }
-                  onChangeRowsPerPage={ handleChangeRowsPerPage }
-                  page={ currentPage }
-                  rowsPerPage={ resultsPerPage }
-                ></TablePagination>
-              </TableRow>
-            </TableFooter>
-          </Table>
+        shouldShowSearchResultsTable ? (
+          <GameSearchResultsTable></GameSearchResultsTable>
         ) : (
           <div>
-            { isSearchQueryProvided ? noGameSearchResultMessage : noQueryProvidedMessage }
+            { noGameSearchResultMessage }
           </div>
         )
       }
@@ -104,7 +54,7 @@ const GameSearchResultsPanel: React.FC<Props> = ({
   );
 };
 
-export default connect(
+export const GameSearchResultsPanel = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GameSearchResultsPanel);
+)(Component);

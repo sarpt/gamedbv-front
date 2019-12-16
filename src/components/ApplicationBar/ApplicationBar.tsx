@@ -6,8 +6,6 @@ import Typography from '@material-ui/core/Typography';
 
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import { withTheme } from '@material-ui/core/styles';
-
 import { OptionsButton } from './ApplicationBar.styles';
 
 const appBarElevation = 1;
@@ -15,7 +13,7 @@ const applicationTitle = 'Wii & NGC Database Viewer';
 
 type props = {};
 
-const ApplicationBar: React.FC<props> = () => {
+export const ApplicationBar: React.FC<props> = () => {
   return (
     <React.Fragment>
       <AppBar elevation={ appBarElevation }>
@@ -32,5 +30,3 @@ const ApplicationBar: React.FC<props> = () => {
     </React.Fragment>
   );
 };
-
-export default withTheme(ApplicationBar);

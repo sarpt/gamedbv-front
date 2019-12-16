@@ -1,5 +1,5 @@
 import { of } from 'rxjs';
-import { map, concatMap, catchError, filter, withLatestFrom } from 'rxjs/operators';
+import { map, concatMap, catchError, withLatestFrom } from 'rxjs/operators';
 import { ofType, ActionsObservable, StateObservable } from 'redux-observable';
 
 import {
@@ -8,7 +8,9 @@ import {
   setGameSearchError,
   ChangeSearchQueryAction,
   ChangePlatformsAction,
-  ChangeRegionsAction
+  ChangeRegionsAction,
+  fetchSearchResults,
+  FetchSearchResultsAction
 } from '../actions/gameSearchActions';
 import {
   setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsTypes
@@ -24,13 +26,8 @@ import { AppState } from '../store';
 import { selectGameSearchStore } from '../selectors/gameSearchSelectors';
 import { selectGameSearchResultsStore } from '../selectors/gameSearchResultsSelectors';
 
-function shouldSearchGames(searchQuery: string, shouldFilterByText: boolean): boolean {
-  return !shouldFilterByText || searchQuery.length !== 0;
-}
-
-export const searchGamesEpic = (
-  actions$: ActionsObservable<GameSearchActions>,
-  state$: StateObservable<AppState>
+export const handleSearchQueryChange = (
+  actions$: ActionsObservable<GameSearchActions>
 ) => {
   return actions$.pipe(
     ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | ChangeRegionsAction | ChangePageAction | ChangeResultsPerPageAction>(
@@ -40,6 +37,20 @@ export const searchGamesEpic = (
       GameSearchResultsTypes.ChangePage,
       GameSearchResultsTypes.ChangeResultsPerPage
     ),
+    map(() => {
+      return fetchSearchResults();
+    })
+  );
+};
+
+export const fetchGamesResults = (
+  actions$: ActionsObservable<GameSearchActions>,
+  state$: StateObservable<AppState>
+) => {
+  return actions$.pipe(
+    ofType<GameSearchActions,FetchSearchResultsAction>(
+      GameSearchTypes.FetchSearchResults
+    ),
     withLatestFrom(state$),
     map(([, state]) => {
       return {
@@ -48,7 +59,6 @@ export const searchGamesEpic = (
       }
       
     }),
-    filter((state) => shouldSearchGames(state.searchQuery, state.shouldFilterByText)),
     concatMap((state) => {
       const searchGamesRequestProperties = {
         searchQuery: state.searchQuery,
