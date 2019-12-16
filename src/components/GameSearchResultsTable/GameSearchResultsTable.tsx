@@ -6,7 +6,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
-import TableCell from '@material-ui/core/TableCell';
+
+import { GameResultCell } from './GameSearchResultsTable.styles';
 
 import { GameSummary } from '../GameSummary/GameSummary';
 
@@ -59,11 +60,11 @@ const Component: React.FC<Props> = ({
           games.map((gameResult: GameInfo) => {
             return (
               <TableRow key={ gameResult.id }>
-                <TableCell>
+                <GameResultCell>
                   <GameSummary
                     gameResult={ gameResult }
                   ></GameSummary>
-                </TableCell>
+                </GameResultCell>
               </TableRow>
             );
           })

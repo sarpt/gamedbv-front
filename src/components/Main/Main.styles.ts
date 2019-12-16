@@ -5,7 +5,8 @@ import { withTheme } from '@material-ui/core/styles';
 export const Main = withTheme(styled.div`
   min-height: 100vh;
   background-color: ${props => props.theme.palette.background.paper};
-  overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
 `);
 
 export const Content = styled.div`

@@ -23,7 +23,7 @@ const mapDispatchToProps = {};
 type AdditionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;
 
-const GameSearch: React.FC<Props> = ({
+const Component: React.FC<Props> = ({
   searchError
 }) => {
   return (
@@ -43,7 +43,7 @@ const GameSearch: React.FC<Props> = ({
   );
 }
 
-export default connect(
+export const GameSearch = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GameSearch);
+)(Component);

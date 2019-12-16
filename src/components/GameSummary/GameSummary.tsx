@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  Content,
   Header,
   Body,
   Title,
@@ -37,9 +38,11 @@ export const GameSummary: React.FC<Props> = ({ gameResult }) => {
             Region: { gameResult.region }
           </Region>
         </PlatformAndRegion>
-        <Description variant="body2">
-          { gameResult.description }
-        </Description>
+        <Content>
+          <Description variant="body2">
+            { gameResult.description }
+          </Description>
+        </Content>
       </Body>
     </React.Fragment>
   );

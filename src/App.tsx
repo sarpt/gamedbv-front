@@ -10,7 +10,7 @@ import { MainContainer } from './components/Main/Main';
 const AppTheme = responsiveFontSizes(createMuiTheme(theme));
 const ThemedMainContainer = withTheme(MainContainer);
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <ThemeProvider theme={AppTheme}>
       <StylesProvider injectFirst>
@@ -19,5 +19,3 @@ const App: React.FC = () => {
     </ThemeProvider>
   );
 }
-
-export default App;

@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
 
+export const Content = styled.div`
+  display: flex;
+`;
+
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
@@ -35,4 +39,8 @@ export const Platform = styled(Typography)`
   flex-grow: 0;
 `;
 
-export const Description = styled(Typography)``;
+export const Description = styled(Typography)`
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+`;
