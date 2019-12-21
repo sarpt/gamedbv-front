@@ -30,7 +30,11 @@ const initialState: State = {
   },
   searchedPlatforms: {
     [Platforms.NGC]: true,
-    [Platforms.WII]: true
+    [Platforms.WII]: true,
+    [Platforms.PS3]: true,
+    [Platforms.NDS]: true,
+    [Platforms.N3DS]: true,
+    [Platforms.SWITCH]: true
   },
   searchError: {
     hasError: false

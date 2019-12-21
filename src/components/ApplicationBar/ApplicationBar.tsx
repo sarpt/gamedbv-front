@@ -9,7 +9,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { OptionsButton } from './ApplicationBar.styles';
 
 const appBarElevation = 1;
-const applicationTitle = 'Wii & NGC Database Viewer';
+const applicationTitle = 'Game Database Viewer';
 
 type props = {};
 

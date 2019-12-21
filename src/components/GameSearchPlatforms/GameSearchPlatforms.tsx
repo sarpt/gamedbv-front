@@ -25,6 +25,22 @@ const platformsCheckboxes: PlatformCheckbox[] = [
   {
     label: 'Wii',
     value: Platforms.WII
+  },
+  {
+    label: 'PlayStation3',
+    value: Platforms.PS3
+  },
+  {
+    label: 'DS',
+    value: Platforms.NDS
+  },
+  {
+    label: '3DS',
+    value: Platforms.N3DS
+  },
+  {
+    label: 'Switch',
+    value: Platforms.SWITCH
   }
 ];
 
