@@ -1,6 +1,6 @@
-# Wiitdbjs-front
+# Gamedbv-front
 
-A simple frontend to Wii (and GameCube) text database. More of a personal learning project to learn React and it's ecosystem than anything serious
+A simple frontend to GameTDB titles databases. More of a personal learning project to learn React and it's ecosystem than anything serious
 
 ## Running
 
