@@ -71,8 +71,8 @@ export const fetchGamesResults = (
 
       return searchGames(searchGamesRequestProperties)
         .pipe(
-          map((games) => {
-            return setGames(games);
+          map((result) => {
+            return setGames(result.games);
           }),
           catchError((error) => {
             return of(setGameSearchError({ message: getAjaxErrorMessage(error) }));

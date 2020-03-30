@@ -1,9 +1,10 @@
 import { ajax } from 'rxjs/ajax';
 
-import { GameInfo } from '../models/GameInfo';
 import { Platforms } from '../models/Platforms';
 import { Regions } from '../models/Regions';
 import { ApiParameters } from '../models/ApiParameters'
+import { GamesResult } from '../models/GamesResult';
+import { GameInfo } from '../models/GameInfo';
 
 import { addQueriesToUrl } from './urlUtils';
 
@@ -40,7 +41,7 @@ export function searchGames({
     method: 'GET'
   };
 
-  return ajax.getJSON<GameInfo[]>(url, options);
+  return ajax.getJSON<GamesResult>(url, options);
 }
 
 type GetGameArguments = {
@@ -53,5 +54,5 @@ export function getGame({ id }: GetGameArguments) {
     method: 'GET'
   };
 
-  return ajax.getJSON(url, options);
+  return ajax.getJSON<GameInfo>(url, options);
 }

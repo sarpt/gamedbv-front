@@ -1,7 +1,7 @@
 export enum Regions {
-  NTSCU = 'ntscu',
-  NTSCJ = 'ntscj',
-  PAL = 'pal',
+  NTSCU = 'NTSC-U',
+  NTSCJ = 'NTSC-J',
+  PAL = 'PAL',
   OTHER = 'other'
 }
 

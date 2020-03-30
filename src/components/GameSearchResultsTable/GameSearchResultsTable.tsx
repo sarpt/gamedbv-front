@@ -59,7 +59,7 @@ const Component: React.FC<Props> = ({
         {
           games.map((gameResult: GameInfo) => {
             return (
-              <TableRow key={ gameResult.id }>
+              <TableRow key={ gameResult.serialNumber }>
                 <GameResultCell>
                   <GameSummary
                     gameResult={ gameResult }

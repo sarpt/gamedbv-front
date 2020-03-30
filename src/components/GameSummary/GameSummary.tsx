@@ -19,14 +19,15 @@ type Props = {
 };
 
 export const GameSummary: React.FC<Props> = ({ gameResult }) => {
+  const description = gameResult.descriptions[0]
   return (
     <React.Fragment>
       <Header>
         <Title variant="body1">
-          { gameResult.name }
+          { description.title }
         </Title>
         <Id variant="body1">
-          { gameResult.id }
+          { gameResult.serialNumber }
         </Id>
       </Header>
       <Body>
@@ -40,7 +41,7 @@ export const GameSummary: React.FC<Props> = ({ gameResult }) => {
         </PlatformAndRegion>
         <Content>
           <Description variant="body2">
-            { gameResult.description }
+            { description.synopsis }
           </Description>
         </Content>
       </Body>
