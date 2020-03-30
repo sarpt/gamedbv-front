@@ -72,7 +72,7 @@ export const fetchGamesResults = (
       return searchGames(searchGamesRequestProperties)
         .pipe(
           map((result) => {
-            return setGames(result.games);
+            return setGames(result.games, result.total);
           }),
           catchError((error) => {
             return of(setGameSearchError({ message: getAjaxErrorMessage(error) }));

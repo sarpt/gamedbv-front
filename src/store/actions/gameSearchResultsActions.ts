@@ -11,14 +11,16 @@ export enum GameSearchResultsTypes {
 export interface SetSearchResultsAction extends Action {
   type: GameSearchResultsTypes.SetSearchResults,
   payload: {
-    games: GameInfo[]
+    games: GameInfo[],
+    total: number,
   }
 }
-export const setGames = (games: GameInfo[]): SetSearchResultsAction => {
+export const setGames = (games: GameInfo[], total: number): SetSearchResultsAction => {
   return {
     type: GameSearchResultsTypes.SetSearchResults,
     payload: {
-      games
+      games,
+      total,
     }
   };
 };

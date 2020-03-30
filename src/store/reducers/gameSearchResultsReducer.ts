@@ -9,21 +9,23 @@ const initialSelectedPage = 0;
 const initialGamesPerPage = 10;
 
 type State = {
-  gameSearchResults: GameInfo[],
   currentPage: number,
+  gameSearchResults: GameInfo[],
   gameResultsPerPage: number,
+  total: number,
 };
 
 const initialState: State = {
-  gameSearchResults: [],
   currentPage: initialSelectedPage,
+  gameSearchResults: [],
   gameResultsPerPage: initialGamesPerPage,
+  total: 0,
 };
 
 export const gameSearchResultsReducer = (state: State = initialState, action: GameSearchResultsActions): State => {
   switch (action.type) {
     case GameSearchResultsTypes.SetSearchResults:
-      return { ...state, gameSearchResults: action.payload.games }
+      return { ...state, gameSearchResults: action.payload.games, total: action.payload.total }
     case GameSearchResultsTypes.ChangePage:
       return { ...state, currentPage: action.payload.page }
     case GameSearchResultsTypes.ChangeResultsPerPage:

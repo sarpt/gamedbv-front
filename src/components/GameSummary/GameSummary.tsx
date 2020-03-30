@@ -15,11 +15,11 @@ import {
 import { GameInfo } from '../../models/GameInfo';
 
 type Props = {
-  gameResult: GameInfo
+  game: GameInfo
 };
 
-export const GameSummary: React.FC<Props> = ({ gameResult }) => {
-  const description = gameResult.descriptions[0]
+export const GameSummary: React.FC<Props> = ({ game }) => {
+  const description = game.descriptions[0]
   return (
     <React.Fragment>
       <Header>
@@ -27,16 +27,16 @@ export const GameSummary: React.FC<Props> = ({ gameResult }) => {
           { description.title }
         </Title>
         <Id variant="body1">
-          { gameResult.serialNumber }
+          { game.serialNumber }
         </Id>
       </Header>
       <Body>
         <PlatformAndRegion>
           <Platform variant="body2">
-            Platform: { gameResult.platform }
+            Platform: { game.platform }
           </Platform>
           <Region variant="body2">
-            Region: { gameResult.region }
+            Region: { game.region }
           </Region>
         </PlatformAndRegion>
         <Content>

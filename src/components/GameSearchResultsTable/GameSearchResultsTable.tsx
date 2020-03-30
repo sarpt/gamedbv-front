@@ -11,10 +11,9 @@ import { GameResultCell } from './GameSearchResultsTable.styles';
 
 import { GameSummary } from '../GameSummary/GameSummary';
 
-import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults } from '../../store/selectors/gameSearchResultsSelectors';
+import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults, selectGameSearchResultsTotal } from '../../store/selectors/gameSearchResultsSelectors';
 import { changePage, changeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
 
-import { GameInfo } from '../../models/GameInfo';
 import { AppState } from '../../store/store';
 
 type AdditionalProps = {};
@@ -23,8 +22,9 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & Ad
 const mapStateToProps = (state: AppState) => {
   return {
     games: selectGameSearchResults(state),
+    gamesTotal: selectGameSearchResultsTotal(state),
     currentPage: selectCurrentPage(state),
-    resultsPerPage: selectGameResultsPerPage(state)
+    resultsPerPage: selectGameResultsPerPage(state),
   };
 };
 
@@ -35,8 +35,11 @@ const mapDispatchToProps = {
 
 const Component: React.FC<Props> = ({
   games,
+  gamesTotal,
   currentPage,
-  resultsPerPage
+  changePage,
+  changeResultsPerPage,
+  resultsPerPage,
 }) => {
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     changeResultsPerPage({
@@ -57,12 +60,12 @@ const Component: React.FC<Props> = ({
     <Table>
       <TableBody>
         {
-          games.map((gameResult: GameInfo) => {
+          games.map(game => {
             return (
-              <TableRow key={ gameResult.serialNumber }>
+              <TableRow key={ game.serialNumber }>
                 <GameResultCell>
                   <GameSummary
-                    gameResult={ gameResult }
+                    game={ game }
                   ></GameSummary>
                 </GameResultCell>
               </TableRow>
@@ -73,7 +76,7 @@ const Component: React.FC<Props> = ({
       <TableFooter>
         <TableRow>
           <TablePagination
-            count={ games.length }
+            count={ gamesTotal }
             onChangePage={ handleChangePage }
             onChangeRowsPerPage={ handleChangeRowsPerPage }
             page={ currentPage }
