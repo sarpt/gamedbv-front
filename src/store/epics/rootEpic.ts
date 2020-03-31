@@ -1,9 +1,12 @@
-import { fetchGamesResults, handleSearchQueryChange } from './gameSearchEpic';
-import { setGameIdEpic } from './gameDetailsEpic';
 import { combineEpics } from 'redux-observable';
 
+import { fetchGamesResults, handleGameSearchChange } from './gameSearchEpic';
+import { setGameIdEpic } from './gameDetailsEpic';
+import { resetToFirstPage } from './gameResultsEpic';
+
 export const rootEpic = combineEpics(
-  handleSearchQueryChange,
+  handleGameSearchChange,
   fetchGamesResults,
-  setGameIdEpic
+  setGameIdEpic,
+  resetToFirstPage,
 );

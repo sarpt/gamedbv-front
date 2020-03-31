@@ -26,7 +26,7 @@ import { AppState } from '../store';
 import { selectGameSearchStore } from '../selectors/gameSearchSelectors';
 import { selectGameSearchResultsStore } from '../selectors/gameSearchResultsSelectors';
 
-export const handleSearchQueryChange = (
+export const handleGameSearchChange = (
   actions$: ActionsObservable<GameSearchActions>
 ) => {
   return actions$.pipe(
@@ -56,8 +56,7 @@ export const fetchGamesResults = (
       return {
         ...selectGameSearchStore(state),
         ...selectGameSearchResultsStore(state)
-      }
-      
+      };
     }),
     concatMap((state) => {
       const searchGamesRequestProperties = {

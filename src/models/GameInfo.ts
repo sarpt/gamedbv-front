@@ -1,11 +1,6 @@
 import { Platforms } from './Platforms';
 import { Regions } from './Regions';
-
-type Description = {
-  language: string,
-  title: string,
-  synopsis: string, 
-};
+import { Description } from './Description';
 
 export type GameInfo = {
   uuid: string,
