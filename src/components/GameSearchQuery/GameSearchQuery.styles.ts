@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import TextField from '@material-ui/core/TextField';
+import { DebouncedInput } from '../DebouncedInput/DebouncedInput';
 
 export const QueryInputContainer = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const QueryInputContainer = styled.div`
   padding-top: 1rem;
 `;
 
-export const QueryInput = styled(TextField)`
+export const QueryInput = styled(DebouncedInput)`
   flex-grow: 1;
   flex-shrink: 1;
 `;

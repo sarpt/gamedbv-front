@@ -45,7 +45,7 @@ export const handleGameSearchChange = (
 
 export const fetchGamesResults = (
   actions$: ActionsObservable<GameSearchActions>,
-  state$: StateObservable<AppState>
+  state$: StateObservable<AppState>,
 ) => {
   return actions$.pipe(
     ofType<GameSearchActions,FetchSearchResultsAction>(

@@ -35,8 +35,7 @@ const Component: React.FC<Props> = ({
   shouldFilterByText,
   changeSearchQuery
 }) => {
-  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newSearchQuery = event.target.value; 
+  const onQueryChange = (newSearchQuery: string) => {
     changeSearchQuery({ searchQuery: newSearchQuery, shouldGetAllGames: shouldFilterByText });
   };
 
@@ -49,10 +48,9 @@ const Component: React.FC<Props> = ({
     <PanelSection label={ queryLabel }>
       <QueryInputContainer>
         <QueryInput
-          variant="outlined"
           disabled={ !shouldFilterByText }
           onChange={ onQueryChange }
-          value={ searchQuery }
+          initialValue={ searchQuery }
           placeholder={ inputPlaceholder }
           label={ inputLabel }
         ></QueryInput>
