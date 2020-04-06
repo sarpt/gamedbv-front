@@ -1,5 +1,5 @@
 import {
-  GameSearchTypes,
+  GameSearchActionsTypes,
   GameSearchActions,
 } from '../actions/gameSearchActions';
 
@@ -43,23 +43,23 @@ const initialState: State = {
 
 export const gameSearchReducer = (state: State = initialState, action: GameSearchActions): State => {
   switch (action.type) {
-    case GameSearchTypes.ChangeSearchQuery:
+    case GameSearchActionsTypes.ChangeSearchQuery:
       return {
         ...state,
         searchQuery: action.payload.searchQuery,
         shouldFilterByText: action.payload.shouldGetAllGames,
       };
-    case GameSearchTypes.ChangePlatforms:
+    case GameSearchActionsTypes.ChangePlatforms:
       return {
         ...state,
         searchedPlatforms: action.payload.platforms
       };
-    case GameSearchTypes.ChangeRegions:
+    case GameSearchActionsTypes.ChangeRegions:
       return {
         ...state,
         searchedRegions: action.payload.regions
       };
-    case GameSearchTypes.SetGameSearchError:
+    case GameSearchActionsTypes.SetGameSearchError:
       return {
         ...state,
         searchError: { hasError: true, message: action.payload.message }

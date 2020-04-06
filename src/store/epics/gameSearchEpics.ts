@@ -3,7 +3,7 @@ import { map, concatMap, catchError, withLatestFrom } from 'rxjs/operators';
 import { ofType, ActionsObservable, StateObservable } from 'redux-observable';
 
 import {
-  GameSearchTypes,
+  GameSearchActionsTypes,
   GameSearchActions,
   setGameSearchError,
   ChangeSearchQueryAction,
@@ -13,7 +13,7 @@ import {
   FetchSearchResultsAction
 } from '../actions/gameSearchActions';
 import {
-  setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsTypes
+  setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes
 } from '../actions/gameSearchResultsActions';
 
 import { searchGames } from '../../functions/gamesApi';
@@ -31,11 +31,11 @@ export const handleGameSearchChange = (
 ) => {
   return actions$.pipe(
     ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | ChangeRegionsAction | ChangePageAction | ChangeResultsPerPageAction>(
-      GameSearchTypes.ChangeSearchQuery,
-      GameSearchTypes.ChangePlatforms,
-      GameSearchTypes.ChangeRegions,
-      GameSearchResultsTypes.ChangePage,
-      GameSearchResultsTypes.ChangeResultsPerPage
+      GameSearchActionsTypes.ChangeSearchQuery,
+      GameSearchActionsTypes.ChangePlatforms,
+      GameSearchActionsTypes.ChangeRegions,
+      GameSearchResultsActionsTypes.ChangePage,
+      GameSearchResultsActionsTypes.ChangeResultsPerPage
     ),
     map(() => {
       return fetchSearchResults();
@@ -49,7 +49,7 @@ export const fetchGamesResults = (
 ) => {
   return actions$.pipe(
     ofType<GameSearchActions,FetchSearchResultsAction>(
-      GameSearchTypes.FetchSearchResults
+      GameSearchActionsTypes.FetchSearchResults
     ),
     withLatestFrom(state$),
     map(([, state]) => {
@@ -71,7 +71,7 @@ export const fetchGamesResults = (
       return searchGames(searchGamesRequestProperties)
         .pipe(
           map((result) => {
-            return setGames(result.games, result.total);
+            return setGames({ games: result.games, total: result.total });
           }),
           catchError((error) => {
             return of(setGameSearchError({ message: getAjaxErrorMessage(error) }));

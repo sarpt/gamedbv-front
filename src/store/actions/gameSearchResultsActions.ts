@@ -2,22 +2,23 @@ import { Action } from 'redux';
 
 import { GameInfo } from '../../models/GameInfo';
 
-export enum GameSearchResultsTypes {
+export enum GameSearchResultsActionsTypes {
   SetSearchResults = '[game-search-results] Set games search results',
   ChangeResultsPerPage = '[game-search-results] Change results per page',
   ChangePage = '[game-search-results] Change page of results'
 };
 
+type SetGamesPayload = {
+  games: GameInfo[],
+  total: number,
+};
 export interface SetSearchResultsAction extends Action {
-  type: GameSearchResultsTypes.SetSearchResults,
-  payload: {
-    games: GameInfo[],
-    total: number,
-  }
+  type: GameSearchResultsActionsTypes.SetSearchResults,
+  payload: SetGamesPayload,
 }
-export const setGames = (games: GameInfo[], total: number): SetSearchResultsAction => {
+export const setGames = ({ games, total }: SetGamesPayload): SetSearchResultsAction => {
   return {
-    type: GameSearchResultsTypes.SetSearchResults,
+    type: GameSearchResultsActionsTypes.SetSearchResults,
     payload: {
       games,
       total,
@@ -29,12 +30,12 @@ type ChangeResultsPerPagePayload = {
   resultsPerPage: number 
 };
 export interface ChangeResultsPerPageAction extends Action {
-  type: GameSearchResultsTypes.ChangeResultsPerPage,
+  type: GameSearchResultsActionsTypes.ChangeResultsPerPage,
   payload: ChangeResultsPerPagePayload
 }
 export const changeResultsPerPage = ({ resultsPerPage }: ChangeResultsPerPagePayload): ChangeResultsPerPageAction => {
   return {
-    type: GameSearchResultsTypes.ChangeResultsPerPage,
+    type: GameSearchResultsActionsTypes.ChangeResultsPerPage,
     payload: {
       resultsPerPage
     }
@@ -45,12 +46,12 @@ type ChangePagePayload = {
   page: number 
 };
 export interface ChangePageAction extends Action {
-  type: GameSearchResultsTypes.ChangePage,
+  type: GameSearchResultsActionsTypes.ChangePage,
   payload: ChangePagePayload
 }
 export const changePage = ({ page }: ChangePagePayload): ChangePageAction => {
   return {
-    type: GameSearchResultsTypes.ChangePage,
+    type: GameSearchResultsActionsTypes.ChangePage,
     payload: {
       page
     }

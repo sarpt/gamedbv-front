@@ -33,7 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev-server": "npx json-server --watch ./dev-server/db.json --port=3001"
+    "dev-server": "npx json-server --watch ./dev-server/db.json --port=3001 --routes ./dev-server/routes.json"
   },
   "eslintConfig": {
     "extends": "react-app"

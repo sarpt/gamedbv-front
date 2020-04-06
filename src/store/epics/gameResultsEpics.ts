@@ -1,8 +1,8 @@
 import { map, filter, withLatestFrom } from "rxjs/operators";
 import { ActionsObservable, ofType, StateObservable } from "redux-observable";
 
-import { GameSearchActions, GameSearchTypes, ChangeSearchQueryAction, ChangePlatformsAction, ChangeRegionsAction } from "../actions/gameSearchActions";
-import { GameSearchResultsActions, GameSearchResultsTypes, ChangeResultsPerPageAction, changePage } from "../actions/gameSearchResultsActions";
+import { GameSearchActions, GameSearchActionsTypes, ChangeSearchQueryAction, ChangePlatformsAction, ChangeRegionsAction } from "../actions/gameSearchActions";
+import { GameSearchResultsActions, GameSearchResultsActionsTypes, ChangeResultsPerPageAction, changePage } from "../actions/gameSearchResultsActions";
 import { AppState } from "../store";
 import { selectCurrentPage } from "../selectors/gameSearchResultsSelectors";
 
@@ -12,10 +12,10 @@ export const resetToFirstPage = (
 ) => {
   return actions$.pipe(
     ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | ChangeRegionsAction | ChangeResultsPerPageAction>(
-      GameSearchTypes.ChangeSearchQuery,
-      GameSearchTypes.ChangePlatforms,
-      GameSearchTypes.ChangeRegions,
-      GameSearchResultsTypes.ChangeResultsPerPage
+      GameSearchActionsTypes.ChangeSearchQuery,
+      GameSearchActionsTypes.ChangePlatforms,
+      GameSearchActionsTypes.ChangeRegions,
+      GameSearchResultsActionsTypes.ChangeResultsPerPage
     ),
     withLatestFrom(state$),
     filter(([, state]) => selectCurrentPage(state) !== 0),

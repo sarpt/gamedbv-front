@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
-import LanguageIcon from '@material-ui/icons/Language';
 
 export const Content = styled.div`
   display: flex;
@@ -23,10 +22,6 @@ export const Footer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-`;
-
-export const LanguageSelectIcon = styled(LanguageIcon)`
-  margin-right: 0.5rem;
 `;
 
 export const PlatformAndRegion = styled.div`
@@ -51,7 +46,7 @@ export const Platform = styled(Typography)`
   flex-grow: 0;
 `;
 
-export const Description = styled(Typography)`
+export const Synopsis = styled(Typography)`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

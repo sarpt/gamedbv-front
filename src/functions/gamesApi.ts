@@ -7,9 +7,7 @@ import { GamesResult } from '../models/GamesResult';
 import { GameInfo } from '../models/GameInfo';
 
 import { addQueriesToUrl } from './urlUtils';
-
-const server = 'localhost:3001';
-const gamesEndpoint = `http://${server}/games`;
+import { getGamesEndpoint, getGameDetailsEndpoint } from './endpoints';
 
 type SearchGamesArguments = {
   searchQuery: string,
@@ -28,7 +26,7 @@ export function searchGames({
   regions,
   platforms
 }: SearchGamesArguments) {
-  let url = gamesEndpoint;
+  let url = getGamesEndpoint();
   if (shouldFilterByText) {
     url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
   }
@@ -49,7 +47,7 @@ type GetGameArguments = {
 };
 
 export function getGame({ id }: GetGameArguments) {
-  const url = `${gamesEndpoint}/${id}`;
+  const url = getGameDetailsEndpoint(id);
   const options: RequestInit = {
     method: 'GET'
   };

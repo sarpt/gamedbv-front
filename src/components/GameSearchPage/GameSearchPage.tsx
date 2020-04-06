@@ -21,9 +21,9 @@ const mapStateToProps = (state: AppState) => {
 const mapDispatchToProps = {};
 
 type AdditionalProps = {};
-type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;
+type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;
 
-const Component: React.FC<Props> = ({
+const Component: React.FC<props> = ({
   searchError
 }) => {
   return (
@@ -43,7 +43,7 @@ const Component: React.FC<Props> = ({
   );
 }
 
-export const GameSearch = connect(
+export const GameSearchPage = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Component);

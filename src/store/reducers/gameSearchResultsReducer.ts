@@ -1,5 +1,5 @@
 import {
-  GameSearchResultsTypes,
+  GameSearchResultsActionsTypes,
   GameSearchResultsActions,
 } from '../actions/gameSearchResultsActions';
 
@@ -24,11 +24,11 @@ const initialState: State = {
 
 export const gameSearchResultsReducer = (state: State = initialState, action: GameSearchResultsActions): State => {
   switch (action.type) {
-    case GameSearchResultsTypes.SetSearchResults:
+    case GameSearchResultsActionsTypes.SetSearchResults:
       return { ...state, gameSearchResults: action.payload.games, total: action.payload.total }
-    case GameSearchResultsTypes.ChangePage:
+    case GameSearchResultsActionsTypes.ChangePage:
       return { ...state, currentPage: action.payload.page }
-    case GameSearchResultsTypes.ChangeResultsPerPage:
+    case GameSearchResultsActionsTypes.ChangeResultsPerPage:
       return { ...state, gameResultsPerPage: action.payload.resultsPerPage }
     default:
       return state;
