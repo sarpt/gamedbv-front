@@ -1,6 +1,7 @@
 import { ajax } from "rxjs/ajax";
 
 import { getLanguagesEndpoint } from "./endpoints";
+import { Language } from "../models/Language";
 
 export function getAvailableLanguages() {
   const url = getLanguagesEndpoint();
@@ -8,5 +9,5 @@ export function getAvailableLanguages() {
     method: 'GET'
   };
 
-  return ajax.getJSON<string[]>(url, options);
+  return ajax.getJSON<{ languages: Language[] }>(url, options);
 }

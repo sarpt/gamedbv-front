@@ -4,16 +4,16 @@ import {
  } from "../actions/appSettingsActions";
 
 type State = {
-  prefferedLanguage: string
+  prefferedLanguageCode: string
 }
 const initialState: State = {
-  prefferedLanguage: 'EN',
+  prefferedLanguageCode: 'EN',
 };
 
-export const appSettingsReducer = (state: State = initialState, action: AppSettingsActions) => {
+export const appSettingsReducer = (state: State = initialState, action: AppSettingsActions): State => {
   switch (action.type) {
-    case AppSettingsActionsTypes.SetPrefferedLanguage:
-      return { ...state, prefferedLanguage: action.payload.language };
+    case AppSettingsActionsTypes.SetPrefferedLanguageCode:
+      return { ...state, prefferedLanguageCode: action.payload.language };
     default:
       return state;
   }

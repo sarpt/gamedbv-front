@@ -1,20 +1,20 @@
+import { of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import { ofType, ActionsObservable } from 'redux-observable';
 
-import { AppInfoActions, AppInfoActionsTypes, FetchAvailableLanguagesAction, setAvailableLanguages } from '../actions/appInfoActions';
+import { AppInfoActions, AppInfoActionsTypes, FetchAvailableLanguagesAction, setAvailableLanguages, fetchAvailableLanguagesError } from '../actions/appInfoActions';
 import { getAvailableLanguages } from '../../functions/appInfoApi';
-import { of } from 'rxjs';
 
 export const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
     ofType<AppInfoActions, FetchAvailableLanguagesAction>(AppInfoActionsTypes.FetchAvailableLanguages),
     switchMap(() => {
       return getAvailableLanguages().pipe(
-        map((availableLanguages) => {
-          return setAvailableLanguages({ languages: availableLanguages });
+        map((response) => {
+          return setAvailableLanguages({ languages: response.languages });
         }),
         catchError(() => {
-          return of({type: "bruh"});
+          return of(fetchAvailableLanguagesError());
         })
       );
     })

@@ -8,8 +8,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { AppState } from '../../store/store';
 
 import { fetchAvailableLanguages } from '../../store/actions/appInfoActions';
-import { setPrefferedLanguage } from '../../store/actions/appSettingsActions';
-import { selectPrefferedLanguage } from '../../store/selectors/appSettingsSelectors';
+import { setPrefferedLanguageCode } from '../../store/actions/appSettingsActions';
+import { selectPrefferedLanguageCode } from '../../store/selectors/appSettingsSelectors';
 import { selectAvailableLanguages } from '../../store/selectors/appInfoSelectors';
 import { Panel } from '../Panel/Panel';
 
@@ -20,13 +20,13 @@ const preffereLanguageLabel = "Preffered language";
 
 const mapStateToProps = (state: AppState) => {
   return {
-    prefferedLanguage: selectPrefferedLanguage(state),
+    prefferedLanguage: selectPrefferedLanguageCode(state),
     availableLanguages: selectAvailableLanguages(state),
   };
 };
 
 const mapDispatchToProps = {
-  setPrefferedLanguage,
+  setPrefferedLanguage: setPrefferedLanguageCode,
   fetchAvailableLanguages,
 };
 
@@ -60,7 +60,7 @@ const Component: React.FC<props> = ({ prefferedLanguage, availableLanguages, set
             {
               availableLanguages.map(language => {
                 return (
-                  <MenuItem key={ language } value={ language }>{ language }</MenuItem>
+                  <MenuItem key={ language.code } value={ language.code }>{ language.name }</MenuItem>
                 );
               })
             }

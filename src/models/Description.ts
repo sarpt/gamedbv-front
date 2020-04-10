@@ -1,5 +1,7 @@
+import { Language } from "./Language";
+
 export type Description = {
-  language: string,
+  language: Language,
   title: string,
   synopsis: string, 
 };

@@ -2,9 +2,10 @@ import {
   AppInfoActionsTypes,
   AppInfoActions
 } from "../actions/appInfoActions";
+import { Language } from "../../models/Language";
 
 type State = {
-  availableLanguages: string[],
+  availableLanguages: Language[],
 }
 const initialState: State = {
   availableLanguages: [],

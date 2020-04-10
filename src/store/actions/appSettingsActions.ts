@@ -1,24 +1,24 @@
 import { Action } from 'redux';
 
 export enum AppSettingsActionsTypes {
-  SetPrefferedLanguage = '[app-settings] Set preffered language',
+  SetPrefferedLanguageCode = '[app-settings] Set preffered language code',
 }
 
-type SetPrefferedLanguagePayload = {
+type SetPrefferedLanguageCodePayload = {
   language: string
 };
-export interface SetPrefferedLanguageAction extends Action {
-  type: AppSettingsActionsTypes.SetPrefferedLanguage,
-  payload: SetPrefferedLanguagePayload,
+export interface SetPrefferedLanguageCodeAction extends Action {
+  type: AppSettingsActionsTypes.SetPrefferedLanguageCode,
+  payload: SetPrefferedLanguageCodePayload,
 }
 
-export const setPrefferedLanguage = ({ language }: SetPrefferedLanguagePayload) => {
+export const setPrefferedLanguageCode = ({ language }: SetPrefferedLanguageCodePayload) => {
   return {
-    type: AppSettingsActionsTypes.SetPrefferedLanguage,
+    type: AppSettingsActionsTypes.SetPrefferedLanguageCode,
     payload: {
       language
     }, 
   };
 };
 
-export type AppSettingsActions = SetPrefferedLanguageAction;
+export type AppSettingsActions = SetPrefferedLanguageCodeAction;

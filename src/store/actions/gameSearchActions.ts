@@ -9,7 +9,7 @@ export enum GameSearchActionsTypes {
   ChangeSearchQuery = '[game-search] Change search query',
   ChangePlatforms = '[game-search] Change platforms',
   ChangeRegions = '[game-search] Change regions',
-  SetGameSearchError = '[game-search] Set game search error'
+  SetGameSearchError = '[game-search] [error] Set game search error'
 }
 
 type ChangeSearchOptionsPayload = {

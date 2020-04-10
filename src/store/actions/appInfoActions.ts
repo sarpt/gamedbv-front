@@ -1,12 +1,14 @@
 import { Action } from 'redux';
+import { Language } from '../../models/Language';
 
 export enum AppInfoActionsTypes {
   FetchAvailableLanguages = '[app-info] Fetch available languages',
+  FetchAvailableLanguagesError = '[app-info] [error] Fetch available languages error',
   SetAvailableLanguages = '[app-info] Set available languages',
 }
 
 type setAvailableLanguagesPayload = {
-  languages: string[]
+  languages: Language[]
 };
 export interface SetAvailableLanguagesAction extends Action {
   type: AppInfoActionsTypes.SetAvailableLanguages,
@@ -32,5 +34,16 @@ export const fetchAvailableLanguages = () => {
   };
 };
 
+export interface FetchAvailableLanguagesErrorAction extends Action {
+  type: AppInfoActionsTypes.FetchAvailableLanguagesError,
+}
+
+export const fetchAvailableLanguagesError = () => {
+  return {
+    type: AppInfoActionsTypes.FetchAvailableLanguagesError,
+  };
+};
+
 export type AppInfoActions = SetAvailableLanguagesAction 
-  | FetchAvailableLanguagesAction;
+  | FetchAvailableLanguagesAction
+  | FetchAvailableLanguagesErrorAction;
