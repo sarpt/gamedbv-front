@@ -51,10 +51,10 @@ export const GameSummary: React.FC<Props> = ({ game }) => {
       <Body>
         <PlatformAndRegion>
           <Platform variant="body2">
-            Platform: { game.platform }
+            Platform: { game.platform.code }
           </Platform>
           <Region variant="body2">
-            Region: { game.region }
+            Region: { game.region.code }
           </Region>
         </PlatformAndRegion>
         <Content>

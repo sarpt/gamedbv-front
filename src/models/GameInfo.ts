@@ -1,11 +1,11 @@
-import { Platforms } from './Platforms';
-import { Regions } from './Regions';
 import { Description } from './Description';
+import { Region } from './Region';
+import { Platform } from './Platform';
 
 export type GameInfo = {
   uuid: string,
   serialNumber: string,
   descriptions: Description[],
-  region: Regions,
-  platform: Platforms
+  region: Region,
+  platform: Platform,
 };
