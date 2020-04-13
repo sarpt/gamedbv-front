@@ -1,8 +1,20 @@
 import { map, filter, withLatestFrom } from "rxjs/operators";
 import { ActionsObservable, ofType, StateObservable } from "redux-observable";
 
-import { GameSearchActions, GameSearchActionsTypes, ChangeSearchQueryAction, ChangePlatformsAction, ChangeRegionsAction } from "../actions/gameSearchActions";
-import { GameSearchResultsActions, GameSearchResultsActionsTypes, ChangeResultsPerPageAction, changePage } from "../actions/gameSearchResultsActions";
+import {
+  GameSearchActions,
+  GameSearchActionsTypes,
+  ChangeSearchQueryAction,
+  ChangePlatformsAction,
+  AddSearchedRegionAction,
+  RemoveSearchedRegionAction
+} from "../actions/gameSearchActions";
+import {
+  GameSearchResultsActions,
+  GameSearchResultsActionsTypes,
+  ChangeResultsPerPageAction,
+  changePage
+} from "../actions/gameSearchResultsActions";
 import { AppState } from "../store";
 import { selectCurrentPage } from "../selectors/gameSearchResultsSelectors";
 
@@ -11,10 +23,11 @@ export const resetToFirstPage = (
   state$: StateObservable<AppState>,
 ) => {
   return actions$.pipe(
-    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | ChangeRegionsAction | ChangeResultsPerPageAction>(
+    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | AddSearchedRegionAction | RemoveSearchedRegionAction | ChangeResultsPerPageAction>(
       GameSearchActionsTypes.ChangeSearchQuery,
       GameSearchActionsTypes.ChangePlatforms,
-      GameSearchActionsTypes.ChangeRegions,
+      GameSearchActionsTypes.AddSearchedRegion,
+      GameSearchActionsTypes.RemoveSearchedRegion,
       GameSearchResultsActionsTypes.ChangeResultsPerPage
     ),
     withLatestFrom(state$),

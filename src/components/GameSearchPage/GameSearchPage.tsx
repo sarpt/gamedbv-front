@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../store/store';
@@ -9,6 +9,7 @@ import {
 import { GameSearchOptionsPanel } from '../GameSearchOptionsPanel/GameSearchOptionsPanel';
 import { GameSearchResultsPanel } from '../GameSearchResultsPanel/GameSearchResultsPanel';
 import { ErrorPanel } from '../ErrorPanel/ErrorPanel';
+import { fetchAvailableRegions } from '../../store/actions/appInfoActions';
 
 const gameSearchErrorMessage = 'Search results error';
 
@@ -18,14 +19,21 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchAvailableRegions,
+};
 
 type AdditionalProps = {};
 type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;
 
 const Component: React.FC<props> = ({
+  fetchAvailableRegions,
   searchError
 }) => {
+  useEffect(() => {
+    fetchAvailableRegions();
+  }, [fetchAvailableRegions]);
+
   return (
     <React.Fragment>
       <GameSearchOptionsPanel></GameSearchOptionsPanel>

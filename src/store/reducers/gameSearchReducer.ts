@@ -3,7 +3,6 @@ import {
   GameSearchActions,
 } from '../actions/gameSearchActions';
 
-import { RegionsMap, Regions } from '../../models/Regions';
 import { Platforms, PlatformsMap } from '../../models/Platforms';
 
 type SearchError = {
@@ -14,7 +13,7 @@ type SearchError = {
 type State = {
   searchQuery: string,
   shouldFilterByText: boolean,
-  searchedRegions: RegionsMap,
+  searchedRegions: Set<string>,
   searchedPlatforms: PlatformsMap,
   searchError: SearchError 
 };
@@ -22,12 +21,7 @@ type State = {
 const initialState: State = {
   searchQuery: '',
   shouldFilterByText: true,
-  searchedRegions: {
-    [Regions.NTSCJ]: true,
-    [Regions.NTSCU]: true,
-    [Regions.PAL]: true,
-    [Regions.OTHER]: true
-  },
+  searchedRegions: new Set<string>(),
   searchedPlatforms: {
     [Platforms.NGC]: true,
     [Platforms.WII]: true,
@@ -54,10 +48,15 @@ export const gameSearchReducer = (state: State = initialState, action: GameSearc
         ...state,
         searchedPlatforms: action.payload.platforms
       };
-    case GameSearchActionsTypes.ChangeRegions:
+    case GameSearchActionsTypes.AddSearchedRegion:
       return {
         ...state,
-        searchedRegions: action.payload.regions
+        searchedRegions: addSearchedRegion(state.searchedRegions, action.payload.regionCode),
+      };
+    case GameSearchActionsTypes.RemoveSearchedRegion:
+      return {
+        ...state,
+        searchedRegions: removeSearchedRegion(state.searchedRegions, action.payload.regionCode),
       };
     case GameSearchActionsTypes.SetGameSearchError:
       return {
@@ -68,3 +67,17 @@ export const gameSearchReducer = (state: State = initialState, action: GameSearc
       return state;
   }
 };
+
+function addSearchedRegion(searchedRegions: Set<string>, regionCode: string, ): Set<string> {
+  const newSearchedRegionsSet = new Set<string>(searchedRegions);
+  newSearchedRegionsSet.add(regionCode);
+
+  return newSearchedRegionsSet;
+}
+
+function removeSearchedRegion(searchedRegions: Set<string>, regionCode: string, ): Set<string> {
+  const newSearchedRegionsSet = new Set<string>(searchedRegions);
+  newSearchedRegionsSet.delete(regionCode);
+
+  return newSearchedRegionsSet;
+}

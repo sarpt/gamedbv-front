@@ -2,8 +2,17 @@ import { of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import { ofType, ActionsObservable } from 'redux-observable';
 
-import { AppInfoActions, AppInfoActionsTypes, FetchAvailableLanguagesAction, setAvailableLanguages, fetchAvailableLanguagesError } from '../actions/appInfoActions';
-import { getAvailableLanguages } from '../../functions/appInfoApi';
+import {
+  AppInfoActions,
+  AppInfoActionsTypes,
+  FetchAvailableLanguagesAction,
+  setAvailableLanguages,
+  fetchAvailableLanguagesError,
+  FetchAvailableRegionsAction,
+  setAvailableRegions,
+  fetchAvailableRegionsError
+} from '../actions/appInfoActions';
+import { getAvailableLanguages, getAvailableRegions } from '../../functions/appInfoApi';
 
 export const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
@@ -17,6 +26,22 @@ export const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActi
           return of(fetchAvailableLanguagesError());
         })
       );
+    })
+  );
+};
+
+export const fetchAvailableRegions$ = (actions$: ActionsObservable<AppInfoActions>) => {
+  return actions$.pipe(
+    ofType<AppInfoActions, FetchAvailableRegionsAction>(AppInfoActionsTypes.FetchAvailableRegions),
+    switchMap(() => {
+      return getAvailableRegions().pipe(
+        map((response) => {
+          return setAvailableRegions({ regions: response.regions })
+        }),
+        catchError(() => {
+          return of(fetchAvailableRegionsError());
+        })
+      )
     })
   );
 };

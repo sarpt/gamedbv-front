@@ -8,9 +8,10 @@ import {
   setGameSearchError,
   ChangeSearchQueryAction,
   ChangePlatformsAction,
-  ChangeRegionsAction,
   fetchSearchResults,
-  FetchSearchResultsAction
+  FetchSearchResultsAction,
+  AddSearchedRegionAction,
+  RemoveSearchedRegionAction
 } from '../actions/gameSearchActions';
 import {
   setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes
@@ -19,7 +20,6 @@ import {
 import { searchGames } from '../../functions/gamesApi';
 import { getAjaxErrorMessage } from '../../functions/errorUtils';
 import { booleanMapToArray } from '../../functions/booleanMapToArray';
-import { Regions } from '../../models/Regions';
 import { Platforms } from '../../models/Platforms';
 import { AppState } from '../store';
 
@@ -30,10 +30,11 @@ export const handleGameSearchChange = (
   actions$: ActionsObservable<GameSearchActions>
 ) => {
   return actions$.pipe(
-    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | ChangeRegionsAction | ChangePageAction | ChangeResultsPerPageAction>(
+    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | AddSearchedRegionAction | RemoveSearchedRegionAction | ChangePageAction | ChangeResultsPerPageAction>(
       GameSearchActionsTypes.ChangeSearchQuery,
       GameSearchActionsTypes.ChangePlatforms,
-      GameSearchActionsTypes.ChangeRegions,
+      GameSearchActionsTypes.AddSearchedRegion,
+      GameSearchActionsTypes.RemoveSearchedRegion,
       GameSearchResultsActionsTypes.ChangePage,
       GameSearchResultsActionsTypes.ChangeResultsPerPage
     ),
@@ -64,7 +65,7 @@ export const fetchGamesResults = (
         shouldFilterByText: state.shouldFilterByText,
         page: state.currentPage,
         gamesPerPage: state.gameResultsPerPage,
-        regions: booleanMapToArray<Regions>(state.searchedRegions),
+        regions: [...state.searchedRegions],
         platforms: booleanMapToArray<Platforms>(state.searchedPlatforms)
       };
 

@@ -1,10 +1,14 @@
 import { Action } from 'redux';
 import { Language } from '../../models/Language';
+import { Region } from '../../models/Region';
 
 export enum AppInfoActionsTypes {
   FetchAvailableLanguages = '[app-info] Fetch available languages',
   FetchAvailableLanguagesError = '[app-info] [error] Fetch available languages error',
   SetAvailableLanguages = '[app-info] Set available languages',
+  FetchAvailableRegions = '[app-info] Fetch available regions',
+  FetchAvailableRegionsError = '[app-info] [error] Fetch available regions error',
+  SetAvailableRegions = '[app-info] Set available regions',
 }
 
 type setAvailableLanguagesPayload = {
@@ -44,6 +48,46 @@ export const fetchAvailableLanguagesError = () => {
   };
 };
 
+export interface FetchAvailableRegionsAction extends Action {
+  type: AppInfoActionsTypes.FetchAvailableRegions,
+}
+
+export const fetchAvailableRegions = () => {
+  return {
+    type: AppInfoActionsTypes.FetchAvailableRegions,
+  };
+};
+
+export interface FetchAvailableRegionsErrorAction extends Action {
+  type: AppInfoActionsTypes.FetchAvailableRegionsError,
+}
+
+export const fetchAvailableRegionsError = () => {
+  return {
+    type: AppInfoActionsTypes.FetchAvailableRegionsError,
+  };
+};
+
+type setAvailableRegionsPayload = {
+  regions: Region[]
+};
+export interface SetAvailableRegionsAction extends Action {
+  type: AppInfoActionsTypes.SetAvailableRegions,
+  payload: setAvailableRegionsPayload,
+}
+
+export const setAvailableRegions = ({ regions }: setAvailableRegionsPayload) => {
+  return {
+    type: AppInfoActionsTypes.SetAvailableRegions,
+    payload: {
+      regions 
+    }, 
+  };
+};
+
 export type AppInfoActions = SetAvailableLanguagesAction 
   | FetchAvailableLanguagesAction
-  | FetchAvailableLanguagesErrorAction;
+  | FetchAvailableLanguagesErrorAction
+  | SetAvailableRegionsAction
+  | FetchAvailableRegionsAction
+  | FetchAvailableRegionsErrorAction;

@@ -1,7 +1,6 @@
 import { ajax } from 'rxjs/ajax';
 
 import { Platforms } from '../models/Platforms';
-import { Regions } from '../models/Regions';
 import { ApiParameters } from '../models/ApiParameters'
 import { GamesResult } from '../models/GamesResult';
 import { GameInfo } from '../models/GameInfo';
@@ -14,7 +13,7 @@ type SearchGamesArguments = {
   shouldFilterByText: boolean,
   page: number,
   gamesPerPage: number,
-  regions: Regions[],
+  regions: string[],
   platforms: Platforms[]
 };
 

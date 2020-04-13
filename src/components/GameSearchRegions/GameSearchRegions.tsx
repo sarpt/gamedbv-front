@@ -6,78 +6,63 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import { PanelSection } from '../PanelSection/PanelSection';
 
-import { Regions } from '../../models/Regions';
 import { AppState } from '../../store/store';
 import { selectRegions } from '../../store/selectors/gameSearchSelectors';
-import { changeRegions } from '../../store/actions/gameSearchActions';
+import { addSearchedRegion, removeSearchedRegion } from '../../store/actions/gameSearchActions';
+import { selectAvailableRegions } from '../../store/selectors/appInfoSelectors';
+import { Region } from '../../models/Region';
 
 const regionsLabel = 'Regions';
 
-type RegionCheckbox = {
-  label: string,
-  value: Regions
-};
-
-const regionsCheckboxes: RegionCheckbox[] = [
-  {
-    label: 'NTSC-U',
-    value: Regions.NTSCU
-  },
-  {
-    label: 'NTSC-J',
-    value: Regions.NTSCJ
-  },
-  {
-    label: 'PAL',
-    value: Regions.PAL
-  },
-  {
-    label: 'Other',
-    value: Regions.OTHER
-  }
-];
-
 const mapStateToProps = (state: AppState) => {
   return {
-    regions: selectRegions(state)
+    availableRegions: selectAvailableRegions(state),
+    regions: selectRegions(state),
   };
 };
 
 const mapDispatchToProps = {
-  changeRegions
+  addSearchedRegion,
+  removeSearchedRegion,
 };
 
 type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
 const Component: React.FC<Props> = ({ 
+  availableRegions,
   regions,
-  changeRegions 
+  addSearchedRegion,
+  removeSearchedRegion,
 }) => {
   const onRegionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newRegions = { ...regions, [event.target.value]: event.target.checked };
+    if (event.target.checked) {
+      addSearchedRegion({ regionCode: event.target.value });
+      return;
+    }
 
-    changeRegions({ regions: newRegions });
+    removeSearchedRegion({ regionCode: event.target.value });
   };
-  const isRegionSet = (regionCheckbox: RegionCheckbox): boolean => {
-    return regions[regionCheckbox.value];
+
+  const isRegionSet = (regionCheckbox: Region): boolean => {
+    return regions.has(regionCheckbox.code);
   };
 
   return (
     <PanelSection label={regionsLabel}>
       {
-        regionsCheckboxes.map(regionsCheckbox => {
+        availableRegions.map(region => {
           return (
             <FormControlLabel
-              key={ regionsCheckbox.value }
+              key={ region.code }
               control={
                 <Checkbox
-                  checked={ isRegionSet(regionsCheckbox) }
+                  checked={ isRegionSet(region) }
                   onChange={ onRegionsChange }
-                  value={ regionsCheckbox.value }
+                  value={ region.code }
                 ></Checkbox>
               }
-              label={ regionsCheckbox.label }
+              label={ region.code }
             ></FormControlLabel>
           );
         })

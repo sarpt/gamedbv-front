@@ -1,21 +1,22 @@
 import { Action } from 'redux';
 
-import { RegionsMap } from '../../models/Regions';
 import { PlatformsMap } from '../../models/Platforms';
+import { Region } from '../../models/Region';
 
 export enum GameSearchActionsTypes {
   FetchSearchResults = '[game-search] Fetch search results',
   ChangeSearchOptions = '[game-search] Change games search options',
   ChangeSearchQuery = '[game-search] Change search query',
   ChangePlatforms = '[game-search] Change platforms',
-  ChangeRegions = '[game-search] Change regions',
-  SetGameSearchError = '[game-search] [error] Set game search error'
+  AddSearchedRegion = '[game-search] Add searched region',
+  RemoveSearchedRegion = '[game-search] Remove searched region',
+  SetGameSearchError = '[game-search] [error] Set game search error',
 }
 
 type ChangeSearchOptionsPayload = {
   searchQuery: string,
   shouldGetAllGames: boolean,
-  searchedRegions: RegionsMap,
+  searchedRegions: Region[],
   searchedPlatforms: PlatformsMap,
   selectedGameResultsPage: number,
   gameResultsPerPage: number
@@ -84,20 +85,38 @@ export const changePlatforms = ({
   }
 };
 
-type ChangeRegionsPayload = {
-  regions: RegionsMap
+type AddSearchedRegionPayload = {
+  regionCode: string
 }
-export interface ChangeRegionsAction extends Action {
-  type: GameSearchActionsTypes.ChangeRegions,
-  payload: ChangeRegionsPayload
+export interface AddSearchedRegionAction extends Action {
+  type: GameSearchActionsTypes.AddSearchedRegion,
+  payload: AddSearchedRegionPayload
 }
-export const changeRegions = ({
-  regions 
-}: ChangeRegionsPayload): ChangeRegionsAction => {
+export const addSearchedRegion = ({
+  regionCode 
+}: AddSearchedRegionPayload): AddSearchedRegionAction => {
   return {
-    type: GameSearchActionsTypes.ChangeRegions,
+    type: GameSearchActionsTypes.AddSearchedRegion,
     payload: {
-      regions
+      regionCode
+    }
+  }
+};
+
+type RemoveSearchedRegionPayload = {
+  regionCode: string
+}
+export interface RemoveSearchedRegionAction extends Action {
+  type: GameSearchActionsTypes.RemoveSearchedRegion,
+  payload: RemoveSearchedRegionPayload
+}
+export const removeSearchedRegion = ({
+  regionCode 
+}: RemoveSearchedRegionPayload): RemoveSearchedRegionAction => {
+  return {
+    type: GameSearchActionsTypes.RemoveSearchedRegion,
+    payload: {
+      regionCode
     }
   }
 };
@@ -130,6 +149,7 @@ export const fetchSearchResults = (): FetchSearchResultsAction => {
 export type GameSearchActions = ChangeSearchOptionsAction
   | ChangeSearchQueryAction
   | ChangePlatformsAction
-  | ChangeRegionsAction
+  | AddSearchedRegionAction
+  | RemoveSearchedRegionAction
   | FetchSearchResultsAction
   | SetGameSearchErrorAction;
