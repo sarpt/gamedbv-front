@@ -25,15 +25,13 @@
     "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^4.3.5",
     "@types/redux": "^3.6.0",
-    "@types/styled-components": "^4.4.3",
-    "json-server": "^0.15.1"
+    "@types/styled-components": "^4.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev-server": "npx json-server --watch ./dev-server/db.json --port=3001 --routes ./dev-server/routes.json"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

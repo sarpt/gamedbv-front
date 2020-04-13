@@ -1,12 +1,14 @@
 # Gamedbv-front
 
-A simple frontend to GameTDB titles databases. More of a personal learning project to learn React and it's ecosystem than anything serious
+A simple frontend to GameTDB titles databases. More of a personal learning project to learn React and it's ecosystem than anything serious.
 
-Backend implementation can be found at: [GameDbv](https://github.com/sarpt/gamedbv)
+## Server
+
+Frontend implementation follows features introduced in the [GameDBV backend](https://github.com/sarpt/gamedbv).
+The backend can be launched with [gamedbv-serv](https://github.com/sarpt/gamedbv/blob/master/cmd/gamedbv-serv/gamedbv_serv.go).
+More detailed instructions to follow in the backend's README.
 
 ## Running
-
-```npm run dev-server``` runs development server (placeholder until backend that fetches and parses orginal xml is written)
 
 ```npm start``` serves app in a typical create-react-app fashion
  
