@@ -1,7 +1,7 @@
 import { ajax } from 'rxjs/ajax';
 
 import { Platforms } from '../models/Platforms';
-import { ApiParameters } from '../models/ApiParameters'
+import { ApiParameters } from '../models/ApiParameters';
 import { GamesResult } from '../models/GamesResult';
 import { GameInfo } from '../models/GameInfo';
 

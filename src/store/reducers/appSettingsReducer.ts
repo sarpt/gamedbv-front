@@ -5,7 +5,7 @@ import {
 
 type State = {
   prefferedLanguageCode: string,
-}
+};
 const initialState: State = {
   prefferedLanguageCode: 'EN',
 };

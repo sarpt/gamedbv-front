@@ -8,7 +8,7 @@ import { Region } from "../../models/Region";
 type State = {
   availableLanguages: Language[],
   availableRegions: Region[],
-}
+};
 const initialState: State = {
   availableLanguages: [],
   availableRegions: [],

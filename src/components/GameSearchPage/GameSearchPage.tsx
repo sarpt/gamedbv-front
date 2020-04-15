@@ -49,7 +49,7 @@ const Component: React.FC<props> = ({
       }
     </React.Fragment>
   );
-}
+};
 
 export const GameSearchPage = connect(
   mapStateToProps,

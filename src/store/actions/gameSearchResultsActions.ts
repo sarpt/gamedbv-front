@@ -6,15 +6,15 @@ export enum GameSearchResultsActionsTypes {
   SetSearchResults = '[game-search-results] Set games search results',
   ChangeResultsPerPage = '[game-search-results] Change results per page',
   ChangePage = '[game-search-results] Change page of results',
-};
+}
 
 type SetGamesPayload = {
   games: GameInfo[],
   total: number,
 };
 export interface SetSearchResultsAction extends Action {
-  type: GameSearchResultsActionsTypes.SetSearchResults,
-  payload: SetGamesPayload,
+  type: GameSearchResultsActionsTypes.SetSearchResults;
+  payload: SetGamesPayload;
 }
 export const dispatchSetGames = ({ games, total }: SetGamesPayload): SetSearchResultsAction => {
   return {
@@ -30,8 +30,8 @@ type ChangeResultsPerPagePayload = {
   resultsPerPage: number,
 };
 export interface ChangeResultsPerPageAction extends Action {
-  type: GameSearchResultsActionsTypes.ChangeResultsPerPage,
-  payload: ChangeResultsPerPagePayload
+  type: GameSearchResultsActionsTypes.ChangeResultsPerPage;
+  payload: ChangeResultsPerPagePayload;
 }
 export const dispatchChangeResultsPerPage = ({ resultsPerPage }: ChangeResultsPerPagePayload): ChangeResultsPerPageAction => {
   return {
@@ -39,15 +39,15 @@ export const dispatchChangeResultsPerPage = ({ resultsPerPage }: ChangeResultsPe
     payload: {
       resultsPerPage,
     },
-  }
+  };
 };
 
 type ChangePagePayload = {
   page: number,
 };
 export interface ChangePageAction extends Action {
-  type: GameSearchResultsActionsTypes.ChangePage,
-  payload: ChangePagePayload
+  type: GameSearchResultsActionsTypes.ChangePage;
+  payload: ChangePagePayload;
 }
 export const dispatchChangePage = ({ page }: ChangePagePayload): ChangePageAction => {
   return {
@@ -55,7 +55,7 @@ export const dispatchChangePage = ({ page }: ChangePagePayload): ChangePageActio
     payload: {
       page,
     },
-  }
+  };
 };
 
 export type GameSearchResultsActions = ChangePageAction

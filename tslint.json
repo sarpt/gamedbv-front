@@ -20,7 +20,8 @@
       "arrow-return-shorthand": true,
       "class-name": true,
       "interface-name": [true, "never-prefix"],
-      "object-literal-key-quotes": [true, "consistent"]
+      "object-literal-key-quotes": [true, "consistent"],
+      "semicolon": [true, "always"]
     },
     "rulesDirectory": []
 }

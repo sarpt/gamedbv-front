@@ -45,13 +45,13 @@ const Component: React.FC<Props> = ({
     changeResultsPerPage({
       resultsPerPage: Number.parseInt(event.target.value, 10),
     });
-  }
+  };
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     changePage({
       page: newPage,
     });
-  }
+  };
 
   return (
     <Table>

@@ -12,4 +12,4 @@ export function useSubject<V,>(): [Observable<V>, (newValue: V) => void] {
   };
 
   return [observable, handleNext];
-};
+}

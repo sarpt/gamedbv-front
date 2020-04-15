@@ -7,4 +7,4 @@ export enum Platforms {
   SWITCH = 'switch',
 }
 
-export type PlatformsMap = { [K in Platforms]: boolean }
+export type PlatformsMap = { [K in Platforms]: boolean };

@@ -5,7 +5,7 @@ import {
 
 type State = {
   gameId?: string,
-}
+};
 const initialState: State = {};
 
 export const gameDetailsReducer = (state: State = initialState, action: GameDetailsActions) => {

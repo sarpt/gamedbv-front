@@ -22,8 +22,8 @@ type ChangeSearchOptionsPayload = {
   gameResultsPerPage: number,
 };
 export interface ChangeSearchOptionsAction extends Action {
-  type: GameSearchActionsTypes.ChangeSearchOptions,
-  payload: ChangeSearchOptionsPayload
+  type: GameSearchActionsTypes.ChangeSearchOptions;
+  payload: ChangeSearchOptionsPayload;
 }
 export const dispatchChangeSearchOptions = ({
   searchQuery,
@@ -49,10 +49,10 @@ export const dispatchChangeSearchOptions = ({
 type ChangeSearchQueryPayload = {
   searchQuery: string,
   shouldGetAllGames: boolean,
-}
+};
 export interface ChangeSearchQueryAction extends Action {
-  type: GameSearchActionsTypes.ChangeSearchQuery,
-  payload: ChangeSearchQueryPayload
+  type: GameSearchActionsTypes.ChangeSearchQuery;
+  payload: ChangeSearchQueryPayload;
 }
 export const dispatchChangeSearchQuery = ({
   searchQuery,
@@ -64,15 +64,15 @@ export const dispatchChangeSearchQuery = ({
       searchQuery,
       shouldGetAllGames,
     },
-  }
+  };
 };
 
 type ChangePlatformsPayload = {
   platforms: PlatformsMap,
-}
+};
 export interface ChangePlatformsAction extends Action {
-  type: GameSearchActionsTypes.ChangePlatforms,
-  payload: ChangePlatformsPayload
+  type: GameSearchActionsTypes.ChangePlatforms;
+  payload: ChangePlatformsPayload;
 }
 export const dispatchChangePlatforms = ({
   platforms,
@@ -82,15 +82,15 @@ export const dispatchChangePlatforms = ({
     payload: {
       platforms,
     },
-  }
+  };
 };
 
 type AddSearchedRegionPayload = {
   regionCode: string,
-}
+};
 export interface AddSearchedRegionAction extends Action {
-  type: GameSearchActionsTypes.AddSearchedRegion,
-  payload: AddSearchedRegionPayload
+  type: GameSearchActionsTypes.AddSearchedRegion;
+  payload: AddSearchedRegionPayload;
 }
 export const dispatchAddSearchedRegion = ({
   regionCode,
@@ -100,15 +100,15 @@ export const dispatchAddSearchedRegion = ({
     payload: {
       regionCode,
     },
-  }
+  };
 };
 
 type RemoveSearchedRegionPayload = {
   regionCode: string,
-}
+};
 export interface RemoveSearchedRegionAction extends Action {
-  type: GameSearchActionsTypes.RemoveSearchedRegion,
-  payload: RemoveSearchedRegionPayload
+  type: GameSearchActionsTypes.RemoveSearchedRegion;
+  payload: RemoveSearchedRegionPayload;
 }
 export const dispatchRemoveSearchedRegion = ({
   regionCode,
@@ -118,15 +118,15 @@ export const dispatchRemoveSearchedRegion = ({
     payload: {
       regionCode,
     },
-  }
+  };
 };
 
 type SetGameSearchErrorPayload = {
   message: string,
 };
 export interface SetGameSearchErrorAction extends Action {
-  type: GameSearchActionsTypes.SetGameSearchError,
-  payload: SetGameSearchErrorPayload
+  type: GameSearchActionsTypes.SetGameSearchError;
+  payload: SetGameSearchErrorPayload;
 }
 export const dispatchSetGameSearchError = ({ message }: SetGameSearchErrorPayload): SetGameSearchErrorAction => {
   return {
@@ -134,16 +134,16 @@ export const dispatchSetGameSearchError = ({ message }: SetGameSearchErrorPayloa
     payload: {
       message,
     },
-  }
+  };
 };
 
 export interface FetchSearchResultsAction extends Action {
-  type: GameSearchActionsTypes.FetchSearchResults
+  type: GameSearchActionsTypes.FetchSearchResults;
 }
 export const dispatchFetchSearchResults = (): FetchSearchResultsAction => {
   return {
     type: GameSearchActionsTypes.FetchSearchResults,
-  }
+  };
 };
 
 export type GameSearchActions = ChangeSearchOptionsAction

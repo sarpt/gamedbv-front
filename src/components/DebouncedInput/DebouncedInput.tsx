@@ -46,4 +46,4 @@ export const DebouncedInput: React.FC<props> = ({ label, placeholder, initialVal
       label={ label }
     ></Input>
   );
-}
+};

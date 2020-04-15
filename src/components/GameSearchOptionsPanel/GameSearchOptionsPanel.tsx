@@ -34,4 +34,4 @@ export const GameSearchOptionsPanel: React.FC<Props> = () => {
       </FormGroup>
     </Panel>
   );
-}
+};

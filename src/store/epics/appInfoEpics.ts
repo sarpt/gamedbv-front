@@ -16,7 +16,7 @@ import {
 } from '../actions/appInfoActions';
 import { getAvailableLanguages, getAvailableRegions } from '../../functions/appInfoApi';
 
-export const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
+const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
     ofType<AppInfoActions, FetchAvailableLanguagesAction>(AppInfoActionsTypes.FetchAvailableLanguages),
     switchMap(() => {
@@ -32,34 +32,40 @@ export const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActi
   );
 };
 
-export const fetchAvailableRegions$ = (actions$: ActionsObservable<AppInfoActions>) => {
+const fetchAvailableRegions$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
     ofType<AppInfoActions, FetchAvailableRegionsAction>(AppInfoActionsTypes.FetchAvailableRegions),
     switchMap(() => {
       return getAvailableRegions().pipe(
         map((response) => {
-          return dispatchSetAvailableRegions({ regions: response.regions })
+          return dispatchSetAvailableRegions({ regions: response.regions });
         }),
         catchError(() => {
           return of(dispatchFetchAvailableRegionsError());
         }),
-      )
+      );
     }),
   );
 };
 
-export const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AppInfoActions>) => {
+const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
     ofType<AppInfoActions, FetchAvailablePlatformsAction>(AppInfoActionsTypes.FetchAvailablePlatforms),
     switchMap(() => {
       return getAvailableRegions().pipe(
         map((response) => {
-          return dispatchSetAvailableRegions({ regions: response.regions })
+          return dispatchSetAvailableRegions({ regions: response.regions });
         }),
         catchError(() => {
           return of(dispatchFetchAvailablePlatformsError());
         }),
-      )
+      );
     }),
   );
 };
+
+export const apiInfoEpics = [
+  fetchAvailableLanguages$,
+  fetchAvailableRegions$,
+  fetchAvailablePlatforms$,
+];

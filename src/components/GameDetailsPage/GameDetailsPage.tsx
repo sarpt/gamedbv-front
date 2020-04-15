@@ -5,7 +5,7 @@ import { AppState } from '../../store/store';
 
 const mapStateToProps = (state: AppState) => {
   return {};
-}
+};
 
 const mapDispatchToProps = {};
 

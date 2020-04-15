@@ -26,7 +26,7 @@ import { AppState } from '../store';
 import { selectGameSearchStore } from '../selectors/gameSearchSelectors';
 import { selectGameSearchResultsStore } from '../selectors/gameSearchResultsSelectors';
 
-export const handleGameSearchChange = (
+const handleGameSearchChange$ = (
   actions$: ActionsObservable<GameSearchActions>,
 ) => {
   return actions$.pipe(
@@ -44,7 +44,7 @@ export const handleGameSearchChange = (
   );
 };
 
-export const fetchGamesResults = (
+const fetchGamesResults$ = (
   actions$: ActionsObservable<GameSearchActions>,
   state$: StateObservable<AppState>,
 ) => {
@@ -81,3 +81,8 @@ export const fetchGamesResults = (
     }),
   );
 };
+
+export const gameSearchEpics = [
+  handleGameSearchChange$,
+  fetchGamesResults$,
+];

@@ -4,14 +4,14 @@ export enum GameDetailsActionsTypes {
   SetGameId = '[game-details] Set game id',
 }
 export interface SetGameIdAction extends Action {
-  type: GameDetailsActionsTypes.SetGameId,
-  payload: string
+  type: GameDetailsActionsTypes.SetGameId;
+  payload: string;
 }
 export const dispatchSetGameId = (gameId: string): SetGameIdAction => {
   return {
     type: GameDetailsActionsTypes.SetGameId,
     payload: gameId,
   };
-}
+};
 
 export type GameDetailsActions = SetGameIdAction;

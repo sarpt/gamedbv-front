@@ -25,11 +25,11 @@ const initialState: State = {
 export const gameSearchResultsReducer = (state: State = initialState, action: GameSearchResultsActions): State => {
   switch (action.type) {
     case GameSearchResultsActionsTypes.SetSearchResults:
-      return { ...state, gameSearchResults: action.payload.games, total: action.payload.total }
+      return { ...state, gameSearchResults: action.payload.games, total: action.payload.total };
     case GameSearchResultsActionsTypes.ChangePage:
-      return { ...state, currentPage: action.payload.page }
+      return { ...state, currentPage: action.payload.page };
     case GameSearchResultsActionsTypes.ChangeResultsPerPage:
-      return { ...state, gameResultsPerPage: action.payload.resultsPerPage }
+      return { ...state, gameResultsPerPage: action.payload.resultsPerPage };
     default:
       return state;
   }

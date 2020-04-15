@@ -18,7 +18,7 @@ import {
 import { AppState } from "../store";
 import { selectCurrentPage } from "../selectors/gameSearchResultsSelectors";
 
-export const resetToFirstPage = (
+const resetToFirstPage$ = (
   actions$: ActionsObservable<GameSearchActions | GameSearchResultsActions>,
   state$: StateObservable<AppState>,
 ) => {
@@ -37,3 +37,7 @@ export const resetToFirstPage = (
     }),
   );
 };
+
+export const gameResultsEpics = [
+  resetToFirstPage$,
+];

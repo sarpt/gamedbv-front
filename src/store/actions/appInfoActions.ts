@@ -19,8 +19,8 @@ type setAvailableLanguagesPayload = {
   languages: Language[],
 };
 export interface SetAvailableLanguagesAction extends Action {
-  type: AppInfoActionsTypes.SetAvailableLanguages,
-  payload: setAvailableLanguagesPayload,
+  type: AppInfoActionsTypes.SetAvailableLanguages;
+  payload: setAvailableLanguagesPayload;
 }
 
 export const dispatchSetAvailableLanguages = ({ languages }: setAvailableLanguagesPayload) => {
@@ -33,7 +33,7 @@ export const dispatchSetAvailableLanguages = ({ languages }: setAvailableLanguag
 };
 
 export interface FetchAvailableLanguagesAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableLanguages,
+  type: AppInfoActionsTypes.FetchAvailableLanguages;
 }
 
 export const dispatchFetchAvailableLanguages = () => {
@@ -43,7 +43,7 @@ export const dispatchFetchAvailableLanguages = () => {
 };
 
 export interface FetchAvailableLanguagesErrorAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableLanguagesError,
+  type: AppInfoActionsTypes.FetchAvailableLanguagesError;
 }
 
 export const dispatchFetchAvailableLanguagesError = () => {
@@ -53,7 +53,7 @@ export const dispatchFetchAvailableLanguagesError = () => {
 };
 
 export interface FetchAvailableRegionsAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableRegions,
+  type: AppInfoActionsTypes.FetchAvailableRegions;
 }
 
 export const dispatchFetchAvailableRegions = () => {
@@ -63,7 +63,7 @@ export const dispatchFetchAvailableRegions = () => {
 };
 
 export interface FetchAvailableRegionsErrorAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableRegionsError,
+  type: AppInfoActionsTypes.FetchAvailableRegionsError;
 }
 
 export const dispatchFetchAvailableRegionsError = () => {
@@ -76,8 +76,8 @@ type setAvailableRegionsPayload = {
   regions: Region[],
 };
 export interface SetAvailableRegionsAction extends Action {
-  type: AppInfoActionsTypes.SetAvailableRegions,
-  payload: setAvailableRegionsPayload,
+  type: AppInfoActionsTypes.SetAvailableRegions;
+  payload: setAvailableRegionsPayload;
 }
 
 export const dispatchSetAvailableRegions = ({ regions }: setAvailableRegionsPayload) => {
@@ -90,7 +90,7 @@ export const dispatchSetAvailableRegions = ({ regions }: setAvailableRegionsPayl
 };
 
 export interface FetchAvailablePlatformsAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailablePlatforms,
+  type: AppInfoActionsTypes.FetchAvailablePlatforms;
 }
 
 export const dispatchFetchAvailablePlatforms = () => {
@@ -100,7 +100,7 @@ export const dispatchFetchAvailablePlatforms = () => {
 };
 
 export interface FetchAvailablePlatformsErrorAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailablePlatformsError,
+  type: AppInfoActionsTypes.FetchAvailablePlatformsError;
 }
 
 export const dispatchFetchAvailablePlatformsError = () => {
@@ -113,8 +113,8 @@ type setAvailablePlatformsPayload = {
   platforms: Platform[],
 };
 export interface SetAvailablePlatformsAction extends Action {
-  type: AppInfoActionsTypes.SetAvailablePlatforms,
-  payload: setAvailablePlatformsPayload,
+  type: AppInfoActionsTypes.SetAvailablePlatforms;
+  payload: setAvailablePlatformsPayload;
 }
 
 export const dispatchSetAvailablePlatforms = ({ platforms }: setAvailablePlatformsPayload) => {

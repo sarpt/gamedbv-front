@@ -1,15 +1,13 @@
 import { combineEpics } from 'redux-observable';
 
-import { fetchGamesResults, handleGameSearchChange } from './gameSearchEpics';
-import { setGameIdEpic } from './gameDetailsEpics';
-import { resetToFirstPage } from './gameResultsEpics';
-import { fetchAvailableLanguages$, fetchAvailableRegions$ } from './appInfoEpics';
+import { gameSearchEpics } from './gameSearchEpics';
+import { gameDetailsEpics } from './gameDetailsEpics';
+import { gameResultsEpics } from './gameResultsEpics';
+import { apiInfoEpics } from './appInfoEpics';
 
 export const rootEpic = combineEpics(
-  handleGameSearchChange,
-  fetchAvailableLanguages$,
-  fetchGamesResults,
-  setGameIdEpic,
-  resetToFirstPage,
-  fetchAvailableRegions$,
+  ...apiInfoEpics,
+  ...gameResultsEpics,
+  ...gameSearchEpics,
+  ...gameDetailsEpics,
 );

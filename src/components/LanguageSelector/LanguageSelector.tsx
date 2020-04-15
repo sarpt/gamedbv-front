@@ -34,7 +34,7 @@ const Component: React.FC<props> = ({ languages, onLanguageSelect, prefferedLang
     initialLanguage.current = selectLanguage(prefferedLanguageCode, languages);
   }
 
-  const [language, setLanguage] = React.useState<Language>(initialLanguage.current)
+  const [language, setLanguage] = React.useState<Language>(initialLanguage.current);
   const handleLanguageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     const newLanguage = selectLanguage(event.target.value as string, languages);
     setLanguage(newLanguage);
@@ -43,7 +43,7 @@ const Component: React.FC<props> = ({ languages, onLanguageSelect, prefferedLang
 
   useEffect(() => {
     onLanguageSelect(initialLanguage.current!);
-  }, [onLanguageSelect])
+  }, [onLanguageSelect]);
 
   return (
     <React.Fragment>

@@ -18,4 +18,4 @@ export const App: React.FC = () => {
       </StylesProvider>
     </ThemeProvider>
   );
-}
+};
