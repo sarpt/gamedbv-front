@@ -1,10 +1,10 @@
 import {
   GameDetailsActionsTypes,
-  GameDetailsActions
+  GameDetailsActions,
 } from '../actions/gameDetailsActions';
 
 type State = {
-  gameId?: string
+  gameId?: string,
 }
 const initialState: State = {};
 

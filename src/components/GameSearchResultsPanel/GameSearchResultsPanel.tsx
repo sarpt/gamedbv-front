@@ -7,7 +7,7 @@ import { Panel } from '../Panel/Panel';
 import { GameSearchResultsTable } from '../GameSearchResultsTable/GameSearchResultsTable';
 
 import {
-  fetchSearchResults
+  dispatchFetchSearchResults,
 } from '../../store/actions/gameSearchActions';
 import { AppState } from '../../store/store';
 import { areAnyGameSearchResultsAvailable } from '../../store/selectors/gameSearchResultsSelectors';
@@ -17,12 +17,12 @@ const noGameSearchResultMessage = 'No games with provided query were found';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    shouldShowSearchResultsTable: areAnyGameSearchResultsAvailable(state)
+    shouldShowSearchResultsTable: areAnyGameSearchResultsAvailable(state),
   };
 };
 
 const mapDispatchToProps = {
-  fetchSearchResults
+  fetchSearchResults: dispatchFetchSearchResults,
 };
 
 type AdditionalProps = {};
@@ -30,7 +30,7 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & Ad
 
 const Component: React.FC<Props> = ({
   shouldShowSearchResultsTable,
-  fetchSearchResults
+  fetchSearchResults,
 }) => {
   useEffect(() => {
     fetchSearchResults();
@@ -56,5 +56,5 @@ const Component: React.FC<Props> = ({
 
 export const GameSearchResultsPanel = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);

@@ -8,7 +8,7 @@ import { PanelSection } from '../PanelSection/PanelSection';
 
 import { AppState } from '../../store/store';
 import { selectRegions } from '../../store/selectors/gameSearchSelectors';
-import { addSearchedRegion, removeSearchedRegion } from '../../store/actions/gameSearchActions';
+import { dispatchAddSearchedRegion, dispatchRemoveSearchedRegion } from '../../store/actions/gameSearchActions';
 import { selectAvailableRegions } from '../../store/selectors/appInfoSelectors';
 import { Region } from '../../models/Region';
 
@@ -22,14 +22,14 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  addSearchedRegion,
-  removeSearchedRegion,
+  addSearchedRegion: dispatchAddSearchedRegion,
+  removeSearchedRegion: dispatchRemoveSearchedRegion,
 };
 
 type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
-const Component: React.FC<Props> = ({ 
+const Component: React.FC<Props> = ({
   availableRegions,
   regions,
   addSearchedRegion,
@@ -38,6 +38,7 @@ const Component: React.FC<Props> = ({
   const onRegionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       addSearchedRegion({ regionCode: event.target.value });
+
       return;
     }
 
@@ -73,5 +74,5 @@ const Component: React.FC<Props> = ({
 
 export const GameSearchRegions = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);

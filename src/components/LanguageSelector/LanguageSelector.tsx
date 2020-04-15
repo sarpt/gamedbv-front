@@ -55,9 +55,9 @@ const Component: React.FC<props> = ({ languages, onLanguageSelect, prefferedLang
           onChange={ handleLanguageChange }
         >
           {
-            languages.map(language => {
+            languages.map(lang => {
               return (
-                <MenuItem key={ language.code } value={ language.code }>{ language.name }</MenuItem>
+                <MenuItem key={ lang.code } value={ lang.code }>{ lang.name }</MenuItem>
               );
             })
           }

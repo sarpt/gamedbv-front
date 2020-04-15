@@ -23,5 +23,5 @@ const Component: React.FC<props> = ({}) => {
 
 export const StatusPage = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);

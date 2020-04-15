@@ -12,7 +12,7 @@ import { GameResultCell } from './GameSearchResultsTable.styles';
 import { GameSummary } from '../GameSummary/GameSummary';
 
 import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults, selectGameSearchResultsTotal } from '../../store/selectors/gameSearchResultsSelectors';
-import { changePage, changeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
+import { dispatchChangePage, dispatchChangeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
 
 import { AppState } from '../../store/store';
 
@@ -29,8 +29,8 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  changePage,
-  changeResultsPerPage
+  changePage: dispatchChangePage,
+  changeResultsPerPage: dispatchChangeResultsPerPage,
 };
 
 const Component: React.FC<Props> = ({
@@ -43,13 +43,13 @@ const Component: React.FC<Props> = ({
 }) => {
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     changeResultsPerPage({
-      resultsPerPage: Number.parseInt(event.target.value, 10)
+      resultsPerPage: Number.parseInt(event.target.value, 10),
     });
   }
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     changePage({
-      page: newPage
+      page: newPage,
     });
   }
 
@@ -87,5 +87,5 @@ const Component: React.FC<Props> = ({
 
 export const GameSearchResultsTable = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);

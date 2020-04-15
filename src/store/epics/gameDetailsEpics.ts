@@ -8,6 +8,6 @@ export const setGameIdEpic = (actions$: ActionsObservable<GameDetailsActions>) =
     ofType<GameDetailsActions, SetGameIdAction>(GameDetailsActionsTypes.SetGameId),
     map(() => {
       of([])
-    })
+    }),
   );
 };

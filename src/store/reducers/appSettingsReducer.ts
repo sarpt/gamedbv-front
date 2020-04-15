@@ -1,10 +1,10 @@
-import { 
+import {
   AppSettingsActionsTypes,
   AppSettingsActions,
  } from "../actions/appSettingsActions";
 
 type State = {
-  prefferedLanguageCode: string
+  prefferedLanguageCode: string,
 }
 const initialState: State = {
   prefferedLanguageCode: 'EN',

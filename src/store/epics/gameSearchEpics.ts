@@ -5,16 +5,16 @@ import { ofType, ActionsObservable, StateObservable } from 'redux-observable';
 import {
   GameSearchActionsTypes,
   GameSearchActions,
-  setGameSearchError,
+  dispatchSetGameSearchError,
   ChangeSearchQueryAction,
   ChangePlatformsAction,
-  fetchSearchResults,
+  dispatchFetchSearchResults,
   FetchSearchResultsAction,
   AddSearchedRegionAction,
-  RemoveSearchedRegionAction
+  RemoveSearchedRegionAction,
 } from '../actions/gameSearchActions';
 import {
-  setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes
+  dispatchSetGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes,
 } from '../actions/gameSearchResultsActions';
 
 import { searchGames } from '../../functions/gamesApi';
@@ -27,7 +27,7 @@ import { selectGameSearchStore } from '../selectors/gameSearchSelectors';
 import { selectGameSearchResultsStore } from '../selectors/gameSearchResultsSelectors';
 
 export const handleGameSearchChange = (
-  actions$: ActionsObservable<GameSearchActions>
+  actions$: ActionsObservable<GameSearchActions>,
 ) => {
   return actions$.pipe(
     ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | AddSearchedRegionAction | RemoveSearchedRegionAction | ChangePageAction | ChangeResultsPerPageAction>(
@@ -36,11 +36,11 @@ export const handleGameSearchChange = (
       GameSearchActionsTypes.AddSearchedRegion,
       GameSearchActionsTypes.RemoveSearchedRegion,
       GameSearchResultsActionsTypes.ChangePage,
-      GameSearchResultsActionsTypes.ChangeResultsPerPage
+      GameSearchResultsActionsTypes.ChangeResultsPerPage,
     ),
     map(() => {
-      return fetchSearchResults();
-    })
+      return dispatchFetchSearchResults();
+    }),
   );
 };
 
@@ -50,13 +50,13 @@ export const fetchGamesResults = (
 ) => {
   return actions$.pipe(
     ofType<GameSearchActions,FetchSearchResultsAction>(
-      GameSearchActionsTypes.FetchSearchResults
+      GameSearchActionsTypes.FetchSearchResults,
     ),
     withLatestFrom(state$),
     map(([, state]) => {
       return {
         ...selectGameSearchStore(state),
-        ...selectGameSearchResultsStore(state)
+        ...selectGameSearchResultsStore(state),
       };
     }),
     concatMap((state) => {
@@ -66,18 +66,18 @@ export const fetchGamesResults = (
         page: state.currentPage,
         gamesPerPage: state.gameResultsPerPage,
         regions: [...state.searchedRegions],
-        platforms: booleanMapToArray<Platforms>(state.searchedPlatforms)
+        platforms: booleanMapToArray<Platforms>(state.searchedPlatforms),
       };
 
       return searchGames(searchGamesRequestProperties)
         .pipe(
           map((result) => {
-            return setGames({ games: result.games, total: result.total });
+            return dispatchSetGames({ games: result.games, total: result.total });
           }),
           catchError((error) => {
-            return of(setGameSearchError({ message: getAjaxErrorMessage(error) }));
-          })
+            return of(dispatchSetGameSearchError({ message: getAjaxErrorMessage(error) }));
+          }),
         );
-    })    
+    }),
   );
 };

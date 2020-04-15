@@ -1,6 +1,6 @@
-import { 
+import {
   AppInfoActionsTypes,
-  AppInfoActions
+  AppInfoActions,
 } from "../actions/appInfoActions";
 import { Language } from "../../models/Language";
 import { Region } from "../../models/Region";

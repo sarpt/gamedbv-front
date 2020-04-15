@@ -14,7 +14,7 @@ type SearchGamesArguments = {
   page: number,
   gamesPerPage: number,
   regions: string[],
-  platforms: Platforms[]
+  platforms: Platforms[],
 };
 
 export function searchGames({
@@ -23,32 +23,32 @@ export function searchGames({
   page,
   gamesPerPage,
   regions,
-  platforms
+  platforms,
 }: SearchGamesArguments) {
   let url = getGamesEndpoint();
   if (shouldFilterByText) {
     url = addQueriesToUrl(url, ApiParameters.searchQuery, [searchQuery]);
   }
-  url = addQueriesToUrl(url, ApiParameters.currentPage, [page]);
-  url = addQueriesToUrl(url, ApiParameters.itemsPerPage, [gamesPerPage]);
+  url = addQueriesToUrl(url, ApiParameters.currentPage, [`${page}`]);
+  url = addQueriesToUrl(url, ApiParameters.itemsPerPage, [`${gamesPerPage}`]);
   url = addQueriesToUrl(url, ApiParameters.platform, platforms);
   url = addQueriesToUrl(url, ApiParameters.region, regions);
 
   const options: RequestInit = {
-    method: 'GET'
+    method: 'GET',
   };
 
   return ajax.getJSON<GamesResult>(url, options);
 }
 
 type GetGameArguments = {
-  id: string
+  id: string,
 };
 
 export function getGame({ id }: GetGameArguments) {
   const url = getGameDetailsEndpoint(id);
   const options: RequestInit = {
-    method: 'GET'
+    method: 'GET',
   };
 
   return ajax.getJSON<GameInfo>(url, options);

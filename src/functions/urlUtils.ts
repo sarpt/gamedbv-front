@@ -5,7 +5,7 @@ function getQuerySeparator(url: string) {
   return url.includes(startingQueryParametersSymbol) ? nextQueryParameterSymbol : startingQueryParametersSymbol;
 }
 
-export function addQueriesToUrl(initialUrl: string, queryName: string, queryValues: any[]) {
+export function addQueriesToUrl(initialUrl: string, queryName: string, queryValues: string[]) {
   return queryValues.reduce((finalUrl: string, queryValue: string) => {
     const separator = getQuerySeparator(finalUrl);
 

@@ -6,11 +6,13 @@ import {
   AppInfoActions,
   AppInfoActionsTypes,
   FetchAvailableLanguagesAction,
-  setAvailableLanguages,
-  fetchAvailableLanguagesError,
+  dispatchSetAvailableLanguages,
+  dispatchFetchAvailableLanguagesError,
   FetchAvailableRegionsAction,
-  setAvailableRegions,
-  fetchAvailableRegionsError
+  dispatchSetAvailableRegions,
+  dispatchFetchAvailableRegionsError,
+  FetchAvailablePlatformsAction,
+  dispatchFetchAvailablePlatformsError,
 } from '../actions/appInfoActions';
 import { getAvailableLanguages, getAvailableRegions } from '../../functions/appInfoApi';
 
@@ -20,13 +22,13 @@ export const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActi
     switchMap(() => {
       return getAvailableLanguages().pipe(
         map((response) => {
-          return setAvailableLanguages({ languages: response.languages });
+          return dispatchSetAvailableLanguages({ languages: response.languages });
         }),
         catchError(() => {
-          return of(fetchAvailableLanguagesError());
-        })
+          return of(dispatchFetchAvailableLanguagesError());
+        }),
       );
-    })
+    }),
   );
 };
 
@@ -36,12 +38,28 @@ export const fetchAvailableRegions$ = (actions$: ActionsObservable<AppInfoAction
     switchMap(() => {
       return getAvailableRegions().pipe(
         map((response) => {
-          return setAvailableRegions({ regions: response.regions })
+          return dispatchSetAvailableRegions({ regions: response.regions })
         }),
         catchError(() => {
-          return of(fetchAvailableRegionsError());
-        })
+          return of(dispatchFetchAvailableRegionsError());
+        }),
       )
-    })
+    }),
+  );
+};
+
+export const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AppInfoActions>) => {
+  return actions$.pipe(
+    ofType<AppInfoActions, FetchAvailablePlatformsAction>(AppInfoActionsTypes.FetchAvailablePlatforms),
+    switchMap(() => {
+      return getAvailableRegions().pipe(
+        map((response) => {
+          return dispatchSetAvailableRegions({ regions: response.regions })
+        }),
+        catchError(() => {
+          return of(dispatchFetchAvailablePlatformsError());
+        }),
+      )
+    }),
   );
 };

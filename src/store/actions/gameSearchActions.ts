@@ -19,19 +19,19 @@ type ChangeSearchOptionsPayload = {
   searchedRegions: Region[],
   searchedPlatforms: PlatformsMap,
   selectedGameResultsPage: number,
-  gameResultsPerPage: number
+  gameResultsPerPage: number,
 };
 export interface ChangeSearchOptionsAction extends Action {
   type: GameSearchActionsTypes.ChangeSearchOptions,
   payload: ChangeSearchOptionsPayload
 }
-export const changeSearchOptions = ({
+export const dispatchChangeSearchOptions = ({
   searchQuery,
   shouldGetAllGames,
   searchedRegions,
   searchedPlatforms,
   selectedGameResultsPage,
-  gameResultsPerPage
+  gameResultsPerPage,
 }: ChangeSearchOptionsPayload): ChangeSearchOptionsAction => {
   return {
     type: GameSearchActionsTypes.ChangeSearchOptions,
@@ -41,8 +41,8 @@ export const changeSearchOptions = ({
       searchedRegions,
       searchedPlatforms,
       selectedGameResultsPage,
-      gameResultsPerPage
-    }
+      gameResultsPerPage,
+    },
   };
 };
 
@@ -54,95 +54,95 @@ export interface ChangeSearchQueryAction extends Action {
   type: GameSearchActionsTypes.ChangeSearchQuery,
   payload: ChangeSearchQueryPayload
 }
-export const changeSearchQuery = ({
+export const dispatchChangeSearchQuery = ({
   searchQuery,
-  shouldGetAllGames
+  shouldGetAllGames,
 }: ChangeSearchQueryPayload): ChangeSearchQueryAction => {
   return {
     type: GameSearchActionsTypes.ChangeSearchQuery,
     payload: {
       searchQuery,
-      shouldGetAllGames
-    }
+      shouldGetAllGames,
+    },
   }
 };
 
 type ChangePlatformsPayload = {
-  platforms: PlatformsMap
+  platforms: PlatformsMap,
 }
 export interface ChangePlatformsAction extends Action {
   type: GameSearchActionsTypes.ChangePlatforms,
   payload: ChangePlatformsPayload
 }
-export const changePlatforms = ({
-  platforms
+export const dispatchChangePlatforms = ({
+  platforms,
 }: ChangePlatformsPayload): ChangePlatformsAction => {
   return {
     type: GameSearchActionsTypes.ChangePlatforms,
     payload: {
-      platforms
-    }
+      platforms,
+    },
   }
 };
 
 type AddSearchedRegionPayload = {
-  regionCode: string
+  regionCode: string,
 }
 export interface AddSearchedRegionAction extends Action {
   type: GameSearchActionsTypes.AddSearchedRegion,
   payload: AddSearchedRegionPayload
 }
-export const addSearchedRegion = ({
-  regionCode 
+export const dispatchAddSearchedRegion = ({
+  regionCode,
 }: AddSearchedRegionPayload): AddSearchedRegionAction => {
   return {
     type: GameSearchActionsTypes.AddSearchedRegion,
     payload: {
-      regionCode
-    }
+      regionCode,
+    },
   }
 };
 
 type RemoveSearchedRegionPayload = {
-  regionCode: string
+  regionCode: string,
 }
 export interface RemoveSearchedRegionAction extends Action {
   type: GameSearchActionsTypes.RemoveSearchedRegion,
   payload: RemoveSearchedRegionPayload
 }
-export const removeSearchedRegion = ({
-  regionCode 
+export const dispatchRemoveSearchedRegion = ({
+  regionCode,
 }: RemoveSearchedRegionPayload): RemoveSearchedRegionAction => {
   return {
     type: GameSearchActionsTypes.RemoveSearchedRegion,
     payload: {
-      regionCode
-    }
+      regionCode,
+    },
   }
 };
 
 type SetGameSearchErrorPayload = {
-  message: string
+  message: string,
 };
 export interface SetGameSearchErrorAction extends Action {
   type: GameSearchActionsTypes.SetGameSearchError,
   payload: SetGameSearchErrorPayload
 }
-export const setGameSearchError = ({ message }: SetGameSearchErrorPayload): SetGameSearchErrorAction => {
+export const dispatchSetGameSearchError = ({ message }: SetGameSearchErrorPayload): SetGameSearchErrorAction => {
   return {
     type: GameSearchActionsTypes.SetGameSearchError,
     payload: {
-      message
-    }
+      message,
+    },
   }
 };
 
 export interface FetchSearchResultsAction extends Action {
   type: GameSearchActionsTypes.FetchSearchResults
 }
-export const fetchSearchResults = (): FetchSearchResultsAction => {
+export const dispatchFetchSearchResults = (): FetchSearchResultsAction => {
   return {
-    type: GameSearchActionsTypes.FetchSearchResults
+    type: GameSearchActionsTypes.FetchSearchResults,
   }
 };
 

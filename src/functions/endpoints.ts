@@ -1,7 +1,8 @@
 enum Endpoints {
-  Games = "/games",
-  Languages = "/info/languages",
-  Regions = "/info/regions",
+  Games = '/games',
+  Languages = '/info/languages',
+  Regions = '/info/regions',
+  Platforms = '/info/platforms',
 }
 
 const server = 'http://localhost:3001';
@@ -20,4 +21,8 @@ export function getLanguagesEndpoint(): string {
 
 export function getRegionsEndpoint(): string {
   return `${server}${Endpoints.Regions}`;
+}
+
+export function getPlatformsEndpoint(): string {
+  return `${server}${Endpoints.Platforms}`;
 }

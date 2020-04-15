@@ -5,19 +5,19 @@ export enum AppSettingsActionsTypes {
 }
 
 type SetPrefferedLanguageCodePayload = {
-  language: string
+  language: string,
 };
 export interface SetPrefferedLanguageCodeAction extends Action {
   type: AppSettingsActionsTypes.SetPrefferedLanguageCode,
   payload: SetPrefferedLanguageCodePayload,
 }
 
-export const setPrefferedLanguageCode = ({ language }: SetPrefferedLanguageCodePayload) => {
+export const dispatchSetPrefferedLanguageCode = ({ language }: SetPrefferedLanguageCodePayload) => {
   return {
     type: AppSettingsActionsTypes.SetPrefferedLanguageCode,
     payload: {
-      language
-    }, 
+      language,
+    },
   };
 };
 

@@ -11,5 +11,5 @@ export const rootReducer = combineReducers({
   appSettingsReducer,
   gameDetailsReducer,
   gameSearchReducer,
-  gameSearchResultsReducer
+  gameSearchResultsReducer,
 });

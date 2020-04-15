@@ -7,7 +7,7 @@ import { PanelSection } from '../PanelSection/PanelSection';
 
 import { Platforms } from '../../models/Platforms';
 import { selectPlatforms } from '../../store/selectors/gameSearchSelectors';
-import { changePlatforms } from '../../store/actions/gameSearchActions';
+import { dispatchChangePlatforms } from '../../store/actions/gameSearchActions';
 import { AppState } from '../../store/store';
 import { connect } from 'react-redux';
 
@@ -15,43 +15,43 @@ const platformsLabel = 'Platforms';
 
 type PlatformCheckbox = {
   label: string,
-  value: Platforms
+  value: Platforms,
 };
 const platformsCheckboxes: PlatformCheckbox[] = [
   {
     label: 'GameCube',
-    value: Platforms.NGC
+    value: Platforms.NGC,
   },
   {
     label: 'Wii',
-    value: Platforms.WII
+    value: Platforms.WII,
   },
   {
     label: 'PlayStation3',
-    value: Platforms.PS3
+    value: Platforms.PS3,
   },
   {
     label: 'DS',
-    value: Platforms.NDS
+    value: Platforms.NDS,
   },
   {
     label: '3DS',
-    value: Platforms.N3DS
+    value: Platforms.N3DS,
   },
   {
     label: 'Switch',
-    value: Platforms.SWITCH
-  }
+    value: Platforms.SWITCH,
+  },
 ];
 
 const mapStateToProps = (state: AppState) => {
   return {
-    platforms: selectPlatforms(state)
+    platforms: selectPlatforms(state),
   };
 };
 
 const mapDispatchToProps = {
-  changePlatforms
+  changePlatforms: dispatchChangePlatforms,
 };
 
 type additionalProps = {};
@@ -59,7 +59,7 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 
 const Component: React.FC<Props> = ({
   platforms,
-  changePlatforms
+  changePlatforms,
 }) => {
   const onPlatformsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newPlatforms = { ...platforms, [event.target.value]: event.target.checked };
@@ -96,5 +96,5 @@ const Component: React.FC<Props> = ({
 
 export const GameSearchPlatforms = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);

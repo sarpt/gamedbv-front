@@ -9,14 +9,14 @@ import {
   Header,
   IconContainer,
   Label,
-  Content
+  Content,
 } from './Panel.styles';
 
 const isExpandedInitially = true;
 
 type Props = {
   label: string,
-  icon?: React.ReactNode
+  icon?: React.ReactNode,
 };
 export const Panel: React.FC<Props> = ({ label, icon, children }) => {
   const [isExpanded, setIsExpanded] = useState(isExpandedInitially);
@@ -39,7 +39,7 @@ export const Panel: React.FC<Props> = ({ label, icon, children }) => {
           { label }
         </Label>
           <IconButton onClick={ toggleIsExpanded }>
-            { 
+            {
               isExpanded
               ? <ArrowDropDown></ArrowDropDown>
               : <ArrowDropUp></ArrowDropUp>

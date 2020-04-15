@@ -25,13 +25,15 @@
     "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^4.3.5",
     "@types/redux": "^3.6.0",
-    "@types/styled-components": "^4.4.3"
+    "@types/styled-components": "^4.4.3",
+    "tslint": "^6.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx tslint --fix --project ./"
   },
   "eslintConfig": {
     "extends": "react-app"

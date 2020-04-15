@@ -13,7 +13,7 @@ export const store = createStore(
   rootReducer,
   composeWithDevTools(
     applyMiddleware(epicMiddleware),
-  )
+  ),
 );
 
 // run has to be used after createStore call

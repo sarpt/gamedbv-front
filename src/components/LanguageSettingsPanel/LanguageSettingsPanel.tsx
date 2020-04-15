@@ -7,8 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { AppState } from '../../store/store';
 
-import { fetchAvailableLanguages } from '../../store/actions/appInfoActions';
-import { setPrefferedLanguageCode } from '../../store/actions/appSettingsActions';
+import { dispatchFetchAvailableLanguages } from '../../store/actions/appInfoActions';
+import { dispatchSetPrefferedLanguageCode } from '../../store/actions/appSettingsActions';
 import { selectPrefferedLanguageCode } from '../../store/selectors/appSettingsSelectors';
 import { selectAvailableLanguages } from '../../store/selectors/appInfoSelectors';
 import { Panel } from '../Panel/Panel';
@@ -26,8 +26,8 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  setPrefferedLanguage: setPrefferedLanguageCode,
-  fetchAvailableLanguages,
+  setPrefferedLanguage: dispatchSetPrefferedLanguageCode,
+  fetchAvailableLanguages: dispatchFetchAvailableLanguages,
 };
 
 type additionalProps = {};

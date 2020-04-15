@@ -7,13 +7,13 @@ import {
   ChangeSearchQueryAction,
   ChangePlatformsAction,
   AddSearchedRegionAction,
-  RemoveSearchedRegionAction
+  RemoveSearchedRegionAction,
 } from "../actions/gameSearchActions";
 import {
   GameSearchResultsActions,
   GameSearchResultsActionsTypes,
   ChangeResultsPerPageAction,
-  changePage
+  dispatchChangePage,
 } from "../actions/gameSearchResultsActions";
 import { AppState } from "../store";
 import { selectCurrentPage } from "../selectors/gameSearchResultsSelectors";
@@ -28,12 +28,12 @@ export const resetToFirstPage = (
       GameSearchActionsTypes.ChangePlatforms,
       GameSearchActionsTypes.AddSearchedRegion,
       GameSearchActionsTypes.RemoveSearchedRegion,
-      GameSearchResultsActionsTypes.ChangeResultsPerPage
+      GameSearchResultsActionsTypes.ChangeResultsPerPage,
     ),
     withLatestFrom(state$),
     filter(([, state]) => selectCurrentPage(state) !== 0),
     map(() => {
-      return changePage({ page: 0 });
-    })
+      return dispatchChangePage({ page: 0 });
+    }),
   );
 };

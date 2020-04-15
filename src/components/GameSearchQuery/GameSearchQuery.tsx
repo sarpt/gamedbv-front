@@ -9,7 +9,7 @@ import { PanelSection } from '../PanelSection/PanelSection';
 import { QueryInput, QueryInputContainer } from './GameSearchQuery.styles';
 import { AppState } from '../../store/store';
 import { selectSearchQuery, selectShouldFilterByText } from '../../store/selectors/gameSearchSelectors';
-import { changeSearchQuery } from '../../store/actions/gameSearchActions';
+import { dispatchChangeSearchQuery } from '../../store/actions/gameSearchActions';
 
 const inputPlaceholder = 'game name, description, id, etc.';
 const inputLabel = 'Text filter';
@@ -19,12 +19,12 @@ const queryLabel = 'Query';
 const mapStateToProps = (state: AppState) => {
   return {
     searchQuery: selectSearchQuery(state),
-    shouldFilterByText: selectShouldFilterByText(state)
+    shouldFilterByText: selectShouldFilterByText(state),
   };
 };
 
 const mapDispatchToProps = {
-  changeSearchQuery
+  changeSearchQuery: dispatchChangeSearchQuery,
 };
 
 type additionalProps = {};
@@ -33,14 +33,14 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 const Component: React.FC<Props> = ({
   searchQuery,
   shouldFilterByText,
-  changeSearchQuery
+  changeSearchQuery,
 }) => {
   const onQueryChange = (newSearchQuery: string) => {
     changeSearchQuery({ searchQuery: newSearchQuery, shouldGetAllGames: shouldFilterByText });
   };
 
   const onShouldGetAllGamesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newShouldGetAllgames = event.target.checked; 
+    const newShouldGetAllgames = event.target.checked;
     changeSearchQuery({ searchQuery, shouldGetAllGames: newShouldGetAllgames });
   };
 
@@ -72,5 +72,5 @@ const Component: React.FC<Props> = ({
 
 export const GameSearchQuery = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);

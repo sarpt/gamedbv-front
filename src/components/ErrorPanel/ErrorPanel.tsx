@@ -6,7 +6,7 @@ import { Panel } from '../Panel/Panel';
 
 type Props = {
   message: string,
-  label: string
+  label: string,
 };
 export const ErrorPanel: React.FC<Props> = ({ message, label }) => {
   return (

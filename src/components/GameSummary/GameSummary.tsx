@@ -20,7 +20,7 @@ import { LanguageSelector } from '../LanguageSelector/LanguageSelector';
 import { Language } from '../../models/Language';
 
 type Props = {
-  game: GameInfo
+  game: GameInfo,
 };
 
 export const GameSummary: React.FC<Props> = ({ game }) => {
@@ -32,7 +32,7 @@ export const GameSummary: React.FC<Props> = ({ game }) => {
       const newDescripiton = getDescription(newLanguage, game.descriptions);
       setDescription(newDescripiton);
     },
-    [game]
+    [game],
   );
 
   const synopsis = description?.synopsis ?? "";

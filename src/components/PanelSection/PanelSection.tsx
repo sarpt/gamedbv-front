@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { 
+import {
   Content,
   SectionContainer,
-  Label
+  Label,
 } from './PanelSection.styles';
 
 type Props = {
-  label: string
+  label: string,
 };
 
 export const PanelSection: React.FC<Props> = ({ label, children }) => {

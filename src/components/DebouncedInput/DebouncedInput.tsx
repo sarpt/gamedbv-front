@@ -22,7 +22,7 @@ export const DebouncedInput: React.FC<props> = ({ label, placeholder, initialVal
   useEffect(() => {
     const subscription = inputValue
       .pipe(
-        debounceTime(keystrokesDebounceTime)
+        debounceTime(keystrokesDebounceTime),
       )
       .subscribe(newValue => {
         onChange(newValue);

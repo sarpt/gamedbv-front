@@ -3,24 +3,24 @@ import { connect } from 'react-redux';
 
 import { AppState } from '../../store/store';
 import {
-  selectGameSearchError
+  selectGameSearchError,
 } from '../../store/selectors/gameSearchSelectors';
 
 import { GameSearchOptionsPanel } from '../GameSearchOptionsPanel/GameSearchOptionsPanel';
 import { GameSearchResultsPanel } from '../GameSearchResultsPanel/GameSearchResultsPanel';
 import { ErrorPanel } from '../ErrorPanel/ErrorPanel';
-import { fetchAvailableRegions } from '../../store/actions/appInfoActions';
+import { dispatchFetchAvailableRegions } from '../../store/actions/appInfoActions';
 
 const gameSearchErrorMessage = 'Search results error';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    searchError: selectGameSearchError(state)
+    searchError: selectGameSearchError(state),
   };
 };
 
 const mapDispatchToProps = {
-  fetchAvailableRegions,
+  fetchAvailableRegions: dispatchFetchAvailableRegions,
 };
 
 type AdditionalProps = {};
@@ -28,7 +28,7 @@ type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & Ad
 
 const Component: React.FC<props> = ({
   fetchAvailableRegions,
-  searchError
+  searchError,
 }) => {
   useEffect(() => {
     fetchAvailableRegions();
@@ -53,5 +53,5 @@ const Component: React.FC<props> = ({
 
 export const GameSearchPage = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);
