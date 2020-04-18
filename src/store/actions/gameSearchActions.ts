@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 
-import { PlatformsMap } from '../../models/Platforms';
 import { Region } from '../../models/Region';
+import { Platform } from '../../models/Platform';
 
 export enum GameSearchActionsTypes {
   FetchSearchResults = '[game-search] Fetch search results',
@@ -10,6 +10,8 @@ export enum GameSearchActionsTypes {
   ChangePlatforms = '[game-search] Change platforms',
   AddSearchedRegion = '[game-search] Add searched region',
   RemoveSearchedRegion = '[game-search] Remove searched region',
+  AddSearchedPlatform = '[game-search] Add searched platform',
+  RemoveSearchedPlatform = '[game-search] Remove searched platform',
   SetGameSearchError = '[game-search] [error] Set game search error',
 }
 
@@ -17,7 +19,7 @@ type ChangeSearchOptionsPayload = {
   searchQuery: string,
   shouldGetAllGames: boolean,
   searchedRegions: Region[],
-  searchedPlatforms: PlatformsMap,
+  searchedPlatforms: Platform[],
   selectedGameResultsPage: number,
   gameResultsPerPage: number,
 };
@@ -67,24 +69,6 @@ export const dispatchChangeSearchQuery = ({
   };
 };
 
-type ChangePlatformsPayload = {
-  platforms: PlatformsMap,
-};
-export interface ChangePlatformsAction extends Action {
-  type: GameSearchActionsTypes.ChangePlatforms;
-  payload: ChangePlatformsPayload;
-}
-export const dispatchChangePlatforms = ({
-  platforms,
-}: ChangePlatformsPayload): ChangePlatformsAction => {
-  return {
-    type: GameSearchActionsTypes.ChangePlatforms,
-    payload: {
-      platforms,
-    },
-  };
-};
-
 type AddSearchedRegionPayload = {
   regionCode: string,
 };
@@ -121,6 +105,42 @@ export const dispatchRemoveSearchedRegion = ({
   };
 };
 
+type AddSearchedPlatformPayload = {
+  platformId: string,
+};
+export interface AddSearchedPlatformAction extends Action {
+  type: GameSearchActionsTypes.AddSearchedPlatform;
+  payload: AddSearchedPlatformPayload;
+}
+export const dispatchAddSearchedPlatform = ({
+  platformId,
+}: AddSearchedPlatformPayload): AddSearchedPlatformAction => {
+  return {
+    type: GameSearchActionsTypes.AddSearchedPlatform,
+    payload: {
+      platformId,
+    },
+  };
+};
+
+type RemoveSearchedPlatformPayload = {
+  platformId: string,
+};
+export interface RemoveSearchedPlatformAction extends Action {
+  type: GameSearchActionsTypes.RemoveSearchedPlatform;
+  payload: RemoveSearchedPlatformPayload;
+}
+export const dispatchRemoveSearchedPlatform = ({
+  platformId,
+}: RemoveSearchedPlatformPayload): RemoveSearchedPlatformAction => {
+  return {
+    type: GameSearchActionsTypes.RemoveSearchedPlatform,
+    payload: {
+      platformId,
+    },
+  };
+};
+
 type SetGameSearchErrorPayload = {
   message: string,
 };
@@ -148,8 +168,9 @@ export const dispatchFetchSearchResults = (): FetchSearchResultsAction => {
 
 export type GameSearchActions = ChangeSearchOptionsAction
   | ChangeSearchQueryAction
-  | ChangePlatformsAction
   | AddSearchedRegionAction
   | RemoveSearchedRegionAction
+  | AddSearchedPlatformAction
+  | RemoveSearchedPlatformAction
   | FetchSearchResultsAction
   | SetGameSearchErrorAction;

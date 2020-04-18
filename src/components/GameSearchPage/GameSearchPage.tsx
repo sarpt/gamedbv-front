@@ -9,7 +9,7 @@ import {
 import { GameSearchOptionsPanel } from '../GameSearchOptionsPanel/GameSearchOptionsPanel';
 import { GameSearchResultsPanel } from '../GameSearchResultsPanel/GameSearchResultsPanel';
 import { ErrorPanel } from '../ErrorPanel/ErrorPanel';
-import { dispatchFetchAvailableRegions } from '../../store/actions/appInfoActions';
+import { dispatchFetchAvailableRegions, dispatchFetchAvailablePlatforms } from '../../store/actions/appInfoActions';
 
 const gameSearchErrorMessage = 'Search results error';
 
@@ -21,6 +21,7 @@ const mapStateToProps = (state: AppState) => {
 
 const mapDispatchToProps = {
   fetchAvailableRegions: dispatchFetchAvailableRegions,
+  fetchAvailablePlatforms: dispatchFetchAvailablePlatforms,
 };
 
 type AdditionalProps = {};
@@ -28,11 +29,13 @@ type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & Ad
 
 const Component: React.FC<props> = ({
   fetchAvailableRegions,
+  fetchAvailablePlatforms,
   searchError,
 }) => {
   useEffect(() => {
     fetchAvailableRegions();
-  }, [fetchAvailableRegions]);
+    fetchAvailablePlatforms();
+  }, [fetchAvailableRegions, fetchAvailablePlatforms]);
 
   return (
     <React.Fragment>

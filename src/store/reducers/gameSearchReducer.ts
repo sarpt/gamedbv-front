@@ -3,8 +3,6 @@ import {
   GameSearchActions,
 } from '../actions/gameSearchActions';
 
-import { Platforms, PlatformsMap } from '../../models/Platforms';
-
 type SearchError = {
   hasError: boolean,
   message?: string,
@@ -14,7 +12,7 @@ type State = {
   searchQuery: string,
   shouldFilterByText: boolean,
   searchedRegions: Set<string>,
-  searchedPlatforms: PlatformsMap,
+  searchedPlatforms: Set<string>,
   searchError: SearchError,
 };
 
@@ -22,14 +20,7 @@ const initialState: State = {
   searchQuery: '',
   shouldFilterByText: true,
   searchedRegions: new Set<string>(),
-  searchedPlatforms: {
-    [Platforms.NGC]: true,
-    [Platforms.WII]: true,
-    [Platforms.PS3]: true,
-    [Platforms.NDS]: true,
-    [Platforms.N3DS]: true,
-    [Platforms.SWITCH]: true,
-  },
+  searchedPlatforms: new Set<string>(),
   searchError: {
     hasError: false,
   },
@@ -43,10 +34,15 @@ export const gameSearchReducer = (state: State = initialState, action: GameSearc
         searchQuery: action.payload.searchQuery,
         shouldFilterByText: action.payload.shouldGetAllGames,
       };
-    case GameSearchActionsTypes.ChangePlatforms:
+    case GameSearchActionsTypes.AddSearchedPlatform:
       return {
         ...state,
-        searchedPlatforms: action.payload.platforms,
+        searchedPlatforms: addSearchedPlatform(state.searchedPlatforms, action.payload.platformId),
+      };
+    case GameSearchActionsTypes.RemoveSearchedPlatform:
+      return {
+        ...state,
+        searchedPlatforms: removeSearchedPlatform(state.searchedPlatforms, action.payload.platformId),
       };
     case GameSearchActionsTypes.AddSearchedRegion:
       return {
@@ -80,4 +76,18 @@ function removeSearchedRegion(searchedRegions: Set<string>, regionCode: string):
   newSearchedRegionsSet.delete(regionCode);
 
   return newSearchedRegionsSet;
+}
+
+function addSearchedPlatform(searchedPlatforms: Set<string>, platformId: string): Set<string> {
+  const newSearchedPlatformsSet = new Set<string>(searchedPlatforms);
+  newSearchedPlatformsSet.add(platformId);
+
+  return newSearchedPlatformsSet;
+}
+
+function removeSearchedPlatform(searchedPlatforms: Set<string>, platformId: string): Set<string> {
+  const newSearchedPlatformsSet = new Set<string>(searchedPlatforms);
+  newSearchedPlatformsSet.delete(platformId);
+
+  return newSearchedPlatformsSet;
 }

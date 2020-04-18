@@ -5,9 +5,10 @@ import {
   GameSearchActions,
   GameSearchActionsTypes,
   ChangeSearchQueryAction,
-  ChangePlatformsAction,
   AddSearchedRegionAction,
   RemoveSearchedRegionAction,
+  AddSearchedPlatformAction,
+  RemoveSearchedPlatformAction,
 } from "../actions/gameSearchActions";
 import {
   GameSearchResultsActions,
@@ -23,9 +24,10 @@ const resetToFirstPage$ = (
   state$: StateObservable<AppState>,
 ) => {
   return actions$.pipe(
-    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | AddSearchedRegionAction | RemoveSearchedRegionAction | ChangeResultsPerPageAction>(
+    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | AddSearchedPlatformAction | RemoveSearchedPlatformAction | AddSearchedRegionAction | RemoveSearchedRegionAction | ChangeResultsPerPageAction>(
       GameSearchActionsTypes.ChangeSearchQuery,
-      GameSearchActionsTypes.ChangePlatforms,
+      GameSearchActionsTypes.AddSearchedPlatform,
+      GameSearchActionsTypes.RemoveSearchedPlatform,
       GameSearchActionsTypes.AddSearchedRegion,
       GameSearchActionsTypes.RemoveSearchedRegion,
       GameSearchResultsActionsTypes.ChangeResultsPerPage,

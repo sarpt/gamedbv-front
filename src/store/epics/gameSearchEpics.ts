@@ -7,11 +7,12 @@ import {
   GameSearchActions,
   dispatchSetGameSearchError,
   ChangeSearchQueryAction,
-  ChangePlatformsAction,
   dispatchFetchSearchResults,
   FetchSearchResultsAction,
   AddSearchedRegionAction,
   RemoveSearchedRegionAction,
+  AddSearchedPlatformAction,
+  RemoveSearchedPlatformAction,
 } from '../actions/gameSearchActions';
 import {
   dispatchSetGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes,
@@ -19,8 +20,6 @@ import {
 
 import { searchGames } from '../../functions/gamesApi';
 import { getAjaxErrorMessage } from '../../functions/errorUtils';
-import { booleanMapToArray } from '../../functions/booleanMapToArray';
-import { Platforms } from '../../models/Platforms';
 import { AppState } from '../store';
 
 import { selectGameSearchStore } from '../selectors/gameSearchSelectors';
@@ -30,10 +29,11 @@ const handleGameSearchChange$ = (
   actions$: ActionsObservable<GameSearchActions>,
 ) => {
   return actions$.pipe(
-    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | ChangePlatformsAction | AddSearchedRegionAction | RemoveSearchedRegionAction | ChangePageAction | ChangeResultsPerPageAction>(
+    ofType<GameSearchActions | GameSearchResultsActions, ChangeSearchQueryAction | AddSearchedPlatformAction | RemoveSearchedPlatformAction | AddSearchedRegionAction | RemoveSearchedRegionAction | ChangePageAction | ChangeResultsPerPageAction>(
       GameSearchActionsTypes.ChangeSearchQuery,
-      GameSearchActionsTypes.ChangePlatforms,
       GameSearchActionsTypes.AddSearchedRegion,
+      GameSearchActionsTypes.RemoveSearchedPlatform,
+      GameSearchActionsTypes.AddSearchedPlatform,
       GameSearchActionsTypes.RemoveSearchedRegion,
       GameSearchResultsActionsTypes.ChangePage,
       GameSearchResultsActionsTypes.ChangeResultsPerPage,
@@ -66,7 +66,7 @@ const fetchGamesResults$ = (
         page: state.currentPage,
         gamesPerPage: state.gameResultsPerPage,
         regions: [...state.searchedRegions],
-        platforms: booleanMapToArray<Platforms>(state.searchedPlatforms),
+        platforms: [...state.searchedPlatforms],
       };
 
       return searchGames(searchGamesRequestProperties)

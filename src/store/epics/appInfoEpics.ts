@@ -13,8 +13,9 @@ import {
   dispatchFetchAvailableRegionsError,
   FetchAvailablePlatformsAction,
   dispatchFetchAvailablePlatformsError,
+  dispatchSetAvailablePlatforms,
 } from '../actions/appInfoActions';
-import { getAvailableLanguages, getAvailableRegions } from '../../functions/appInfoApi';
+import { getAvailableLanguages, getAvailableRegions, getAvailablePlatforms } from '../../functions/appInfoApi';
 
 const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
@@ -52,9 +53,9 @@ const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AppInfoActions>) =
   return actions$.pipe(
     ofType<AppInfoActions, FetchAvailablePlatformsAction>(AppInfoActionsTypes.FetchAvailablePlatforms),
     switchMap(() => {
-      return getAvailableRegions().pipe(
+      return getAvailablePlatforms().pipe(
         map((response) => {
-          return dispatchSetAvailableRegions({ regions: response.regions });
+          return dispatchSetAvailablePlatforms({ platforms: response.platforms });
         }),
         catchError(() => {
           return of(dispatchFetchAvailablePlatformsError());

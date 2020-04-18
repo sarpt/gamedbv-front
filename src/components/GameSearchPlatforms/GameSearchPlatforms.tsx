@@ -5,87 +5,65 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import { PanelSection } from '../PanelSection/PanelSection';
 
-import { Platforms } from '../../models/Platforms';
 import { selectPlatforms } from '../../store/selectors/gameSearchSelectors';
-import { dispatchChangePlatforms } from '../../store/actions/gameSearchActions';
+import { dispatchAddSearchedPlatform, dispatchRemoveSearchedPlatform } from '../../store/actions/gameSearchActions';
 import { AppState } from '../../store/store';
 import { connect } from 'react-redux';
+import { selectAvailablePlatforms } from '../../store/selectors/appInfoSelectors';
+import { Platform } from '../../models/Platform';
 
 const platformsLabel = 'Platforms';
 
-type PlatformCheckbox = {
-  label: string,
-  value: Platforms,
-};
-const platformsCheckboxes: PlatformCheckbox[] = [
-  {
-    label: 'GameCube',
-    value: Platforms.NGC,
-  },
-  {
-    label: 'Wii',
-    value: Platforms.WII,
-  },
-  {
-    label: 'PlayStation3',
-    value: Platforms.PS3,
-  },
-  {
-    label: 'DS',
-    value: Platforms.NDS,
-  },
-  {
-    label: '3DS',
-    value: Platforms.N3DS,
-  },
-  {
-    label: 'Switch',
-    value: Platforms.SWITCH,
-  },
-];
-
 const mapStateToProps = (state: AppState) => {
   return {
+    availablePlatforms: selectAvailablePlatforms(state),
     platforms: selectPlatforms(state),
   };
 };
 
 const mapDispatchToProps = {
-  changePlatforms: dispatchChangePlatforms,
+  addSearchedPlatform: dispatchAddSearchedPlatform,
+  removeSearchedPlatform: dispatchRemoveSearchedPlatform,
 };
 
 type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
 const Component: React.FC<Props> = ({
+  availablePlatforms,
   platforms,
-  changePlatforms,
+  addSearchedPlatform,
+  removeSearchedPlatform,
 }) => {
   const onPlatformsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newPlatforms = { ...platforms, [event.target.value]: event.target.checked };
+    if (event.target.checked) {
+      addSearchedPlatform({ platformId: event.target.value });
 
-    changePlatforms({ platforms: newPlatforms });
+      return;
+    }
+
+    removeSearchedPlatform({ platformId: event.target.value });
   };
 
-  const isPlatformSet = (platformCheckbox: PlatformCheckbox): boolean => {
-    return platforms[platformCheckbox.value];
+  const isPlatformSet = (platform: Platform): boolean => {
+    return platforms.has(platform.code);
   };
 
   return (
     <PanelSection label={ platformsLabel }>
       {
-        platformsCheckboxes.map(platformCheckbox => {
+        availablePlatforms.map(platform => {
           return (
             <FormControlLabel
-              key={ platformCheckbox.value }
+              key={ platform.code }
               control={
                 <Checkbox
-                  checked={ isPlatformSet(platformCheckbox) }
+                  checked={ isPlatformSet(platform) }
                   onChange={ onPlatformsChange }
-                  value={ platformCheckbox.value }
+                  value={ platform.code }
                 ></Checkbox>
               }
-              label={ platformCheckbox.label }
+              label={ platform.code }
             ></FormControlLabel>
           );
         })
