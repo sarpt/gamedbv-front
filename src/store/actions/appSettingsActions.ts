@@ -12,7 +12,7 @@ export interface SetPrefferedLanguageCodeAction extends Action {
   payload: SetPrefferedLanguageCodePayload;
 }
 
-export const dispatchSetPrefferedLanguageCode = ({ language }: SetPrefferedLanguageCodePayload) => {
+export const setPrefferedLanguageCode = ({ language }: SetPrefferedLanguageCodePayload) => {
   return {
     type: AppSettingsActionsTypes.SetPrefferedLanguageCode,
     payload: {

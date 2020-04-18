@@ -7,7 +7,7 @@ export interface SetGameIdAction extends Action {
   type: GameDetailsActionsTypes.SetGameId;
   payload: string;
 }
-export const dispatchSetGameId = (gameId: string): SetGameIdAction => {
+export const setGameId = (gameId: string): SetGameIdAction => {
   return {
     type: GameDetailsActionsTypes.SetGameId,
     payload: gameId,

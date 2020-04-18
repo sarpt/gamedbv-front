@@ -7,7 +7,7 @@ import { Panel } from '../Panel/Panel';
 import { GameSearchResultsTable } from '../GameSearchResultsTable/GameSearchResultsTable';
 
 import {
-  dispatchFetchSearchResults,
+  fetchSearchResults,
 } from '../../store/actions/gameSearchActions';
 import { AppState } from '../../store/store';
 import { areAnyGameSearchResultsAvailable } from '../../store/selectors/gameSearchResultsSelectors';
@@ -22,7 +22,7 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  fetchSearchResults: dispatchFetchSearchResults,
+  dispatchFetchSearchResults: fetchSearchResults,
 };
 
 type AdditionalProps = {};
@@ -30,11 +30,11 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & Ad
 
 const Component: React.FC<Props> = ({
   shouldShowSearchResultsTable,
-  fetchSearchResults,
+  dispatchFetchSearchResults,
 }) => {
   useEffect(() => {
-    fetchSearchResults();
-  }, [fetchSearchResults]);
+    dispatchFetchSearchResults();
+  }, [dispatchFetchSearchResults]);
 
   return (
     <Panel

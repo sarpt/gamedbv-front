@@ -23,7 +23,7 @@ export interface SetAvailableLanguagesAction extends Action {
   payload: setAvailableLanguagesPayload;
 }
 
-export const dispatchSetAvailableLanguages = ({ languages }: setAvailableLanguagesPayload) => {
+export const setAvailableLanguages = ({ languages }: setAvailableLanguagesPayload) => {
   return {
     type: AppInfoActionsTypes.SetAvailableLanguages,
     payload: {
@@ -36,7 +36,7 @@ export interface FetchAvailableLanguagesAction extends Action {
   type: AppInfoActionsTypes.FetchAvailableLanguages;
 }
 
-export const dispatchFetchAvailableLanguages = () => {
+export const fetchAvailableLanguages = () => {
   return {
     type: AppInfoActionsTypes.FetchAvailableLanguages,
   };
@@ -46,7 +46,7 @@ export interface FetchAvailableLanguagesErrorAction extends Action {
   type: AppInfoActionsTypes.FetchAvailableLanguagesError;
 }
 
-export const dispatchFetchAvailableLanguagesError = () => {
+export const fetchAvailableLanguagesError = () => {
   return {
     type: AppInfoActionsTypes.FetchAvailableLanguagesError,
   };
@@ -56,7 +56,7 @@ export interface FetchAvailableRegionsAction extends Action {
   type: AppInfoActionsTypes.FetchAvailableRegions;
 }
 
-export const dispatchFetchAvailableRegions = () => {
+export const fetchAvailableRegions = () => {
   return {
     type: AppInfoActionsTypes.FetchAvailableRegions,
   };
@@ -66,7 +66,7 @@ export interface FetchAvailableRegionsErrorAction extends Action {
   type: AppInfoActionsTypes.FetchAvailableRegionsError;
 }
 
-export const dispatchFetchAvailableRegionsError = () => {
+export const fetchAvailableRegionsError = () => {
   return {
     type: AppInfoActionsTypes.FetchAvailableRegionsError,
   };
@@ -80,7 +80,7 @@ export interface SetAvailableRegionsAction extends Action {
   payload: setAvailableRegionsPayload;
 }
 
-export const dispatchSetAvailableRegions = ({ regions }: setAvailableRegionsPayload) => {
+export const setAvailableRegions = ({ regions }: setAvailableRegionsPayload) => {
   return {
     type: AppInfoActionsTypes.SetAvailableRegions,
     payload: {
@@ -93,7 +93,7 @@ export interface FetchAvailablePlatformsAction extends Action {
   type: AppInfoActionsTypes.FetchAvailablePlatforms;
 }
 
-export const dispatchFetchAvailablePlatforms = () => {
+export const fetchAvailablePlatforms = () => {
   return {
     type: AppInfoActionsTypes.FetchAvailablePlatforms,
   };
@@ -103,7 +103,7 @@ export interface FetchAvailablePlatformsErrorAction extends Action {
   type: AppInfoActionsTypes.FetchAvailablePlatformsError;
 }
 
-export const dispatchFetchAvailablePlatformsError = () => {
+export const fetchAvailablePlatformsError = () => {
   return {
     type: AppInfoActionsTypes.FetchAvailablePlatformsError,
   };
@@ -117,7 +117,7 @@ export interface SetAvailablePlatformsAction extends Action {
   payload: setAvailablePlatformsPayload;
 }
 
-export const dispatchSetAvailablePlatforms = ({ platforms }: setAvailablePlatformsPayload) => {
+export const setAvailablePlatforms = ({ platforms }: setAvailablePlatformsPayload) => {
   return {
     type: AppInfoActionsTypes.SetAvailablePlatforms,
     payload: {

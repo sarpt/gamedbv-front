@@ -27,7 +27,7 @@ export interface ChangeSearchOptionsAction extends Action {
   type: GameSearchActionsTypes.ChangeSearchOptions;
   payload: ChangeSearchOptionsPayload;
 }
-export const dispatchChangeSearchOptions = ({
+export const changeSearchOptions = ({
   searchQuery,
   shouldGetAllGames,
   searchedRegions,
@@ -56,7 +56,7 @@ export interface ChangeSearchQueryAction extends Action {
   type: GameSearchActionsTypes.ChangeSearchQuery;
   payload: ChangeSearchQueryPayload;
 }
-export const dispatchChangeSearchQuery = ({
+export const changeSearchQuery = ({
   searchQuery,
   shouldGetAllGames,
 }: ChangeSearchQueryPayload): ChangeSearchQueryAction => {
@@ -76,7 +76,7 @@ export interface AddSearchedRegionAction extends Action {
   type: GameSearchActionsTypes.AddSearchedRegion;
   payload: AddSearchedRegionPayload;
 }
-export const dispatchAddSearchedRegion = ({
+export const addSearchedRegion = ({
   regionCode,
 }: AddSearchedRegionPayload): AddSearchedRegionAction => {
   return {
@@ -94,7 +94,7 @@ export interface RemoveSearchedRegionAction extends Action {
   type: GameSearchActionsTypes.RemoveSearchedRegion;
   payload: RemoveSearchedRegionPayload;
 }
-export const dispatchRemoveSearchedRegion = ({
+export const removeSearchedRegion = ({
   regionCode,
 }: RemoveSearchedRegionPayload): RemoveSearchedRegionAction => {
   return {
@@ -112,7 +112,7 @@ export interface AddSearchedPlatformAction extends Action {
   type: GameSearchActionsTypes.AddSearchedPlatform;
   payload: AddSearchedPlatformPayload;
 }
-export const dispatchAddSearchedPlatform = ({
+export const addSearchedPlatform = ({
   platformId,
 }: AddSearchedPlatformPayload): AddSearchedPlatformAction => {
   return {
@@ -130,7 +130,7 @@ export interface RemoveSearchedPlatformAction extends Action {
   type: GameSearchActionsTypes.RemoveSearchedPlatform;
   payload: RemoveSearchedPlatformPayload;
 }
-export const dispatchRemoveSearchedPlatform = ({
+export const removeSearchedPlatform = ({
   platformId,
 }: RemoveSearchedPlatformPayload): RemoveSearchedPlatformAction => {
   return {
@@ -148,7 +148,7 @@ export interface SetGameSearchErrorAction extends Action {
   type: GameSearchActionsTypes.SetGameSearchError;
   payload: SetGameSearchErrorPayload;
 }
-export const dispatchSetGameSearchError = ({ message }: SetGameSearchErrorPayload): SetGameSearchErrorAction => {
+export const setGameSearchError = ({ message }: SetGameSearchErrorPayload): SetGameSearchErrorAction => {
   return {
     type: GameSearchActionsTypes.SetGameSearchError,
     payload: {
@@ -160,7 +160,7 @@ export const dispatchSetGameSearchError = ({ message }: SetGameSearchErrorPayloa
 export interface FetchSearchResultsAction extends Action {
   type: GameSearchActionsTypes.FetchSearchResults;
 }
-export const dispatchFetchSearchResults = (): FetchSearchResultsAction => {
+export const fetchSearchResults = (): FetchSearchResultsAction => {
   return {
     type: GameSearchActionsTypes.FetchSearchResults,
   };

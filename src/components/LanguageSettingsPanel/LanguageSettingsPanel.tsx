@@ -7,8 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { AppState } from '../../store/store';
 
-import { dispatchFetchAvailableLanguages } from '../../store/actions/appInfoActions';
-import { dispatchSetPrefferedLanguageCode } from '../../store/actions/appSettingsActions';
+import { fetchAvailableLanguages } from '../../store/actions/appInfoActions';
+import { setPrefferedLanguageCode } from '../../store/actions/appSettingsActions';
 import { selectPrefferedLanguageCode } from '../../store/selectors/appSettingsSelectors';
 import { selectAvailableLanguages } from '../../store/selectors/appInfoSelectors';
 import { Panel } from '../Panel/Panel';
@@ -26,22 +26,27 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  setPrefferedLanguage: dispatchSetPrefferedLanguageCode,
-  fetchAvailableLanguages: dispatchFetchAvailableLanguages,
+  dispatchSetPrefferedLanguage: setPrefferedLanguageCode,
+  dispatchFetchAvailableLanguages: fetchAvailableLanguages,
 };
 
 type additionalProps = {};
 
 type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
-const Component: React.FC<props> = ({ prefferedLanguage, availableLanguages, setPrefferedLanguage, fetchAvailableLanguages }) => {
+const Component: React.FC<props> = ({
+  prefferedLanguage,
+  availableLanguages,
+  dispatchSetPrefferedLanguage,
+  dispatchFetchAvailableLanguages,
+}) => {
   const handlePrefferedLanguageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPrefferedLanguage({ language: event.target.value as string });
+    dispatchSetPrefferedLanguage({ language: event.target.value as string });
   };
 
   useEffect(() => {
-    fetchAvailableLanguages();
-  }, [fetchAvailableLanguages]);
+    dispatchFetchAvailableLanguages();
+  }, [dispatchFetchAvailableLanguages]);
 
   const areAnyLanguagesAvailable = availableLanguages.length > 0;
 

@@ -6,16 +6,20 @@ import {
   AppInfoActions,
   AppInfoActionsTypes,
   FetchAvailableLanguagesAction,
-  dispatchSetAvailableLanguages,
-  dispatchFetchAvailableLanguagesError,
+  setAvailableLanguages,
+  fetchAvailableLanguagesError,
   FetchAvailableRegionsAction,
-  dispatchSetAvailableRegions,
-  dispatchFetchAvailableRegionsError,
+  setAvailableRegions,
+  fetchAvailableRegionsError,
   FetchAvailablePlatformsAction,
-  dispatchFetchAvailablePlatformsError,
-  dispatchSetAvailablePlatforms,
+  fetchAvailablePlatformsError,
+  setAvailablePlatforms,
 } from '../actions/appInfoActions';
-import { getAvailableLanguages, getAvailableRegions, getAvailablePlatforms } from '../../functions/appInfoApi';
+import {
+  getAvailableLanguages,
+  getAvailableRegions,
+  getAvailablePlatforms,
+} from '../../functions/appInfoApi';
 
 const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
@@ -23,10 +27,10 @@ const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) =
     switchMap(() => {
       return getAvailableLanguages().pipe(
         map((response) => {
-          return dispatchSetAvailableLanguages({ languages: response.languages });
+          return setAvailableLanguages({ languages: response.languages });
         }),
         catchError(() => {
-          return of(dispatchFetchAvailableLanguagesError());
+          return of(fetchAvailableLanguagesError());
         }),
       );
     }),
@@ -39,10 +43,10 @@ const fetchAvailableRegions$ = (actions$: ActionsObservable<AppInfoActions>) => 
     switchMap(() => {
       return getAvailableRegions().pipe(
         map((response) => {
-          return dispatchSetAvailableRegions({ regions: response.regions });
+          return setAvailableRegions({ regions: response.regions });
         }),
         catchError(() => {
-          return of(dispatchFetchAvailableRegionsError());
+          return of(fetchAvailableRegionsError());
         }),
       );
     }),
@@ -55,10 +59,10 @@ const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AppInfoActions>) =
     switchMap(() => {
       return getAvailablePlatforms().pipe(
         map((response) => {
-          return dispatchSetAvailablePlatforms({ platforms: response.platforms });
+          return setAvailablePlatforms({ platforms: response.platforms });
         }),
         catchError(() => {
-          return of(dispatchFetchAvailablePlatformsError());
+          return of(fetchAvailablePlatformsError());
         }),
       );
     }),

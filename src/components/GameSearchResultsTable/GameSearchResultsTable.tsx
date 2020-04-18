@@ -12,7 +12,7 @@ import { GameResultCell } from './GameSearchResultsTable.styles';
 import { GameSummary } from '../GameSummary/GameSummary';
 
 import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults, selectGameSearchResultsTotal } from '../../store/selectors/gameSearchResultsSelectors';
-import { dispatchChangePage, dispatchChangeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
+import { changePage, changeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
 
 import { AppState } from '../../store/store';
 
@@ -29,26 +29,26 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  changePage: dispatchChangePage,
-  changeResultsPerPage: dispatchChangeResultsPerPage,
+  dispatchChangePage: changePage,
+  dispatchChangeResultsPerPage: changeResultsPerPage,
 };
 
 const Component: React.FC<Props> = ({
   games,
   gamesTotal,
   currentPage,
-  changePage,
-  changeResultsPerPage,
+  dispatchChangePage,
+  dispatchChangeResultsPerPage,
   resultsPerPage,
 }) => {
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    changeResultsPerPage({
+    dispatchChangeResultsPerPage({
       resultsPerPage: Number.parseInt(event.target.value, 10),
     });
   };
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    changePage({
+    dispatchChangePage({
       page: newPage,
     });
   };

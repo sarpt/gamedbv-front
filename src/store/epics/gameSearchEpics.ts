@@ -5,9 +5,9 @@ import { ofType, ActionsObservable, StateObservable } from 'redux-observable';
 import {
   GameSearchActionsTypes,
   GameSearchActions,
-  dispatchSetGameSearchError,
+  setGameSearchError,
   ChangeSearchQueryAction,
-  dispatchFetchSearchResults,
+  fetchSearchResults,
   FetchSearchResultsAction,
   AddSearchedRegionAction,
   RemoveSearchedRegionAction,
@@ -15,7 +15,7 @@ import {
   RemoveSearchedPlatformAction,
 } from '../actions/gameSearchActions';
 import {
-  dispatchSetGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes,
+  setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes,
 } from '../actions/gameSearchResultsActions';
 
 import { searchGames } from '../../functions/gamesApi';
@@ -39,7 +39,7 @@ const handleGameSearchChange$ = (
       GameSearchResultsActionsTypes.ChangeResultsPerPage,
     ),
     map(() => {
-      return dispatchFetchSearchResults();
+      return fetchSearchResults();
     }),
   );
 };
@@ -72,10 +72,10 @@ const fetchGamesResults$ = (
       return searchGames(searchGamesRequestProperties)
         .pipe(
           map((result) => {
-            return dispatchSetGames({ games: result.games, total: result.total });
+            return setGames({ games: result.games, total: result.total });
           }),
           catchError((error) => {
-            return of(dispatchSetGameSearchError({ message: getAjaxErrorMessage(error) }));
+            return of(setGameSearchError({ message: getAjaxErrorMessage(error) }));
           }),
         );
     }),

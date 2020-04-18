@@ -8,7 +8,7 @@ import { PanelSection } from '../PanelSection/PanelSection';
 
 import { AppState } from '../../store/store';
 import { selectRegions } from '../../store/selectors/gameSearchSelectors';
-import { dispatchAddSearchedRegion, dispatchRemoveSearchedRegion } from '../../store/actions/gameSearchActions';
+import { addSearchedRegion, removeSearchedRegion } from '../../store/actions/gameSearchActions';
 import { selectAvailableRegions } from '../../store/selectors/appInfoSelectors';
 import { Region } from '../../models/Region';
 
@@ -22,8 +22,8 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  addSearchedRegion: dispatchAddSearchedRegion,
-  removeSearchedRegion: dispatchRemoveSearchedRegion,
+  dispatchAddSearchedRegion: addSearchedRegion,
+  dispatchRemoveSearchedRegion: removeSearchedRegion,
 };
 
 type additionalProps = {};
@@ -32,17 +32,17 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 const Component: React.FC<Props> = ({
   availableRegions,
   regions,
-  addSearchedRegion,
-  removeSearchedRegion,
+  dispatchAddSearchedRegion,
+  dispatchRemoveSearchedRegion,
 }) => {
   const onRegionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      addSearchedRegion({ regionCode: event.target.value });
+      dispatchAddSearchedRegion({ regionCode: event.target.value });
 
       return;
     }
 
-    removeSearchedRegion({ regionCode: event.target.value });
+    dispatchRemoveSearchedRegion({ regionCode: event.target.value });
   };
 
   const isRegionSet = (regionCheckbox: Region): boolean => {

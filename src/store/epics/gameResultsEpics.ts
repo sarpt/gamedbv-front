@@ -14,7 +14,7 @@ import {
   GameSearchResultsActions,
   GameSearchResultsActionsTypes,
   ChangeResultsPerPageAction,
-  dispatchChangePage,
+  changePage,
 } from "../actions/gameSearchResultsActions";
 import { AppState } from "../store";
 import { selectCurrentPage } from "../selectors/gameSearchResultsSelectors";
@@ -35,7 +35,7 @@ const resetToFirstPage$ = (
     withLatestFrom(state$),
     filter(([, state]) => selectCurrentPage(state) !== 0),
     map(() => {
-      return dispatchChangePage({ page: 0 });
+      return changePage({ page: 0 });
     }),
   );
 };

@@ -6,7 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { PanelSection } from '../PanelSection/PanelSection';
 
 import { selectPlatforms } from '../../store/selectors/gameSearchSelectors';
-import { dispatchAddSearchedPlatform, dispatchRemoveSearchedPlatform } from '../../store/actions/gameSearchActions';
+import { addSearchedPlatform, removeSearchedPlatform } from '../../store/actions/gameSearchActions';
 import { AppState } from '../../store/store';
 import { connect } from 'react-redux';
 import { selectAvailablePlatforms } from '../../store/selectors/appInfoSelectors';
@@ -22,8 +22,8 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = {
-  addSearchedPlatform: dispatchAddSearchedPlatform,
-  removeSearchedPlatform: dispatchRemoveSearchedPlatform,
+  dispatchAddSearchedPlatform: addSearchedPlatform,
+  dispatchRemoveSearchedPlatform: removeSearchedPlatform,
 };
 
 type additionalProps = {};
@@ -32,17 +32,17 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 const Component: React.FC<Props> = ({
   availablePlatforms,
   platforms,
-  addSearchedPlatform,
-  removeSearchedPlatform,
+  dispatchAddSearchedPlatform,
+  dispatchRemoveSearchedPlatform,
 }) => {
   const onPlatformsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      addSearchedPlatform({ platformId: event.target.value });
+      dispatchAddSearchedPlatform({ platformId: event.target.value });
 
       return;
     }
 
-    removeSearchedPlatform({ platformId: event.target.value });
+    dispatchRemoveSearchedPlatform({ platformId: event.target.value });
   };
 
   const isPlatformSet = (platform: Platform): boolean => {

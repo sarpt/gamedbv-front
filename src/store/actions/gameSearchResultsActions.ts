@@ -16,7 +16,7 @@ export interface SetSearchResultsAction extends Action {
   type: GameSearchResultsActionsTypes.SetSearchResults;
   payload: SetGamesPayload;
 }
-export const dispatchSetGames = ({ games, total }: SetGamesPayload): SetSearchResultsAction => {
+export const setGames = ({ games, total }: SetGamesPayload): SetSearchResultsAction => {
   return {
     type: GameSearchResultsActionsTypes.SetSearchResults,
     payload: {
@@ -33,7 +33,7 @@ export interface ChangeResultsPerPageAction extends Action {
   type: GameSearchResultsActionsTypes.ChangeResultsPerPage;
   payload: ChangeResultsPerPagePayload;
 }
-export const dispatchChangeResultsPerPage = ({ resultsPerPage }: ChangeResultsPerPagePayload): ChangeResultsPerPageAction => {
+export const changeResultsPerPage = ({ resultsPerPage }: ChangeResultsPerPagePayload): ChangeResultsPerPageAction => {
   return {
     type: GameSearchResultsActionsTypes.ChangeResultsPerPage,
     payload: {
@@ -49,7 +49,7 @@ export interface ChangePageAction extends Action {
   type: GameSearchResultsActionsTypes.ChangePage;
   payload: ChangePagePayload;
 }
-export const dispatchChangePage = ({ page }: ChangePagePayload): ChangePageAction => {
+export const changePage = ({ page }: ChangePagePayload): ChangePageAction => {
   return {
     type: GameSearchResultsActionsTypes.ChangePage,
     payload: {
