@@ -1,12 +1,14 @@
 import React from 'react';
+import { useHistory, Link as RouterLink } from "react-router-dom";
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import { OptionsButton } from './ApplicationBar.styles';
+import { OptionsButton, Title, MainToolbar } from './ApplicationBar.styles';
+import { Routes } from '../../consts/routes';
 
 const appBarElevation = 1;
 const applicationTitle = 'Game Database Viewer';
@@ -14,17 +16,25 @@ const applicationTitle = 'Game Database Viewer';
 type props = {};
 
 export const ApplicationBar: React.FC<props> = () => {
+  const history = useHistory();
+
+  const navigateToSettings = () => {
+    history.push(Routes.Settings);
+  };
+
   return (
     <React.Fragment>
       <AppBar elevation={ appBarElevation }>
-        <Toolbar>
-          <Typography variant="h5">
-            { applicationTitle }
-          </Typography>
-          <OptionsButton>
+        <MainToolbar>
+          <Title variant="h5">
+            <Link component={ RouterLink } to={ Routes.Root } color="inherit">
+              { applicationTitle }
+            </Link>
+          </Title>
+          <OptionsButton onClick={ navigateToSettings }>
             <SettingsIcon></SettingsIcon>
           </OptionsButton>
-        </Toolbar>
+        </MainToolbar>
       </AppBar>
       <Toolbar></Toolbar>
     </React.Fragment>

@@ -10,6 +10,7 @@ import { ApplicationBar } from '../ApplicationBar/ApplicationBar';
 
 import { Main, Content } from './Main.styles';
 import { SettingsPage } from '../SettingsPage/SettingsPage';
+import { Routes } from '../../consts/routes';
 
 export const MainContainer: React.FC = () => {
   return (
@@ -18,10 +19,10 @@ export const MainContainer: React.FC = () => {
         <ApplicationBar></ApplicationBar>
         <Content>
           <Switch>
-            <Route path="/settings">
+            <Route path={ Routes.Settings }>
               <SettingsPage></SettingsPage>
             </Route>
-            <Route path={ ["/games", "/" ] }>
+            <Route path={ [Routes.Root, Routes.Games ] }>
               <GameSearchPage></GameSearchPage>
             </Route>
           </Switch>

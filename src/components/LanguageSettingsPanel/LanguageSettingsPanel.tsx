@@ -16,7 +16,7 @@ import { Panel } from '../Panel/Panel';
 import { SelectLabel } from './LanguageSettingsPanel.styles';
 
 const languageSettingLabel = "Language settings";
-const preffereLanguageLabel = "Preffered language";
+const preffereLanguageLabel = "Preffered games entries language (affects titles, descriptions, etc.). Defaults to English when preffered language not present.";
 
 const mapStateToProps = (state: AppState) => {
   return {
