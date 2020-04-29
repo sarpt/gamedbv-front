@@ -1,5 +1,5 @@
 export type Platform = {
-  code: string,
+  uid: string,
   name: string,
   indexed: boolean,
 };

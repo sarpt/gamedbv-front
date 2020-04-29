@@ -46,7 +46,7 @@ const Component: React.FC<Props> = ({
   };
 
   const isPlatformSet = (platform: Platform): boolean => {
-    return platforms.has(platform.code);
+    return platforms.has(platform.uid);
   };
 
   return (
@@ -55,15 +55,15 @@ const Component: React.FC<Props> = ({
         availablePlatforms.map(platform => {
           return (
             <FormControlLabel
-              key={ platform.code }
+              key={ platform.uid }
               control={
                 <Checkbox
                   checked={ isPlatformSet(platform) }
                   onChange={ onPlatformsChange }
-                  value={ platform.code }
+                  value={ platform.uid }
                 ></Checkbox>
               }
-              label={ platform.code }
+              label={ platform.name }
             ></FormControlLabel>
           );
         })
