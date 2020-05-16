@@ -18,9 +18,9 @@ import {
   setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes,
 } from '../actions/results';
 
-import { searchGames } from '../../../functions/gamesApi';
-import { getAjaxErrorMessage } from '../../../functions/errorUtils';
-import { AppState } from '../../../store/store';
+import { searchGames } from '../../api/functions/games';
+import { getAjaxErrorMessage } from '../../common/functions/errorUtils';
+import { AppState } from '../../core/store/store';
 
 import { selectGameSearchStore } from '../selectors/search';
 import { selectGameSearchResultsStore } from '../selectors/results';

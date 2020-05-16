@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { PanelSection } from '../../../common/components/panel-section';
 
 import { QueryInput, QueryInputContainer } from './query.styles';
-import { AppState } from '../../../../store/store';
+import { AppState } from '../../../core/store/store';
 import { selectSearchQuery, selectShouldFilterByText } from '../../selectors/search';
 import { changeSearchQuery } from '../../actions/search';
 

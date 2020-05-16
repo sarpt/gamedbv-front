@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import './index.css';
 import { App } from './App';
-import { store } from './store/store';
+import { store } from './libs/core/store/store';
 import * as serviceWorker from './serviceWorker';
 
 const rootElement = document.getElementById('root');

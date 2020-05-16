@@ -1,4 +1,4 @@
-import { AppState } from "../../../store/store";
+import { AppState } from "../../core/store/store";
 
 export const selectGameSearchResultsStore = (store: AppState) => store.gameSearchResultsReducer;
 export const selectGameSearchResults = (store: AppState) => selectGameSearchResultsStore(store).gameSearchResults;

@@ -19,7 +19,7 @@ import {
   getAvailableLanguages,
   getAvailableRegions,
   getAvailablePlatforms,
-} from '../../../functions/appInfoApi';
+} from '../../api/functions/status';
 
 const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(

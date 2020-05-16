@@ -7,8 +7,8 @@ import Link from '@material-ui/core/Link';
 
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import { OptionsButton, Title, MainToolbar } from './ApplicationBar.styles';
-import { Routes } from '../../consts/routes';
+import { OptionsButton, Title, MainToolbar } from './application-bar.styles';
+import { Routes } from '../consts/routes';
 
 const appBarElevation = 1;
 const applicationTitle = 'Game Database Viewer';

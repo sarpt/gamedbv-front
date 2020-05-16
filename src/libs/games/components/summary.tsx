@@ -13,11 +13,11 @@ import {
   Footer,
 } from './summary.styles';
 
-import { GameInfo } from '../../../models/GameInfo';
-import { Description } from '../../../models/Description';
+import { GameInfo } from '../../common/models/GameInfo';
+import { Description } from '../../common/models/Description';
 
 import { LanguageSelector } from '../../common/components/forms/selects/language';
-import { Language } from '../../../models/Language';
+import { Language } from '../../common/models/Language';
 
 type Props = {
   game: GameInfo,

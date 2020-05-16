@@ -14,7 +14,7 @@ import { GameSummary } from '../summary';
 import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults, selectGameSearchResultsTotal } from '../../selectors/results';
 import { changePage, changeResultsPerPage } from '../../actions/results';
 
-import { AppState } from '../../../../store/store';
+import { AppState } from '../../../core/store/store';
 
 type AdditionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;

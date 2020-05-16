@@ -5,11 +5,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import { AppState } from '../../../../../store/store';
+import { AppState } from '../../../../core/store/store';
 import { selectPrefferedLanguageCode } from '../../../../settings/selectors';
 
 import { LanguageSelectIcon } from './language.styles';
-import { Language } from '../../../../../models/Language';
+import { Language } from '../../../models/Language';
 
 const mapStateToProps = (state: AppState) => {
   return {

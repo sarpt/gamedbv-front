@@ -1,9 +1,9 @@
 import { ajax } from "rxjs/ajax";
 
 import { getLanguagesEndpoint, getRegionsEndpoint, getPlatformsEndpoint } from "./endpoints";
-import { Language } from "../models/Language";
-import { Region } from "../models/Region";
-import { Platform } from "../models/Platform";
+import { Language } from "../../common/models/Language";
+import { Region } from "../../common/models/Region";
+import { Platform } from "../../common/models/Platform";
 
 export function getAvailableLanguages() {
   const url = getLanguagesEndpoint();

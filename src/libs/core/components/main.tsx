@@ -5,12 +5,12 @@ import {
   Route,
 } from "react-router-dom";
 
-import { GameSearchPage } from '../../pages/gameSearch';
-import { ApplicationBar } from '../ApplicationBar/ApplicationBar';
+import { GameSearchPage } from './pages/gameSearch';
+import { ApplicationBar } from './application-bar';
 
-import { Main, Content } from './Main.styles';
-import { SettingsPage } from '../../pages/settings';
-import { Routes } from '../../consts/routes';
+import { Main, Content } from './main.styles';
+import { SettingsPage } from './pages/settings';
+import { Routes } from '../consts/routes';
 
 export const MainContainer: React.FC = () => {
   return (

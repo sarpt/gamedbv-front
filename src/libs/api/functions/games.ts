@@ -1,10 +1,10 @@
 import { ajax } from 'rxjs/ajax';
 
-import { ApiParameters } from '../models/ApiParameters';
-import { GamesResult } from '../models/GamesResult';
-import { GameInfo } from '../models/GameInfo';
+import { ApiParameters } from '../../common/models/ApiParameters';
+import { GamesResult } from '../../common/models/GamesResult';
+import { GameInfo } from '../../common/models/GameInfo';
 
-import { addQueriesToUrl } from './urlUtils';
+import { addQueriesToUrl } from './url-utils';
 import { getGamesEndpoint, getGameDetailsEndpoint } from './endpoints';
 
 type SearchGamesArguments = {

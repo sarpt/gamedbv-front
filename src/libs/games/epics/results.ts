@@ -16,7 +16,7 @@ import {
   ChangeResultsPerPageAction,
   changePage,
 } from "../actions/results";
-import { AppState } from "../../../store/store";
+import { AppState } from "../../core/store/store";
 import { selectCurrentPage } from "../selectors/results";
 
 const resetToFirstPage$ = (

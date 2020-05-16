@@ -7,10 +7,10 @@ import { PanelSection } from '../../../common/components/panel-section';
 
 import { selectPlatforms } from '../../selectors/search';
 import { addSearchedPlatform, removeSearchedPlatform } from '../../actions/search';
-import { AppState } from '../../../../store/store';
+import { AppState } from '../../../core/store/store';
 import { connect } from 'react-redux';
 import { selectAvailablePlatforms } from '../../../status/selectors';
-import { Platform } from '../../../../models/Platform';
+import { Platform } from '../../../common/models/Platform';
 
 const platformsLabel = 'Platforms';
 

@@ -5,7 +5,7 @@ import LanguageIcon from '@material-ui/icons/Language';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import { AppState } from '../../../../store/store';
+import { AppState } from '../../../core/store/store';
 
 import { fetchAvailableLanguages } from '../../../status/actions';
 import { setPrefferedLanguageCode } from '../../actions';

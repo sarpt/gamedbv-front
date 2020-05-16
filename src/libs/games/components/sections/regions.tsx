@@ -6,11 +6,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import { PanelSection } from '../../../common/components/panel-section';
 
-import { AppState } from '../../../../store/store';
+import { AppState } from '../../../core/store/store';
 import { selectRegions } from '../../selectors/search';
 import { addSearchedRegion, removeSearchedRegion } from '../../actions/search';
 import { selectAvailableRegions } from '../../../status/selectors';
-import { Region } from '../../../../models/Region';
+import { Region } from '../../../common/models/Region';
 
 const regionsLabel = 'Regions';
 

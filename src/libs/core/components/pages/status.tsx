@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AppState } from '../store/store';
+import { AppState } from '../../store/store';
 
 const mapDispatchToProps = {
 
@@ -21,7 +21,7 @@ const Component: React.FC<props> = ({}) => {
   );
 };
 
-export const DashboardPage = connect(
+export const StatusPage = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Component);

@@ -9,7 +9,7 @@ import { GameSearchResultsTable } from '../tables/results';
 import {
   fetchSearchResults,
 } from '../../actions/search';
-import { AppState } from '../../../../store/store';
+import { AppState } from '../../../core/store/store';
 import { areAnyGameSearchResultsAvailable } from '../../selectors/results';
 
 const searchResultsLabel = 'Search results';
