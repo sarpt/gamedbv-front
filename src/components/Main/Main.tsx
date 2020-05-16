@@ -9,7 +9,7 @@ import { GameSearchPage } from '../../pages/gameSearch';
 import { ApplicationBar } from '../ApplicationBar/ApplicationBar';
 
 import { Main, Content } from './Main.styles';
-import { SettingsPage } from '../SettingsPage/SettingsPage';
+import { SettingsPage } from '../../pages/settings';
 import { Routes } from '../../consts/routes';
 
 export const MainContainer: React.FC = () => {

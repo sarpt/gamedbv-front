@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LanguageSettingsPanel } from '../LanguageSettingsPanel/LanguageSettingsPanel';
+import { LanguageSettingsPanel } from '../libs/settings/components/panels/language';
 
 type props = {};
 

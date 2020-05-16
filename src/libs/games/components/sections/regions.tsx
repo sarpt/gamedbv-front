@@ -9,7 +9,7 @@ import { PanelSection } from '../../../../components/PanelSection/PanelSection';
 import { AppState } from '../../../../store/store';
 import { selectRegions } from '../../selectors/search';
 import { addSearchedRegion, removeSearchedRegion } from '../../actions/search';
-import { selectAvailableRegions } from '../../../../store/selectors/appInfoSelectors';
+import { selectAvailableRegions } from '../../../status/selectors';
 import { Region } from '../../../../models/Region';
 
 const regionsLabel = 'Regions';

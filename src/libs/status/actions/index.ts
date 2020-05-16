@@ -1,7 +1,7 @@
 import { Action } from 'redux';
-import { Language } from '../../models/Language';
-import { Region } from '../../models/Region';
-import { Platform } from '../../models/Platform';
+import { Language } from '../../../models/Language';
+import { Region } from '../../../models/Region';
+import { Platform } from '../../../models/Platform';
 
 export enum AppInfoActionsTypes {
   FetchAvailableLanguages = '[app-info] Fetch available languages',

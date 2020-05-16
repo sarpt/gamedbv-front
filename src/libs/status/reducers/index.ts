@@ -1,10 +1,10 @@
 import {
   AppInfoActionsTypes,
   AppInfoActions,
-} from "../actions/appInfoActions";
-import { Language } from "../../models/Language";
-import { Region } from "../../models/Region";
-import { Platform } from '../../models/Platform';
+} from "../actions";
+import { Language } from "../../../models/Language";
+import { Region } from "../../../models/Region";
+import { Platform } from '../../../models/Platform';
 
 type State = {
   availableLanguages: Language[],

@@ -1,7 +1,7 @@
 import {
   GameDetailsActionsTypes,
   GameDetailsActions,
-} from '../../libs/games/actions/details';
+} from '../actions/details';
 
 type State = {
   gameId?: string,

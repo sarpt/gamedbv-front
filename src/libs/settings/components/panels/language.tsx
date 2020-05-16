@@ -5,15 +5,15 @@ import LanguageIcon from '@material-ui/icons/Language';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import { AppState } from '../../store/store';
+import { AppState } from '../../../../store/store';
 
-import { fetchAvailableLanguages } from '../../store/actions/appInfoActions';
-import { setPrefferedLanguageCode } from '../../store/actions/appSettingsActions';
-import { selectPrefferedLanguageCode } from '../../store/selectors/appSettingsSelectors';
-import { selectAvailableLanguages } from '../../store/selectors/appInfoSelectors';
-import { Panel } from '../Panel/Panel';
+import { fetchAvailableLanguages } from '../../../status/actions';
+import { setPrefferedLanguageCode } from '../../actions';
+import { selectPrefferedLanguageCode } from '../../selectors';
+import { selectAvailableLanguages } from '../../../status/selectors';
+import { Panel } from '../../../../components/Panel/Panel';
 
-import { SelectLabel } from './LanguageSettingsPanel.styles';
+import { SelectLabel } from './language.styles';
 
 const languageSettingLabel = "Language settings";
 const preffereLanguageLabel = "Preffered games entries language (affects titles, descriptions, etc.). Defaults to English when preffered language not present.";

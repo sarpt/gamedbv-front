@@ -16,7 +16,7 @@ import {
 import { GameInfo } from '../../../models/GameInfo';
 import { Description } from '../../../models/Description';
 
-import { LanguageSelector } from '../../../components/LanguageSelector/LanguageSelector';
+import { LanguageSelector } from '../../common/components/forms/selects/language';
 import { Language } from '../../../models/Language';
 
 type Props = {

@@ -14,12 +14,12 @@ import {
   FetchAvailablePlatformsAction,
   fetchAvailablePlatformsError,
   setAvailablePlatforms,
-} from '../actions/appInfoActions';
+} from '../actions';
 import {
   getAvailableLanguages,
   getAvailableRegions,
   getAvailablePlatforms,
-} from '../../functions/appInfoApi';
+} from '../../../functions/appInfoApi';
 
 const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
   return actions$.pipe(
