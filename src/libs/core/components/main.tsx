@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { GameSearchPage } from './pages/gameSearch';
+import { GameSearchPage } from './pages/game-search';
 import { ApplicationBar } from './application-bar';
 
 import { Main, Content } from './main.styles';

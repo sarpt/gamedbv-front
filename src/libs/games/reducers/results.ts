@@ -3,7 +3,7 @@ import {
   GameSearchResultsActions,
 } from '../actions/results';
 
-import { GameInfo } from '../../common/models/GameInfo';
+import { GameInfo } from '../../common/models/game-info';
 
 const initialSelectedPage = 0;
 const initialGamesPerPage = 10;

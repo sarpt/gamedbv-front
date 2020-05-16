@@ -9,7 +9,7 @@ import { AppState } from '../../../../core/store/store';
 import { selectPrefferedLanguageCode } from '../../../../settings/selectors';
 
 import { LanguageSelectIcon } from './language.styles';
-import { Language } from '../../../models/Language';
+import { Language } from '../../../models/language';
 
 const mapStateToProps = (state: AppState) => {
   return {

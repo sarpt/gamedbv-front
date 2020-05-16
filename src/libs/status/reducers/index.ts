@@ -2,9 +2,9 @@ import {
   AppInfoActionsTypes,
   AppInfoActions,
 } from "../actions";
-import { Language } from "../../common/models/Language";
-import { Region } from "../../common/models/Region";
-import { Platform } from '../../common/models/Platform';
+import { Language } from "../../common/models/language";
+import { Region } from "../../common/models/region";
+import { Platform } from '../../common/models/platform';
 
 type State = {
   availableLanguages: Language[],

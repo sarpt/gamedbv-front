@@ -1,6 +1,6 @@
-import { Description } from './Description';
-import { Region } from './Region';
-import { Platform } from './Platform';
+import { Description } from './description';
+import { Region } from './region';
+import { Platform } from './platform';
 
 export type GameInfo = {
   uuid: string,

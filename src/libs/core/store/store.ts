@@ -2,8 +2,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { rootReducer } from './rootReducer';
-import { rootEpic } from './rootEpic';
+import { rootReducer } from './root-reducer';
+import { rootEpic } from './root-epic';
 
 // redux-observable setup
 const epicMiddleware = createEpicMiddleware();

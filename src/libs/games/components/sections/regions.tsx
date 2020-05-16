@@ -10,7 +10,7 @@ import { AppState } from '../../../core/store/store';
 import { selectRegions } from '../../selectors/search';
 import { addSearchedRegion, removeSearchedRegion } from '../../actions/search';
 import { selectAvailableRegions } from '../../../status/selectors';
-import { Region } from '../../../common/models/Region';
+import { Region } from '../../../common/models/region';
 
 const regionsLabel = 'Regions';
 

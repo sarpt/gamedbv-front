@@ -1,4 +1,4 @@
-import { Language } from "./Language";
+import { Language } from "./language";
 
 export type Description = {
   language: Language,

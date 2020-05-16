@@ -1,8 +1,8 @@
 import { ajax } from 'rxjs/ajax';
 
-import { ApiParameters } from '../../common/models/ApiParameters';
-import { GamesResult } from '../../common/models/GamesResult';
-import { GameInfo } from '../../common/models/GameInfo';
+import { ApiParameters } from '../models/api-parameters';
+import { GamesResult } from '../../common/models/games-result';
+import { GameInfo } from '../../common/models/game-info';
 
 import { addQueriesToUrl } from './url-utils';
 import { getGamesEndpoint, getGameDetailsEndpoint } from './endpoints';

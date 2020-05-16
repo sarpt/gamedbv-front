@@ -19,7 +19,7 @@ import {
 } from '../actions/results';
 
 import { searchGames } from '../../api/functions/games';
-import { getAjaxErrorMessage } from '../../common/functions/errorUtils';
+import { getAjaxErrorMessage } from '../../common/functions/error-utils';
 import { AppState } from '../../core/store/store';
 
 import { selectGameSearchStore } from '../selectors/search';

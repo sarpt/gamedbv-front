@@ -2,7 +2,7 @@ import React, { useEffect, ChangeEvent, useState } from 'react';
 import { debounceTime } from 'rxjs/operators';
 
 
-import { useSubject } from '../../../hooks/useSubject';
+import { useSubject } from '../../../hooks/use-subject';
 import { Input } from './debounced.styles';
 
 type props = {

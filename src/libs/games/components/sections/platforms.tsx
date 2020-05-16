@@ -10,7 +10,7 @@ import { addSearchedPlatform, removeSearchedPlatform } from '../../actions/searc
 import { AppState } from '../../../core/store/store';
 import { connect } from 'react-redux';
 import { selectAvailablePlatforms } from '../../../status/selectors';
-import { Platform } from '../../../common/models/Platform';
+import { Platform } from '../../../common/models/platform';
 
 const platformsLabel = 'Platforms';
 
