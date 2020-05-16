@@ -5,18 +5,18 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import { PanelSection } from '../../../common/components/panel-section';
 
-import { selectPlatforms } from '../../selectors/search';
+import { selectSearchedPlatforms } from '../../selectors/search';
 import { addSearchedPlatform, removeSearchedPlatform } from '../../actions/search';
 import { AppState } from '../../../core/store/store';
 import { connect } from 'react-redux';
-import { selectAvailablePlatforms } from '../../../status/selectors';
+import { selectPlatforms } from '../../../status/selectors';
 import { Platform } from '../../../common/models/platform';
 
 const platformsLabel = 'Platforms';
 
 const mapStateToProps = (state: AppState) => {
   return {
-    availablePlatforms: selectAvailablePlatforms(state),
+    searchedPlatforms: selectSearchedPlatforms(state),
     platforms: selectPlatforms(state),
   };
 };
@@ -30,8 +30,8 @@ type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
 const Component: React.FC<Props> = ({
-  availablePlatforms,
   platforms,
+  searchedPlatforms,
   dispatchAddSearchedPlatform,
   dispatchRemoveSearchedPlatform,
 }) => {
@@ -46,13 +46,13 @@ const Component: React.FC<Props> = ({
   };
 
   const isPlatformSet = (platform: Platform): boolean => {
-    return platforms.has(platform.uid);
+    return searchedPlatforms.has(platform.uid);
   };
 
   return (
     <PanelSection label={ platformsLabel }>
       {
-        availablePlatforms.map(platform => {
+        platforms.map(platform => {
           return (
             <FormControlLabel
               key={ platform.uid }

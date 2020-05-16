@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../store/store';
+import { PlatformsStatusPanel } from '../../../status/components/panels/platforms';
 
 const mapDispatchToProps = {
 
@@ -16,8 +17,7 @@ type props = typeof mapDispatchToProps & ReturnType<typeof mapStateToProps> & ad
 
 const Component: React.FC<props> = ({}) => {
   return (
-    <React.Fragment>
-    </React.Fragment>
+    <PlatformsStatusPanel></PlatformsStatusPanel>
   );
 };
 

@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 
 import SettingsIcon from '@material-ui/icons/Settings';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 
 import { OptionsButton, Title, MainToolbar } from './application-bar.styles';
 import { Routes } from '../consts/routes';
@@ -22,6 +23,10 @@ export const ApplicationBar: React.FC<props> = () => {
     history.push(Routes.Settings);
   };
 
+  const navigateToStatus = () => {
+    history.push(Routes.Status);
+  };
+
   return (
     <React.Fragment>
       <AppBar elevation={ appBarElevation }>
@@ -31,6 +36,9 @@ export const ApplicationBar: React.FC<props> = () => {
               { applicationTitle }
             </Link>
           </Title>
+          <OptionsButton onClick={ navigateToStatus }>
+            <AssessmentIcon></AssessmentIcon>
+          </OptionsButton>
           <OptionsButton onClick={ navigateToSettings }>
             <SettingsIcon></SettingsIcon>
           </OptionsButton>

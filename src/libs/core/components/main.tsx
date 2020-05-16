@@ -6,11 +6,14 @@ import {
 } from "react-router-dom";
 
 import { GameSearchPage } from './pages/game-search';
+import { SettingsPage } from './pages/settings';
+import { StatusPage } from './pages/status';
+
 import { ApplicationBar } from './application-bar';
 
-import { Main, Content } from './main.styles';
-import { SettingsPage } from './pages/settings';
 import { Routes } from '../consts/routes';
+
+import { Main, Content } from './main.styles';
 
 export const MainContainer: React.FC = () => {
   return (
@@ -19,6 +22,9 @@ export const MainContainer: React.FC = () => {
         <ApplicationBar></ApplicationBar>
         <Content>
           <Switch>
+            <Route path={ Routes.Status }>
+              <StatusPage></StatusPage>
+            </Route>
             <Route path={ Routes.Settings }>
               <SettingsPage></SettingsPage>
             </Route>
