@@ -10,7 +10,7 @@ import {
   IconContainer,
   Label,
   Content,
-} from './Panel.styles';
+} from './panel.styles';
 
 const isExpandedInitially = true;
 

@@ -3,7 +3,7 @@ import React from 'react';
 import FormGroup from '@material-ui/core/FormGroup';
 import SearchIcon from '@material-ui/icons/Search';
 
-import { Panel } from '../../../../components/Panel/Panel';
+import { Panel } from '../../../common/components/panel';
 import { GameSearchRegions } from '../sections/regions';
 import { GameSearchPlatforms } from '../sections/platforms';
 import { GameSearchQuery } from '../sections/query';

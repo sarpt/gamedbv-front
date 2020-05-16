@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ViewListIcon from '@material-ui/icons/ViewList';
 
-import { Panel } from '../../../../components/Panel/Panel';
+import { Panel } from '../../../common/components/panel';
 import { GameSearchResultsTable } from '../tables/results';
 
 import {

@@ -2,8 +2,8 @@ import React, { useEffect, ChangeEvent, useState } from 'react';
 import { debounceTime } from 'rxjs/operators';
 
 
-import { useSubject } from '../../hooks/useSubject';
-import { Input } from './DebouncedInput.styles';
+import { useSubject } from '../../../../../hooks/useSubject';
+import { Input } from './debounced.styles';
 
 type props = {
   label: string,

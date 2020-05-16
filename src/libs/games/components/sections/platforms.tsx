@@ -3,7 +3,7 @@ import React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { PanelSection } from '../../../../components/PanelSection/PanelSection';
+import { PanelSection } from '../../../common/components/panel-section';
 
 import { selectPlatforms } from '../../selectors/search';
 import { addSearchedPlatform, removeSearchedPlatform } from '../../actions/search';

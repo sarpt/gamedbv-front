@@ -2,7 +2,7 @@ import React from 'react';
 
 import ErrorIcon from '@material-ui/icons/Error';
 
-import { Panel } from '../Panel/Panel';
+import { Panel } from './panel';
 
 type Props = {
   message: string,

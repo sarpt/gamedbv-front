@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { PanelSection } from '../../../../components/PanelSection/PanelSection';
+import { PanelSection } from '../../../common/components/panel-section';
 
 import { QueryInput, QueryInputContainer } from './query.styles';
 import { AppState } from '../../../../store/store';

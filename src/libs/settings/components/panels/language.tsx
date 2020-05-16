@@ -11,7 +11,7 @@ import { fetchAvailableLanguages } from '../../../status/actions';
 import { setPrefferedLanguageCode } from '../../actions';
 import { selectPrefferedLanguageCode } from '../../selectors';
 import { selectAvailableLanguages } from '../../../status/selectors';
-import { Panel } from '../../../../components/Panel/Panel';
+import { Panel } from '../../../common/components/panel';
 
 import { SelectLabel } from './language.styles';
 

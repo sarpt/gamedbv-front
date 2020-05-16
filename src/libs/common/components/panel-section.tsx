@@ -4,7 +4,7 @@ import {
   Content,
   SectionContainer,
   Label,
-} from './PanelSection.styles';
+} from './panel-section.styles';
 
 type Props = {
   label: string,
