@@ -9,15 +9,15 @@ import {
   RemoveSearchedRegionAction,
   AddSearchedPlatformAction,
   RemoveSearchedPlatformAction,
-} from "../actions/gameSearchActions";
+} from "../actions/search";
 import {
   GameSearchResultsActions,
   GameSearchResultsActionsTypes,
   ChangeResultsPerPageAction,
   changePage,
-} from "../actions/gameSearchResultsActions";
-import { AppState } from "../store";
-import { selectCurrentPage } from "../selectors/gameSearchResultsSelectors";
+} from "../actions/results";
+import { AppState } from "../../../store/store";
+import { selectCurrentPage } from "../selectors/results";
 
 const resetToFirstPage$ = (
   actions$: ActionsObservable<GameSearchActions | GameSearchResultsActions>,

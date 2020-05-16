@@ -3,13 +3,13 @@ import React from 'react';
 import FormGroup from '@material-ui/core/FormGroup';
 import SearchIcon from '@material-ui/icons/Search';
 
-import { Panel } from '../Panel/Panel';
-import { GameSearchRegions } from '../GameSearchRegions/GameSearchRegions';
-import { GameSearchPlatforms } from '../GameSearchPlatforms/GameSearchPlatforms';
-import { GameSearchQuery } from '../GameSearchQuery/GameSearchQuery';
+import { Panel } from '../../../../components/Panel/Panel';
+import { GameSearchRegions } from '../sections/regions';
+import { GameSearchPlatforms } from '../sections/platforms';
+import { GameSearchQuery } from '../sections/query';
 
 
-import { Row } from './GameSearchOptionsPanel.styles';
+import { Row } from './options.styles';
 
 const gameSearchLabel = 'Game search';
 

@@ -13,17 +13,17 @@ import {
   RemoveSearchedRegionAction,
   AddSearchedPlatformAction,
   RemoveSearchedPlatformAction,
-} from '../actions/gameSearchActions';
+} from '../actions/search';
 import {
   setGames, GameSearchResultsActions, ChangePageAction, ChangeResultsPerPageAction, GameSearchResultsActionsTypes,
-} from '../actions/gameSearchResultsActions';
+} from '../actions/results';
 
-import { searchGames } from '../../functions/gamesApi';
-import { getAjaxErrorMessage } from '../../functions/errorUtils';
-import { AppState } from '../store';
+import { searchGames } from '../../../functions/gamesApi';
+import { getAjaxErrorMessage } from '../../../functions/errorUtils';
+import { AppState } from '../../../store/store';
 
-import { selectGameSearchStore } from '../selectors/gameSearchSelectors';
-import { selectGameSearchResultsStore } from '../selectors/gameSearchResultsSelectors';
+import { selectGameSearchStore } from '../selectors/search';
+import { selectGameSearchResultsStore } from '../selectors/results';
 
 const handleGameSearchChange$ = (
   actions$: ActionsObservable<GameSearchActions>,

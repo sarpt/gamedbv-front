@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { PanelSection } from '../PanelSection/PanelSection';
+import { PanelSection } from '../../../../components/PanelSection/PanelSection';
 
-import { QueryInput, QueryInputContainer } from './GameSearchQuery.styles';
-import { AppState } from '../../store/store';
-import { selectSearchQuery, selectShouldFilterByText } from '../../store/selectors/gameSearchSelectors';
-import { changeSearchQuery } from '../../store/actions/gameSearchActions';
+import { QueryInput, QueryInputContainer } from './query.styles';
+import { AppState } from '../../../../store/store';
+import { selectSearchQuery, selectShouldFilterByText } from '../../selectors/search';
+import { changeSearchQuery } from '../../actions/search';
 
 const inputPlaceholder = 'game name, description, id, etc.';
 const inputLabel = 'Text filter';

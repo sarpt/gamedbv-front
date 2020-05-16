@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { AppState } from '../../store/store';
+import { AppState } from '../store/store';
 import {
   selectGameSearchError,
-} from '../../store/selectors/gameSearchSelectors';
+} from '../libs/games/selectors/search';
 
-import { GameSearchOptionsPanel } from '../GameSearchOptionsPanel/GameSearchOptionsPanel';
-import { GameSearchResultsPanel } from '../GameSearchResultsPanel/GameSearchResultsPanel';
-import { ErrorPanel } from '../ErrorPanel/ErrorPanel';
-import { fetchAvailableRegions, fetchAvailablePlatforms } from '../../store/actions/appInfoActions';
+import { GameSearchOptionsPanel } from '../libs/games/components/panels/options';
+import { GameSearchResultsPanel } from '../libs/games/components/panels/results';
+import { ErrorPanel } from '../components/ErrorPanel/ErrorPanel';
+import { fetchAvailableRegions, fetchAvailablePlatforms } from '../store/actions/appInfoActions';
 
 const gameSearchErrorMessage = 'Search results error';
 

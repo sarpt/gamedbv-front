@@ -3,14 +3,14 @@ import React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { PanelSection } from '../PanelSection/PanelSection';
+import { PanelSection } from '../../../../components/PanelSection/PanelSection';
 
-import { selectPlatforms } from '../../store/selectors/gameSearchSelectors';
-import { addSearchedPlatform, removeSearchedPlatform } from '../../store/actions/gameSearchActions';
-import { AppState } from '../../store/store';
+import { selectPlatforms } from '../../selectors/search';
+import { addSearchedPlatform, removeSearchedPlatform } from '../../actions/search';
+import { AppState } from '../../../../store/store';
 import { connect } from 'react-redux';
-import { selectAvailablePlatforms } from '../../store/selectors/appInfoSelectors';
-import { Platform } from '../../models/Platform';
+import { selectAvailablePlatforms } from '../../../../store/selectors/appInfoSelectors';
+import { Platform } from '../../../../models/Platform';
 
 const platformsLabel = 'Platforms';
 

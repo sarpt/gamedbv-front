@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 
-import { GameInfo } from '../../models/GameInfo';
+import { GameInfo } from '../../../models/GameInfo';
 
 export enum GameSearchResultsActionsTypes {
   SetSearchResults = '[game-search-results] Set games search results',

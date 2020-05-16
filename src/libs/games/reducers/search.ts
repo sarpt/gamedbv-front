@@ -1,7 +1,7 @@
 import {
   GameSearchActionsTypes,
   GameSearchActions,
-} from '../actions/gameSearchActions';
+} from '../actions/search';
 
 type SearchError = {
   hasError: boolean,

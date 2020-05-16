@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 import ViewListIcon from '@material-ui/icons/ViewList';
 
-import { Panel } from '../Panel/Panel';
-import { GameSearchResultsTable } from '../GameSearchResultsTable/GameSearchResultsTable';
+import { Panel } from '../../../../components/Panel/Panel';
+import { GameSearchResultsTable } from '../tables/results';
 
 import {
   fetchSearchResults,
-} from '../../store/actions/gameSearchActions';
-import { AppState } from '../../store/store';
-import { areAnyGameSearchResultsAvailable } from '../../store/selectors/gameSearchResultsSelectors';
+} from '../../actions/search';
+import { AppState } from '../../../../store/store';
+import { areAnyGameSearchResultsAvailable } from '../../selectors/results';
 
 const searchResultsLabel = 'Search results';
 const noGameSearchResultMessage = 'No games with provided query were found';

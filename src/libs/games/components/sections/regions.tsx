@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { PanelSection } from '../PanelSection/PanelSection';
+import { PanelSection } from '../../../../components/PanelSection/PanelSection';
 
-import { AppState } from '../../store/store';
-import { selectRegions } from '../../store/selectors/gameSearchSelectors';
-import { addSearchedRegion, removeSearchedRegion } from '../../store/actions/gameSearchActions';
-import { selectAvailableRegions } from '../../store/selectors/appInfoSelectors';
-import { Region } from '../../models/Region';
+import { AppState } from '../../../../store/store';
+import { selectRegions } from '../../selectors/search';
+import { addSearchedRegion, removeSearchedRegion } from '../../actions/search';
+import { selectAvailableRegions } from '../../../../store/selectors/appInfoSelectors';
+import { Region } from '../../../../models/Region';
 
 const regionsLabel = 'Regions';
 

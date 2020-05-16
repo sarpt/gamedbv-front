@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { DebouncedInput } from '../DebouncedInput/DebouncedInput';
+import { DebouncedInput } from '../../../../components/DebouncedInput/DebouncedInput';
 
 export const QueryInputContainer = styled.div`
   display: flex;

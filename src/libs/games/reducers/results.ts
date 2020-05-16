@@ -1,9 +1,9 @@
 import {
   GameSearchResultsActionsTypes,
   GameSearchResultsActions,
-} from '../actions/gameSearchResultsActions';
+} from '../actions/results';
 
-import { GameInfo } from '../../models/GameInfo';
+import { GameInfo } from '../../../models/GameInfo';
 
 const initialSelectedPage = 0;
 const initialGamesPerPage = 10;

@@ -11,13 +11,13 @@ import {
   Synopsis,
   PlatformAndRegion,
   Footer,
-} from './GameSummary.styles';
+} from './summary.styles';
 
-import { GameInfo } from '../../models/GameInfo';
-import { Description } from '../../models/Description';
+import { GameInfo } from '../../../models/GameInfo';
+import { Description } from '../../../models/Description';
 
-import { LanguageSelector } from '../LanguageSelector/LanguageSelector';
-import { Language } from '../../models/Language';
+import { LanguageSelector } from '../../../components/LanguageSelector/LanguageSelector';
+import { Language } from '../../../models/Language';
 
 type Props = {
   game: GameInfo,

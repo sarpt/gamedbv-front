@@ -7,14 +7,14 @@ import TableBody from '@material-ui/core/TableBody';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 
-import { GameResultCell } from './GameSearchResultsTable.styles';
+import { GameResultCell } from './results.styles';
 
-import { GameSummary } from '../GameSummary/GameSummary';
+import { GameSummary } from '../summary';
 
-import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults, selectGameSearchResultsTotal } from '../../store/selectors/gameSearchResultsSelectors';
-import { changePage, changeResultsPerPage } from '../../store/actions/gameSearchResultsActions';
+import { selectCurrentPage, selectGameResultsPerPage, selectGameSearchResults, selectGameSearchResultsTotal } from '../../selectors/results';
+import { changePage, changeResultsPerPage } from '../../actions/results';
 
-import { AppState } from '../../store/store';
+import { AppState } from '../../../../store/store';
 
 type AdditionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & AdditionalProps;

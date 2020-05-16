@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 
-import { Region } from '../../models/Region';
-import { Platform } from '../../models/Platform';
+import { Region } from '../../../models/Region';
+import { Platform } from '../../../models/Platform';
 
 export enum GameSearchActionsTypes {
   FetchSearchResults = '[game-search] Fetch search results',
