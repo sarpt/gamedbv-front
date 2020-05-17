@@ -37,7 +37,7 @@ export function searchGames({
     method: 'GET',
   };
 
-  return ajax.getJSON<GamesResult>(url, options);
+  return ajax.getJSON<GamesResult>(url.href, options);
 }
 
 type GetGameArguments = {
@@ -50,5 +50,5 @@ export function getGame({ id }: GetGameArguments) {
     method: 'GET',
   };
 
-  return ajax.getJSON<GameInfo>(url, options);
+  return ajax.getJSON<GameInfo>(url.href, options);
 }

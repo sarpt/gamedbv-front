@@ -11,7 +11,7 @@ export function getAvailableLanguages() {
     method: 'GET',
   };
 
-  return ajax.getJSON<{ languages: Language[] }>(url, options);
+  return ajax.getJSON<{ languages: Language[] }>(url.href, options);
 }
 
 export function getAvailableRegions() {
@@ -20,7 +20,7 @@ export function getAvailableRegions() {
     method: 'GET',
   };
 
-  return ajax.getJSON<{ regions: Region[] }>(url, options);
+  return ajax.getJSON<{ regions: Region[] }>(url.href, options);
 }
 
 export function getAvailablePlatforms() {
@@ -29,5 +29,5 @@ export function getAvailablePlatforms() {
     method: 'GET',
   };
 
-  return ajax.getJSON<{ platforms: Platform[] }>(url, options);
+  return ajax.getJSON<{ platforms: Platform[] }>(url.href, options);
 }

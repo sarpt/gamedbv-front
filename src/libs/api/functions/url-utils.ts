@@ -1,14 +1,7 @@
-const startingQueryParametersSymbol = '?';
-const nextQueryParameterSymbol = '&';
+export function addQueriesToUrl(initialUrl: URL, name: string, values: string[]): URL {
+  const url = new URL(initialUrl.href);
 
-function getQuerySeparator(url: string) {
-  return url.includes(startingQueryParametersSymbol) ? nextQueryParameterSymbol : startingQueryParametersSymbol;
-}
+  values.forEach(value => url.searchParams.append(name, value));
 
-export function addQueriesToUrl(initialUrl: string, queryName: string, queryValues: string[]) {
-  return queryValues.reduce((finalUrl: string, queryValue: string) => {
-    const separator = getQuerySeparator(finalUrl);
-
-    return `${finalUrl}${separator}${queryName}=${queryValue}`;
-  }, initialUrl);
+  return url;
 }

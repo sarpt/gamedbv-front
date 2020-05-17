@@ -7,22 +7,32 @@ enum Endpoints {
 
 const server = 'http://localhost:3001';
 
-export function getGamesEndpoint(): string {
-  return `${server}${Endpoints.Games}`;
+function createServerURL(pathname: string): URL {
+  const url = new URL(server);
+  url.pathname = pathname;
+
+  return url;
 }
 
-export function getGameDetailsEndpoint(id: string): string {
-  return `${getGamesEndpoint()}/${id}`;
+export function getGamesEndpoint(): URL {
+  return createServerURL(Endpoints.Games);
 }
 
-export function getLanguagesEndpoint(): string {
-  return `${server}${Endpoints.Languages}`;
+export function getLanguagesEndpoint(): URL {
+  return createServerURL(Endpoints.Languages);
 }
 
-export function getRegionsEndpoint(): string {
-  return `${server}${Endpoints.Regions}`;
+export function getRegionsEndpoint(): URL {
+  return createServerURL(Endpoints.Regions);
 }
 
-export function getPlatformsEndpoint(): string {
-  return `${server}${Endpoints.Platforms}`;
+export function getPlatformsEndpoint(): URL {
+  return createServerURL(Endpoints.Platforms);
+}
+
+export function getGameDetailsEndpoint(id: string): URL {
+  const url = getGamesEndpoint();
+  url.pathname = `${url.pathname}/${id}`;
+
+  return url;
 }
