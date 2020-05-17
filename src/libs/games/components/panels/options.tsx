@@ -26,10 +26,10 @@ export const GameSearchOptionsPanel: React.FC<Props> = () => {
           <GameSearchQuery></GameSearchQuery>
         </Row>
         <Row>
-          <GameSearchRegions></GameSearchRegions>
+          <GameSearchPlatforms></GameSearchPlatforms>
         </Row>
         <Row>
-          <GameSearchPlatforms></GameSearchPlatforms>
+          <GameSearchRegions></GameSearchRegions>
         </Row>
       </FormGroup>
     </Panel>

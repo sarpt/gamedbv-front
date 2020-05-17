@@ -15,7 +15,7 @@ import { Panel } from '../../../common/components/panel';
 
 import { SelectLabel } from './language.styles';
 
-const languageSettingLabel = "Language settings";
+const languageSettingsLabel = "Language settings";
 const preffereLanguageLabel = "Preffered games entries language (affects titles, descriptions, etc.). Defaults to English when preffered language not present.";
 
 const mapStateToProps = (state: AppState) => {
@@ -52,7 +52,7 @@ const Component: React.FC<props> = ({
 
   return (
     <Panel
-      label={ languageSettingLabel }
+      label={ languageSettingsLabel }
       icon={ <LanguageIcon></LanguageIcon> }
     >
       <SelectLabel

@@ -9,15 +9,18 @@ import { selectSearchedPlatforms } from '../../selectors/search';
 import { addSearchedPlatform, removeSearchedPlatform } from '../../actions/search';
 import { AppState } from '../../../core/store/store';
 import { connect } from 'react-redux';
-import { selectPlatforms } from '../../../status/selectors';
+import { selectPlatforms, selectAvailablePlatforms } from '../../../status/selectors';
 import { Platform } from '../../../common/models/platform';
+import { selectShowOnlyAvailablePlatforms } from '../../../settings/selectors';
 
 const platformsLabel = 'Platforms';
 
 const mapStateToProps = (state: AppState) => {
   return {
     searchedPlatforms: selectSearchedPlatforms(state),
+    showOnlyAvailablePlatforms: selectShowOnlyAvailablePlatforms(state),
     platforms: selectPlatforms(state),
+    availablePlatforms: selectAvailablePlatforms(state),
   };
 };
 
@@ -31,10 +34,14 @@ type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 
 const Component: React.FC<Props> = ({
   platforms,
+  availablePlatforms,
+  showOnlyAvailablePlatforms,
   searchedPlatforms,
   dispatchAddSearchedPlatform,
   dispatchRemoveSearchedPlatform,
 }) => {
+  const plats = showOnlyAvailablePlatforms ? availablePlatforms : platforms;
+
   const onPlatformsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       dispatchAddSearchedPlatform({ platformId: event.target.value });
@@ -52,7 +59,7 @@ const Component: React.FC<Props> = ({
   return (
     <PanelSection label={ platformsLabel }>
       {
-        platforms.map(platform => {
+        plats.map(platform => {
           return (
             <FormControlLabel
               key={ platform.uid }
