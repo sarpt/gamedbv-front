@@ -31,7 +31,7 @@ export const ApplicationBar: React.FC<props> = () => {
     <React.Fragment>
       <AppBar elevation={ appBarElevation }>
         <MainToolbar>
-          <Title variant="h5">
+          <Title>
             <Link component={ RouterLink } to={ Routes.Root } color="inherit">
               { applicationTitle }
             </Link>

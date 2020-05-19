@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Typography from '@material-ui/core/Typography';
+import { TextHeaderSmall } from './common';
 
 export const SectionContainer = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const SectionContainer = styled.div`
   padding-top: 0.3em;
 `;
 
-export const Label = styled(Typography)`
+export const Label = styled(TextHeaderSmall)`
   flex-grow: 0;
   flex-shrink: 0;
   border-bottom-style: dashed;

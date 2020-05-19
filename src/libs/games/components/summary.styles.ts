@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Typography from '@material-ui/core/Typography';
+import { TextBodyBig, TextBodySmall } from '../../common/components/common';
 
 export const Content = styled.div`
   display: flex;
@@ -30,23 +30,23 @@ export const PlatformAndRegion = styled.div`
   justify-content: space-between;
 `;
 
-export const Title = styled(Typography)`
+export const Title = styled(TextBodyBig)`
   flex-grow: 0;
 `;
 
-export const Id = styled(Typography)`
+export const Id = styled(TextBodyBig)`
   flex-grow: 0;
 `;
 
-export const Region = styled(Typography)`
+export const Region = styled(TextBodySmall)`
   flex-grow: 0;
 `;
 
-export const Platform = styled(Typography)`
+export const Platform = styled(TextBodySmall)`
   flex-grow: 0;
 `;
 
-export const Synopsis = styled(Typography)`
+export const Synopsis = styled(TextBodySmall)`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -19,7 +19,7 @@ const mapStateToProps = (state: AppState) => {
   return {
     searchedPlatforms: selectSearchedPlatforms(state),
     showOnlyAvailablePlatforms: selectShowOnlyAvailablePlatforms(state),
-    platforms: selectPlatforms(state),
+    allPlatforms: selectPlatforms(state),
     availablePlatforms: selectAvailablePlatforms(state),
   };
 };
@@ -33,14 +33,14 @@ type additionalProps = {};
 type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
 
 const Component: React.FC<Props> = ({
-  platforms,
+  allPlatforms,
   availablePlatforms,
   showOnlyAvailablePlatforms,
   searchedPlatforms,
   dispatchAddSearchedPlatform,
   dispatchRemoveSearchedPlatform,
 }) => {
-  const plats = showOnlyAvailablePlatforms ? availablePlatforms : platforms;
+  const platforms = showOnlyAvailablePlatforms ? availablePlatforms : allPlatforms;
 
   const onPlatformsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -59,7 +59,7 @@ const Component: React.FC<Props> = ({
   return (
     <PanelSection label={ platformsLabel }>
       {
-        plats.map(platform => {
+        platforms.map(platform => {
           return (
             <FormControlLabel
               key={ platform.uid }

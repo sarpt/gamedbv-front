@@ -8,7 +8,7 @@ import { AppState } from '../../../core/store/store';
 
 import { Panel } from '../../../common/components/panel';
 
-import { SelectLabel } from './language.styles';
+import { SelectLabel } from '../../../common/components/common.styles';
 import { selectShowOnlyAvailablePlatforms } from '../../selectors';
 import { setShowOnlyAvailablePlatforms } from '../../actions';
 

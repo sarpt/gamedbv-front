@@ -35,7 +35,7 @@ export const Panel: React.FC<Props> = ({ label, icon, children }) => {
             </IconContainer>
           )
         }
-        <Label variant="h5">
+        <Label>
           { label }
         </Label>
           <IconButton onClick={ toggleIsExpanded }>

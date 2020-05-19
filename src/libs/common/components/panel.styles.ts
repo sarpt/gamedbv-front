@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import { TextHeaderBig } from './common';
 
 export const PanelPaper = styled(Paper)`
   margin-bottom: 10px;
@@ -21,7 +21,7 @@ export const IconContainer = styled.div`
   display: flex;
 `;
 
-export const Label = styled(Typography)`
+export const Label = styled(TextHeaderBig)`
   flex-grow: 1;
   flex-shrink: 1;
 `;

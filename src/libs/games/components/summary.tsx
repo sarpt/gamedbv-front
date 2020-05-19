@@ -41,26 +41,26 @@ export const GameSummary: React.FC<Props> = ({ game }) => {
   return (
     <React.Fragment>
       <Header>
-        <Title variant="body1">
+        <Title>
           { title }
         </Title>
-        <Id variant="body1">
+        <Id>
           { game.serialNumber }
         </Id>
       </Header>
       <Body>
         <PlatformAndRegion>
-          <Platform variant="body2">
+          <Platform>
             Platform: { game.platform.uid }
           </Platform>
-          <Region variant="body2">
+          <Region>
             Region: { game.region.code }
           </Region>
         </PlatformAndRegion>
         <Content>
           {
             synopsis.length > 0 && (
-              <Synopsis variant="body2">
+              <Synopsis>
                 { synopsis }
               </Synopsis>
             )

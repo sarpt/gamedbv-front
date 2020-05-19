@@ -13,7 +13,7 @@ import { selectPrefferedLanguageCode } from '../../selectors';
 import { selectAvailableLanguages } from '../../../status/selectors';
 import { Panel } from '../../../common/components/panel';
 
-import { SelectLabel } from './language.styles';
+import { SelectLabel } from '../../../common/components/common.styles';
 
 const languageSettingsLabel = "Language settings";
 const preffereLanguageLabel = "Preffered games entries language (affects titles, descriptions, etc.). Defaults to English when preffered language not present.";

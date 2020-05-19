@@ -13,7 +13,7 @@ type Props = {
 export const PanelSection: React.FC<Props> = ({ label, children }) => {
   return (
     <SectionContainer>
-      <Label variant="h6">
+      <Label>
         { label }
       </Label>
       <Content>
