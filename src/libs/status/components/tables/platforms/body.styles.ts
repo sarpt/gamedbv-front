@@ -1,14 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-import { TextBodyBig, TextBodySmall } from '../../../common/components/common';
-
-
-export const HeadText = styled(TextBodyBig)`
-  font-weight: bold;
-`;
+import { TextBodySmall } from "../../../../common/components/common";
 
 export const RowText = styled(TextBodySmall)``;
 
