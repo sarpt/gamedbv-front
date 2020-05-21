@@ -1,7 +1,7 @@
 import {
   AppSettingsActionsTypes,
   AppSettingsActions,
- } from "../actions";
+ } from '../actions';
 
 type State = {
   prefferedLanguageCode: string,

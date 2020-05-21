@@ -74,5 +74,5 @@ export const LanguageSelector = connect(
 
 function selectLanguage(languageCode: string, languages: Language[]): Language {
   return languages.find(language => language.code === languageCode)
-    ?? { code: "EN", name: "English" };
+    ?? { code: 'EN', name: 'English' };
 }

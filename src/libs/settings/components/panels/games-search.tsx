@@ -12,8 +12,8 @@ import { SelectLabel } from '../../../common/components/common.styles';
 import { selectShowOnlyAvailablePlatforms } from '../../selectors';
 import { setShowOnlyAvailablePlatforms } from '../../actions';
 
-const gamesQuerySettingsLabel = "Game search settings";
-const showOnlyAvailablePlatformsLabel = "Show available platforms only. By checking this, only platforms that are searchable (were downloaded and indexed) will be shown in the search options.";
+const gamesQuerySettingsLabel = 'Game search settings';
+const showOnlyAvailablePlatformsLabel = 'Show available platforms only. By checking this, only platforms that are searchable (were downloaded and indexed) will be shown in the search options.';
 
 const mapStateToProps = (state: AppState) => {
   return {

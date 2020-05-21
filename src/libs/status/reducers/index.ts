@@ -1,9 +1,9 @@
 import {
   AppInfoActionsTypes,
   AppInfoActions,
-} from "../actions";
-import { Language } from "../../common/models/language";
-import { Region } from "../../common/models/region";
+} from '../actions';
+import { Language } from '../../common/models/language';
+import { Region } from '../../common/models/region';
 import { Platform } from '../../common/models/platform';
 
 type State = {

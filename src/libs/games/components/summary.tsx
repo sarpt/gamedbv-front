@@ -35,8 +35,8 @@ export const GameSummary: React.FC<Props> = ({ game }) => {
     [game],
   );
 
-  const synopsis = description?.synopsis ?? "";
-  const title = description?.title ?? "";
+  const synopsis = description?.synopsis ?? '';
+  const title = description?.title ?? '';
 
   return (
     <React.Fragment>

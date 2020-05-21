@@ -1,4 +1,4 @@
-import { GameInfo } from "./game-info";
+import { GameInfo } from './game-info';
 
 export type GamesResult = {
   total: number,

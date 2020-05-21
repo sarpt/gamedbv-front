@@ -15,6 +15,9 @@
         }
       ],
       "indent": [true, "spaces", 2],
+      "no-console": true,
+      "no-debugger": true,
+      "quotemark": [true, "single", "jsx-double"],
       "no-var-keyword": true,
       "no-eval": true,
       "arrow-return-shorthand": true,

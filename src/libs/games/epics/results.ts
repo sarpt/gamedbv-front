@@ -1,5 +1,5 @@
-import { map, filter, withLatestFrom } from "rxjs/operators";
-import { ActionsObservable, ofType, StateObservable } from "redux-observable";
+import { map, filter, withLatestFrom } from 'rxjs/operators';
+import { ActionsObservable, ofType, StateObservable } from 'redux-observable';
 
 import {
   GameSearchActions,
@@ -9,15 +9,15 @@ import {
   RemoveSearchedRegionAction,
   AddSearchedPlatformAction,
   RemoveSearchedPlatformAction,
-} from "../actions/search";
+} from '../actions/search';
 import {
   GameSearchResultsActions,
   GameSearchResultsActionsTypes,
   ChangeResultsPerPageAction,
   changePage,
-} from "../actions/results";
-import { AppState } from "../../core/store/store";
-import { selectCurrentPage } from "../selectors/results";
+} from '../actions/results';
+import { AppState } from '../../core/store/store';
+import { selectCurrentPage } from '../selectors/results';
 
 const resetToFirstPage$ = (
   actions$: ActionsObservable<GameSearchActions | GameSearchResultsActions>,

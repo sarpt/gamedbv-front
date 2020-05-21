@@ -1,7 +1,7 @@
 // https://brycedooley.com/creating-useObservable-hook/
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Subject, Observable } from "rxjs";
+import { Subject, Observable } from 'rxjs';
 
 // syntax <V,> expected so generics syntax does not colide with tsx syntax
 export function useSubject<V,>(): [Observable<V>, (newValue: V) => void] {

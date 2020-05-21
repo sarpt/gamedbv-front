@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import { GameSearchPage } from './pages/game-search';
 import { SettingsPage } from './pages/settings';

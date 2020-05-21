@@ -10,7 +10,7 @@ import { PlatformsStatusTableBody } from '../tables/platforms/body';
 
 type props = {};
 
-const label = "Platforms";
+const label = 'Platforms';
 
 export const PlatformsStatusPanel: React.FC<props> = () => {
   return (
