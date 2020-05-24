@@ -1,7 +1,7 @@
 import {
-  AppInfoActionsTypes,
-  AppInfoActions,
-} from '../actions';
+  AvailabilityActionsTypes,
+  AvailabilityActions,
+} from '../actions/availability';
 import { Language } from '../../common/models/language';
 import { Region } from '../../common/models/region';
 import { Platform } from '../../common/models/platform';
@@ -17,13 +17,13 @@ const initialState: State = {
   platforms: [],
 };
 
-export const appStatusReducer = (state: State = initialState, action: AppInfoActions): State => {
+export const availabilityStatusReducer = (state: State = initialState, action: AvailabilityActions): State => {
   switch (action.type) {
-    case AppInfoActionsTypes.SetAvailableLanguages:
+    case AvailabilityActionsTypes.SetAvailableLanguages:
       return { ...state, availableLanguages: action.payload.languages };
-    case AppInfoActionsTypes.SetAvailableRegions:
+    case AvailabilityActionsTypes.SetAvailableRegions:
       return { ...state, availableRegions: action.payload.regions };
-    case AppInfoActionsTypes.SetAvailablePlatforms:
+    case AvailabilityActionsTypes.SetAvailablePlatforms:
       return { ...state, platforms: action.payload.platforms };
     default:
       return state;

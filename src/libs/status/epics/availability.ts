@@ -3,8 +3,8 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { ofType, ActionsObservable } from 'redux-observable';
 
 import {
-  AppInfoActions,
-  AppInfoActionsTypes,
+  AvailabilityActions,
+  AvailabilityActionsTypes,
   FetchAvailableLanguagesAction,
   setAvailableLanguages,
   fetchAvailableLanguagesError,
@@ -14,16 +14,16 @@ import {
   FetchAvailablePlatformsAction,
   fetchAvailablePlatformsError,
   setAvailablePlatforms,
-} from '../actions';
+} from '../actions/availability';
 import {
   getAvailableLanguages,
   getAvailableRegions,
   getAvailablePlatforms,
 } from '../../api/functions/status';
 
-const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) => {
+const fetchAvailableLanguages$ = (actions$: ActionsObservable<AvailabilityActions>) => {
   return actions$.pipe(
-    ofType<AppInfoActions, FetchAvailableLanguagesAction>(AppInfoActionsTypes.FetchAvailableLanguages),
+    ofType<AvailabilityActions, FetchAvailableLanguagesAction>(AvailabilityActionsTypes.FetchAvailableLanguages),
     switchMap(() => {
       return getAvailableLanguages().pipe(
         map((response) => {
@@ -37,9 +37,9 @@ const fetchAvailableLanguages$ = (actions$: ActionsObservable<AppInfoActions>) =
   );
 };
 
-const fetchAvailableRegions$ = (actions$: ActionsObservable<AppInfoActions>) => {
+const fetchAvailableRegions$ = (actions$: ActionsObservable<AvailabilityActions>) => {
   return actions$.pipe(
-    ofType<AppInfoActions, FetchAvailableRegionsAction>(AppInfoActionsTypes.FetchAvailableRegions),
+    ofType<AvailabilityActions, FetchAvailableRegionsAction>(AvailabilityActionsTypes.FetchAvailableRegions),
     switchMap(() => {
       return getAvailableRegions().pipe(
         map((response) => {
@@ -53,9 +53,9 @@ const fetchAvailableRegions$ = (actions$: ActionsObservable<AppInfoActions>) => 
   );
 };
 
-const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AppInfoActions>) => {
+const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AvailabilityActions>) => {
   return actions$.pipe(
-    ofType<AppInfoActions, FetchAvailablePlatformsAction>(AppInfoActionsTypes.FetchAvailablePlatforms),
+    ofType<AvailabilityActions, FetchAvailablePlatformsAction>(AvailabilityActionsTypes.FetchAvailablePlatforms),
     switchMap(() => {
       return getAvailablePlatforms().pipe(
         map((response) => {
@@ -69,7 +69,7 @@ const fetchAvailablePlatforms$ = (actions$: ActionsObservable<AppInfoActions>) =
   );
 };
 
-export const apiInfoEpics = [
+export const availabilityEpics = [
   fetchAvailableLanguages$,
   fetchAvailableRegions$,
   fetchAvailablePlatforms$,

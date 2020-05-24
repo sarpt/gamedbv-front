@@ -3,29 +3,29 @@ import { Language } from '../../common/models/language';
 import { Region } from '../../common/models/region';
 import { Platform } from '../../common/models/platform';
 
-export enum AppInfoActionsTypes {
-  FetchAvailableLanguages = '[app-info] Fetch available languages',
-  FetchAvailableLanguagesError = '[app-info] [error] Fetch available languages error',
-  SetAvailableLanguages = '[app-info] Set available languages',
-  FetchAvailableRegions = '[app-info] Fetch available regions',
-  FetchAvailableRegionsError = '[app-info] [error] Fetch available regions error',
-  SetAvailableRegions = '[app-info] Set available regions',
-  FetchAvailablePlatforms = '[app-info] Fetch available platforms',
-  FetchAvailablePlatformsError = '[app-info] [error] Fetch available platforms error',
-  SetAvailablePlatforms = '[app-info] Set available platforms',
+export enum AvailabilityActionsTypes {
+  FetchAvailableLanguages = '[status-availability] Fetch available languages',
+  FetchAvailableLanguagesError = '[status-availability] [error] Fetch available languages error',
+  SetAvailableLanguages = '[status-availability] Set available languages',
+  FetchAvailableRegions = '[status-availability] Fetch available regions',
+  FetchAvailableRegionsError = '[status-availability] [error] Fetch available regions error',
+  SetAvailableRegions = '[status-availability] Set available regions',
+  FetchAvailablePlatforms = '[status-availability] Fetch available platforms',
+  FetchAvailablePlatformsError = '[status-availability] [error] Fetch available platforms error',
+  SetAvailablePlatforms = '[status-availability] Set available platforms',
 }
 
 type setAvailableLanguagesPayload = {
   languages: Language[],
 };
 export interface SetAvailableLanguagesAction extends Action {
-  type: AppInfoActionsTypes.SetAvailableLanguages;
+  type: AvailabilityActionsTypes.SetAvailableLanguages;
   payload: setAvailableLanguagesPayload;
 }
 
 export const setAvailableLanguages = ({ languages }: setAvailableLanguagesPayload) => {
   return {
-    type: AppInfoActionsTypes.SetAvailableLanguages,
+    type: AvailabilityActionsTypes.SetAvailableLanguages,
     payload: {
       languages,
     },
@@ -33,42 +33,42 @@ export const setAvailableLanguages = ({ languages }: setAvailableLanguagesPayloa
 };
 
 export interface FetchAvailableLanguagesAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableLanguages;
+  type: AvailabilityActionsTypes.FetchAvailableLanguages;
 }
 
 export const fetchAvailableLanguages = () => {
   return {
-    type: AppInfoActionsTypes.FetchAvailableLanguages,
+    type: AvailabilityActionsTypes.FetchAvailableLanguages,
   };
 };
 
 export interface FetchAvailableLanguagesErrorAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableLanguagesError;
+  type: AvailabilityActionsTypes.FetchAvailableLanguagesError;
 }
 
 export const fetchAvailableLanguagesError = () => {
   return {
-    type: AppInfoActionsTypes.FetchAvailableLanguagesError,
+    type: AvailabilityActionsTypes.FetchAvailableLanguagesError,
   };
 };
 
 export interface FetchAvailableRegionsAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableRegions;
+  type: AvailabilityActionsTypes.FetchAvailableRegions;
 }
 
 export const fetchAvailableRegions = () => {
   return {
-    type: AppInfoActionsTypes.FetchAvailableRegions,
+    type: AvailabilityActionsTypes.FetchAvailableRegions,
   };
 };
 
 export interface FetchAvailableRegionsErrorAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailableRegionsError;
+  type: AvailabilityActionsTypes.FetchAvailableRegionsError;
 }
 
 export const fetchAvailableRegionsError = () => {
   return {
-    type: AppInfoActionsTypes.FetchAvailableRegionsError,
+    type: AvailabilityActionsTypes.FetchAvailableRegionsError,
   };
 };
 
@@ -76,13 +76,13 @@ type setAvailableRegionsPayload = {
   regions: Region[],
 };
 export interface SetAvailableRegionsAction extends Action {
-  type: AppInfoActionsTypes.SetAvailableRegions;
+  type: AvailabilityActionsTypes.SetAvailableRegions;
   payload: setAvailableRegionsPayload;
 }
 
 export const setAvailableRegions = ({ regions }: setAvailableRegionsPayload) => {
   return {
-    type: AppInfoActionsTypes.SetAvailableRegions,
+    type: AvailabilityActionsTypes.SetAvailableRegions,
     payload: {
       regions,
     },
@@ -90,22 +90,22 @@ export const setAvailableRegions = ({ regions }: setAvailableRegionsPayload) => 
 };
 
 export interface FetchAvailablePlatformsAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailablePlatforms;
+  type: AvailabilityActionsTypes.FetchAvailablePlatforms;
 }
 
 export const fetchAvailablePlatforms = () => {
   return {
-    type: AppInfoActionsTypes.FetchAvailablePlatforms,
+    type: AvailabilityActionsTypes.FetchAvailablePlatforms,
   };
 };
 
 export interface FetchAvailablePlatformsErrorAction extends Action {
-  type: AppInfoActionsTypes.FetchAvailablePlatformsError;
+  type: AvailabilityActionsTypes.FetchAvailablePlatformsError;
 }
 
 export const fetchAvailablePlatformsError = () => {
   return {
-    type: AppInfoActionsTypes.FetchAvailablePlatformsError,
+    type: AvailabilityActionsTypes.FetchAvailablePlatformsError,
   };
 };
 
@@ -113,20 +113,20 @@ type setAvailablePlatformsPayload = {
   platforms: Platform[],
 };
 export interface SetAvailablePlatformsAction extends Action {
-  type: AppInfoActionsTypes.SetAvailablePlatforms;
+  type: AvailabilityActionsTypes.SetAvailablePlatforms;
   payload: setAvailablePlatformsPayload;
 }
 
 export const setAvailablePlatforms = ({ platforms }: setAvailablePlatformsPayload) => {
   return {
-    type: AppInfoActionsTypes.SetAvailablePlatforms,
+    type: AvailabilityActionsTypes.SetAvailablePlatforms,
     payload: {
       platforms,
     },
   };
 };
 
-export type AppInfoActions = SetAvailableLanguagesAction
+export type AvailabilityActions = SetAvailableLanguagesAction
   | FetchAvailableLanguagesAction
   | FetchAvailableLanguagesErrorAction
   | SetAvailableRegionsAction

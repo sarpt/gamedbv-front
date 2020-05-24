@@ -9,7 +9,7 @@ import { selectSearchedPlatforms } from '../../selectors/search';
 import { addSearchedPlatform, removeSearchedPlatform } from '../../actions/search';
 import { AppState } from '../../../core/store/store';
 import { connect } from 'react-redux';
-import { selectPlatforms, selectAvailablePlatforms } from '../../../status/selectors';
+import { selectPlatforms, selectAvailablePlatforms } from '../../../status/selectors/availability';
 import { Platform } from '../../../common/models/platform';
 import { selectShowOnlyAvailablePlatforms } from '../../../settings/selectors';
 

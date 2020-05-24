@@ -41,8 +41,8 @@ export const Panel: React.FC<Props> = ({ label, icon, children }) => {
           <IconButton onClick={ toggleIsExpanded }>
             {
               isExpanded
-              ? <ArrowDropDown></ArrowDropDown>
-              : <ArrowDropUp></ArrowDropUp>
+              ? <ArrowDropUp></ArrowDropUp>
+              : <ArrowDropDown></ArrowDropDown>
             }
           </IconButton>
       </Header>

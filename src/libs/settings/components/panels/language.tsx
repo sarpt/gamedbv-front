@@ -7,10 +7,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { AppState } from '../../../core/store/store';
 
-import { fetchAvailableLanguages } from '../../../status/actions';
+import { fetchAvailableLanguages } from '../../../status/actions/availability';
 import { setPrefferedLanguageCode } from '../../actions';
 import { selectPrefferedLanguageCode } from '../../selectors';
-import { selectAvailableLanguages } from '../../../status/selectors';
+import { selectAvailableLanguages } from '../../../status/selectors/availability';
 import { Panel } from '../../../common/components/panel';
 
 import { SelectLabel } from '../../../common/components/common.styles';

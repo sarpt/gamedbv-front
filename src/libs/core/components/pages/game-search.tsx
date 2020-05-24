@@ -9,7 +9,7 @@ import {
 import { GameSearchOptionsPanel } from '../../../games/components/panels/options';
 import { GameSearchResultsPanel } from '../../../games/components/panels/results';
 import { ErrorPanel } from '../../../common/components/error-panel';
-import { fetchAvailableRegions, fetchAvailablePlatforms } from '../../../status/actions';
+import { fetchAvailableRegions, fetchAvailablePlatforms } from '../../../status/actions/availability';
 
 const gameSearchErrorMessage = 'Search results error';
 
