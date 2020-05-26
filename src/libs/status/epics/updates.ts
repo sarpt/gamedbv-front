@@ -17,7 +17,9 @@ import {
   MessageReceivedAction,
   platformsUpdateDone,
   unhandledStatus,
+  PlatformsUpdateDoneAction,
 } from '../actions/updates';
+import { fetchAvailablePlatforms } from '../actions/availability';
 
 const openObserver = new Subject<Event>();
 const closeObserver = new Subject<CloseEvent>();
@@ -68,8 +70,18 @@ const updatePlatforms$ = (actions$: ActionsObservable<UpdatesStatusActions>) => 
   );
 };
 
+const refetchAvailablePlatforms$ = (actions$: ActionsObservable<UpdatesStatusActions>) => {
+  return actions$.pipe(
+    ofType<UpdatesStatusActions, PlatformsUpdateDoneAction>(UpdatesStatusActionsTypes.PlatformsUpdateDone),
+    map(() => {
+      return fetchAvailablePlatforms();
+    }),
+  );
+};
+
 export const updatesEpics = [
   connectToUpdatesWebsocket$,
   updatePlatforms$,
   messageReceived$,
+  refetchAvailablePlatforms$,
 ];

@@ -11,12 +11,13 @@ import { PlatformsStatusTableHead } from '../tables/platforms/head';
 import { PlatformsStatusTableBody } from '../tables/platforms/body';
 import { connect } from 'react-redux';
 import { AppState } from '../../../core/store/store';
-import { selectPlatformsToUpdate } from '../../selectors/updates';
+import { selectPlatformsToUpdate, platformsUpdateInProgress } from '../../selectors/updates';
 import { updatePlatforms } from '../../actions/updates';
 
 const mapStateToProps = (state: AppState) => {
   return {
     selectedPlatforms: selectPlatformsToUpdate(state),
+    updateInProgress: platformsUpdateInProgress(state),
   };
 };
 
@@ -30,7 +31,11 @@ type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 
 const label = 'Platform databases';
 
-const Component: React.FC<props> = ({ selectedPlatforms, dispatchUpdatePlatforms }) => {
+const Component: React.FC<props> = ({
+  selectedPlatforms,
+  dispatchUpdatePlatforms,
+  updateInProgress,
+}) => {
   const handleUpdateClick = () => {
     dispatchUpdatePlatforms({ platforms: selectedPlatforms });
   };
@@ -40,7 +45,7 @@ const Component: React.FC<props> = ({ selectedPlatforms, dispatchUpdatePlatforms
       <div>
         <Button
           onClick={ handleUpdateClick }
-          disabled={ selectedPlatforms.length === 0}
+          disabled={ selectedPlatforms.length === 0 || updateInProgress }
           variant="contained"
           color="secondary"
           startIcon={<UpdateIcon />}

@@ -6,7 +6,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { selectPlatformsToUpdate } from '../../../selectors/updates';
+import { selectPlatformsToUpdate, platformsUpdateInProgress } from '../../../selectors/updates';
 import { selectPlatforms } from '../../../selectors/availability';
 
 import { setPlatformsToUpdate } from '../../../actions/updates';
@@ -18,6 +18,7 @@ const mapStateToProps = (state: AppState) => {
   return {
     allPlatforms: selectPlatforms(state),
     selectedPlatforms: selectPlatformsToUpdate(state),
+    updateInProgress: platformsUpdateInProgress(state),
   };
 };
 
@@ -29,7 +30,12 @@ type additionalProps = {};
 
 type props = ReturnType<typeof mapStateToProps> & typeof mapDistpatchToProps & additionalProps;
 
-const Component: React.FC<props> = ({ allPlatforms, selectedPlatforms, dispatchSelectPlatforms }) => {
+const Component: React.FC<props> = ({
+  allPlatforms,
+  selectedPlatforms,
+  dispatchSelectPlatforms,
+  updateInProgress,
+}) => {
   const onAllPlatformsSelected = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       dispatchSelectPlatforms({ platforms: allPlatforms });
@@ -53,6 +59,7 @@ const Component: React.FC<props> = ({ allPlatforms, selectedPlatforms, dispatchS
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
+            disabled={ updateInProgress }
             indeterminate={ notAllPlatformsSelected() }
             checked={ allPlatformsSelected() }
             onChange={ onAllPlatformsSelected }
