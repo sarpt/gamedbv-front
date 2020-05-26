@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { Routes } from '../consts/routes';
+
+import { connectToUpdatesWebsocket } from '../../status/actions/updates';
 
 import { GameSearchPage } from './pages/game-search';
 import { SettingsPage } from './pages/settings';
 import { StatusPage } from './pages/status';
-
+import { Main, Content } from './main.styles';
 import { ApplicationBar } from './application-bar';
 
-import { Routes } from '../consts/routes';
+const mapStateToProps = () => {
+  return {};
+};
 
-import { Main, Content } from './main.styles';
+const mapDispatchToProps = {
+  dispatchConnectToUpdateWebsocket: connectToUpdatesWebsocket,
+};
 
-export const MainContainer: React.FC = () => {
+type additionalProps = {};
+
+type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & additionalProps;
+
+const Component: React.FC<props> = ({ dispatchConnectToUpdateWebsocket }) => {
+  useEffect(() => {
+    dispatchConnectToUpdateWebsocket();
+  }, [dispatchConnectToUpdateWebsocket]);
+
   return (
     <Main>
       <Router>
@@ -37,3 +54,8 @@ export const MainContainer: React.FC = () => {
     </Main>
   );
 };
+
+export const MainContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Component);

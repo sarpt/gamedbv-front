@@ -12,6 +12,7 @@ import { PlatformsStatusTableBody } from '../tables/platforms/body';
 import { connect } from 'react-redux';
 import { AppState } from '../../../core/store/store';
 import { selectPlatformsToUpdate } from '../../selectors/updates';
+import { updatePlatforms } from '../../actions/updates';
 
 const mapStateToProps = (state: AppState) => {
   return {
@@ -19,7 +20,9 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  dispatchUpdatePlatforms: updatePlatforms,
+};
 
 type additionalProps = {};
 
@@ -27,11 +30,16 @@ type props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps & ad
 
 const label = 'Platform databases';
 
-const Component: React.FC<props> = ({ selectedPlatforms }) => {
+const Component: React.FC<props> = ({ selectedPlatforms, dispatchUpdatePlatforms }) => {
+  const handleUpdateClick = () => {
+    dispatchUpdatePlatforms({ platforms: selectedPlatforms });
+  };
+
   return (
     <Panel label={ label } icon={ <VideogameAssetIcon /> }>
       <div>
         <Button
+          onClick={ handleUpdateClick }
           disabled={ selectedPlatforms.length === 0}
           variant="contained"
           color="secondary"

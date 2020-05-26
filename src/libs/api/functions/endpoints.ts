@@ -3,31 +3,44 @@ enum Endpoints {
   Languages = '/info/languages',
   Regions = '/info/regions',
   Platforms = '/info/platforms',
+  Updates = '/updates',
 }
 
-const server = 'http://localhost:3001';
+const port = '3001';
+const address = 'localhost';
 
-function createServerURL(pathname: string): URL {
-  const url = new URL(server);
+function createRestServerURL(pathname: string): URL {
+  const url = new URL(`http://${address}:${port}`);
+  url.pathname = pathname;
+
+  return url;
+}
+
+function createWebsocketServerURL(pathname: string): URL {
+  const url = new URL(`ws://${address}:${port}`);
   url.pathname = pathname;
 
   return url;
 }
 
 export function getGamesEndpoint(): URL {
-  return createServerURL(Endpoints.Games);
+  return createRestServerURL(Endpoints.Games);
 }
 
 export function getLanguagesEndpoint(): URL {
-  return createServerURL(Endpoints.Languages);
+  return createRestServerURL(Endpoints.Languages);
 }
 
 export function getRegionsEndpoint(): URL {
-  return createServerURL(Endpoints.Regions);
+  return createRestServerURL(Endpoints.Regions);
 }
 
 export function getPlatformsEndpoint(): URL {
-  return createServerURL(Endpoints.Platforms);
+  return createRestServerURL(Endpoints.Platforms);
+}
+
+export function getUpdatesEndpoint(): URL {
+  return createWebsocketServerURL(Endpoints.Updates);
 }
 
 export function getGameDetailsEndpoint(id: string): URL {
