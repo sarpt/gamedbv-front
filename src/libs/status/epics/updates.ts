@@ -46,9 +46,9 @@ const connectToUpdatesWebsocket$ = (actions$: ActionsObservable<UpdatesStatusAct
 const messageReceived$ = (actions$: ActionsObservable<UpdatesStatusActions>) => {
   return actions$.pipe(
     ofType<UpdatesStatusActions, MessageReceivedAction>(UpdatesStatusActionsTypes.MessageReceived),
-    filter(({ payload: { status } }) => !!status),
+    filter(({ payload: { state } }) => !!state),
     map(({ payload }) => {
-      const status = payload.status!;
+      const status = payload.state!;
 
       switch (status) {
         case UpdatesStatuses.Done:

@@ -1,8 +1,15 @@
 import { Commands } from './commands';
 
-export type WebsocketPayload = Partial<{
+type InputPayload = Partial<{
   cmd: Commands,
   platforms: string[],
-  status: string,
+}>;
+
+type OutputPayload = Partial<{
+  platform: string,
+  step: string,
+  state: string,
   message: string,
 }>;
+
+export type WebsocketPayload = InputPayload & OutputPayload;
