@@ -1,7 +1,7 @@
-import { Commands } from './commands';
+import { Operations } from './operations';
 
 type InputPayload = Partial<{
-  cmd: Commands,
+  op: Operations,
   platforms: string[],
 }>;
 

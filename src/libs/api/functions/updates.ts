@@ -4,7 +4,7 @@ import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 
 import { Platform } from '../../common/models/platform';
 import { WebsocketPayload } from '../models/websocket-payload';
-import { Commands } from '../models/commands';
+import { Operations } from '../models/operations';
 
 import { getUpdatesEndpoint } from './endpoints';
 
@@ -18,7 +18,7 @@ export function getUpdatesWebsocket(openObserver: Observer<Event>, closeObserver
 
 export function updatePlatforms(ws: WebSocketSubject<WebsocketPayload>, platforms: Platform[]) {
   ws.next({
-    cmd: Commands.Start,
+    op: Operations.Start,
     platforms: platforms.map(platform => platform.uid),
   });
 }
