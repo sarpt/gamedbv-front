@@ -18,8 +18,11 @@ import {
   platformsUpdateDone,
   unhandledStatus,
   PlatformsUpdateDoneAction,
+  platformUpdateEnd,
+  PlatformUpdateEndAction,
 } from '../actions/updates';
 import { fetchAvailablePlatforms } from '../actions/availability';
+import { UpdatesSteps } from '../../api/models/updates-steps';
 
 const openObserver = new Subject<Event>();
 const closeObserver = new Subject<CloseEvent>();
@@ -53,6 +56,12 @@ const messageReceived$ = (actions$: ActionsObservable<UpdatesStatusActions>) => 
       switch (status) {
         case UpdatesStatuses.Done:
           return platformsUpdateDone();
+        case UpdatesStatuses.Progress:
+          if (payload.step === UpdatesSteps.End) {
+            return platformUpdateEnd({ platform: payload.platform! });
+          }
+
+          return unhandledStatus();
         default:
           return unhandledStatus();
       }
@@ -70,9 +79,13 @@ const updatePlatforms$ = (actions$: ActionsObservable<UpdatesStatusActions>) => 
   );
 };
 
+type refetchAvailablePlatformsTriggers = PlatformsUpdateDoneAction | PlatformUpdateEndAction;
 const refetchAvailablePlatforms$ = (actions$: ActionsObservable<UpdatesStatusActions>) => {
   return actions$.pipe(
-    ofType<UpdatesStatusActions, PlatformsUpdateDoneAction>(UpdatesStatusActionsTypes.PlatformsUpdateDone),
+    ofType<UpdatesStatusActions, refetchAvailablePlatformsTriggers>(
+      UpdatesStatusActionsTypes.PlatformsUpdateDone,
+      UpdatesStatusActionsTypes.PlatformUpdateEnd,
+    ),
     map(() => {
       return fetchAvailablePlatforms();
     }),

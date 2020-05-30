@@ -14,6 +14,7 @@ export enum UpdatesStatusActionsTypes {
   MessageReceived = '[status-updates] Updates websocket message received',
   SetPlatforms = '[status-updates] Set platforms to update',
   UpdatePlatforms = '[status-updates] Update platforms',
+  PlatformUpdateEnd = '[status-updates] Platform update ended',
   PlatformsUpdateDone = '[status-updates] Platforms update finished',
 }
 
@@ -111,10 +112,28 @@ export const platformsUpdateDone = () => {
   };
 };
 
+type platformUpdateEndPayload = {
+  platform: string,
+};
+export interface PlatformUpdateEndAction extends Action {
+  type: UpdatesStatusActionsTypes.PlatformUpdateEnd;
+  payload: platformUpdateEndPayload;
+}
+
+export const platformUpdateEnd = ({ platform }: platformUpdateEndPayload) => {
+  return {
+    type: UpdatesStatusActionsTypes.PlatformUpdateEnd,
+    payload: {
+      platform,
+    },
+  };
+};
+
 export type UpdatesStatusActions = SetPlatformsAction
   | ConnectionErrorAction
   | MessageReceivedAction
   | UnhandledStatusAction
   | UpdatePlatformsAction
   | PlatformsUpdateDoneAction
+  | PlatformUpdateEndAction
   | ConnectToUpdatesWebsocketAction;
