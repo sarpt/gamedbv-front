@@ -7,17 +7,18 @@ enum Endpoints {
 }
 
 const port = '3001';
-const address = 'localhost';
 
 function createRestServerURL(pathname: string): URL {
-  const url = new URL(`http://${address}:${port}`);
+  const hostname = `${window.location.hostname}:${port}`;
+  const url = new URL(`http://${hostname}`);
   url.pathname = pathname;
 
   return url;
 }
 
 function createWebsocketServerURL(pathname: string): URL {
-  const url = new URL(`ws://${address}:${port}`);
+  const host = `${window.location.hostname}:${port}`;
+  const url = new URL(`ws://${host}`);
   url.pathname = pathname;
 
   return url;
