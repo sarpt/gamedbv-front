@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { Routes } from '../consts/routes';
+import { RoutePaths } from '../consts/route-paths';
 
 import { connectToUpdatesWebsocket } from '../../status/actions/updates';
 
@@ -39,13 +39,13 @@ const Component: React.FC<props> = ({ dispatchConnectToUpdateWebsocket }) => {
         <ApplicationBar></ApplicationBar>
         <Content>
           <Switch>
-            <Route path={ Routes.Status }>
+            <Route path={ RoutePaths.Status }>
               <StatusPage></StatusPage>
             </Route>
-            <Route path={ Routes.Settings }>
+            <Route path={ RoutePaths.Settings }>
               <SettingsPage></SettingsPage>
             </Route>
-            <Route path={ [Routes.Root, Routes.Games ] }>
+            <Route path={ [RoutePaths.Root, RoutePaths.Games ] }>
               <GameSearchPage></GameSearchPage>
             </Route>
           </Switch>

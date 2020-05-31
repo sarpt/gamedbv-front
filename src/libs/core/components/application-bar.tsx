@@ -1,47 +1,43 @@
-import React from 'react';
-import { useHistory, Link as RouterLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 
-import SettingsIcon from '@material-ui/icons/Settings';
-import AssessmentIcon from '@material-ui/icons/Assessment';
+import { RoutePaths } from '../consts/route-paths';
 
-import { OptionsButton, Title, MainToolbar } from './application-bar.styles';
-import { Routes } from '../consts/routes';
+import { Title, MainToolbar } from './application-bar.styles';
+import { NavigationButtons } from './navigation-buttons';
+import { Route } from '../models/route';
+import { routes, rootRoute } from '../consts/routes';
 
 const appBarElevation = 1;
-const applicationTitle = 'Game Database Viewer';
+const defaultRoute = rootRoute;
 
 type props = {};
 
 export const ApplicationBar: React.FC<props> = () => {
-  const history = useHistory();
 
-  const navigateToSettings = () => {
-    history.push(Routes.Settings);
-  };
+  const location = useLocation();
+  const [ route, setRoute ] = useState<Route>(defaultRoute);
 
-  const navigateToStatus = () => {
-    history.push(Routes.Status);
-  };
+  useEffect(() => {
+    const currentPath = location.pathname as RoutePaths;
+    const currentRoute = routes.has(currentPath) ? routes.get(currentPath)! : defaultRoute;
+    setRoute(currentRoute);
+  }, [location]);
 
   return (
     <React.Fragment>
       <AppBar elevation={ appBarElevation }>
         <MainToolbar>
           <Title>
-            <Link component={ RouterLink } to={ Routes.Root } color="inherit">
-              { applicationTitle }
+            <Link component={ RouterLink } to={ route.path } color="inherit">
+              { route.label }
             </Link>
           </Title>
-          <OptionsButton onClick={ navigateToStatus }>
-            <AssessmentIcon></AssessmentIcon>
-          </OptionsButton>
-          <OptionsButton onClick={ navigateToSettings }>
-            <SettingsIcon></SettingsIcon>
-          </OptionsButton>
+          <NavigationButtons></NavigationButtons>
         </MainToolbar>
       </AppBar>
       <Toolbar></Toolbar>
