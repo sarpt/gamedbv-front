@@ -7,7 +7,7 @@ import {
   Title,
   Id,
   Platform,
-  Region,
+  Regions,
   Synopsis,
   PlatformAndRegion,
   Footer,
@@ -18,6 +18,7 @@ import { Description } from '../../common/models/description';
 
 import { LanguageSelector } from '../../common/components/forms/selects/language';
 import { Language } from '../../common/models/language';
+import { Region } from '../../common/models/region';
 
 type Props = {
   game: GameInfo,
@@ -53,9 +54,9 @@ export const GameSummary: React.FC<Props> = ({ game }) => {
           <Platform>
             Platform: { game.platform.uid }
           </Platform>
-          <Region>
-            Region: { game.region.code }
-          </Region>
+          <Regions>
+            Regions: { getRegions(game.regions) }
+          </Regions>
         </PlatformAndRegion>
         <Content>
           {
@@ -81,4 +82,15 @@ function getDescription(language: Language, descriptions: Description[]): Descri
   const defaultDescription = descriptions[0] ?? null;
 
   return descriptions.find(desc => desc.language.code === language.code) ?? defaultDescription;
+}
+
+function getRegions(regions: Region[]): string {
+  switch (regions.length) {
+    case 0:
+      return 'None';
+    case 1:
+      return regions[0].code;
+    default:
+      return regions.map(region => region.code).join(',');
+  }
 }

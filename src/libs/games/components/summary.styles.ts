@@ -38,7 +38,7 @@ export const Id = styled(TextBodyBig)`
   flex-grow: 0;
 `;
 
-export const Region = styled(TextBodySmall)`
+export const Regions = styled(TextBodySmall)`
   flex-grow: 0;
 `;
 

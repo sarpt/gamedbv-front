@@ -6,6 +6,6 @@ export type GameInfo = {
   uuid: string,
   serialNumber: string,
   descriptions: Description[],
-  region: Region,
+  regions: Region[],
   platform: Platform,
 };
